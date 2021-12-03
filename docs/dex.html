@@ -711,7 +711,7 @@ function basics()
 
 di=
 [
-	["Curve",	"0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506",	"0xc35DADB65012eC5796536bD9864eD8773aBc74C4",	1616111666],
+	["Curve",	"??????????????????????????????????????????",	"0x686d67265703D1f124c45E33d47d794c566889Ba",	1616111666],
 	["Spooky",	"0xF491e7B69E4244ad4002BC14e878a34207E38c29",	"0x152eE697f2E276fA89E96742e9bB9aB1F2E61bE3",	1616111666],
 	["Spirit",	"0x16327E3FbDaCA3bcF7E38F5Af2599D2DDc33aE52",	"0xEF45d134b73241eDa7703fa787148D9C9F4950b0",	1616111666],
 	["Sushi",	"0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506",	"0xc35DADB65012eC5796536bD9864eD8773aBc74C4",	1616111666],
@@ -777,12 +777,13 @@ async function gp()
 {
 	for(i=0;i< di.length;i++)
 	{
-		if(i==0){continue}
 		F=new web3.eth.Contract(ab,di[i][2]);
 		if(di[i][0]=="Soul")
 			{await F.methods.totalPairs().call((e,r)=>{$("d_"+di[i][0].toLowerCase()).getElementsByTagName("td")[1].innerHTML=Number(r).toLocaleString()})}
 		else if(di[i][0]=="DMM")
 			{await F.methods.allPoolsLength().call((e,r)=>{$("d_"+di[i][0].toLowerCase()).getElementsByTagName("td")[1].innerHTML=Number(r).toLocaleString()})}
+		else if(di[i][0]=="Curve")
+			{await F.methods.pool_count().call((e,r)=>{$("d_"+di[i][0].toLowerCase()).getElementsByTagName("td")[1].innerHTML=(Number(r)+2).toLocaleString()})}
 		else
 			{await F.methods.allPairsLength().call((e,r)=>{$("d_"+di[i][0].toLowerCase()).getElementsByTagName("td")[1].innerHTML=Number(r).toLocaleString()})}
 	}
@@ -795,6 +796,7 @@ ab=
 	{"inputs":[],"name":"allPoolsLength","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},
 	{"inputs":[],"name":"allPairsLength","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},
 	{"inputs":[],"name":"totalPairs","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},
+	{"inputs":[],"name":"pool_count","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},
 	{
 		"constant": true,
 		"inputs": [],
@@ -962,7 +964,7 @@ function po (di)
 //		console.log(di.slug)
 //		console.log(di.slug,di)
 
-		if (di.slug ==  "curve" ){			$v("d_curve").innerHTML=v;$v("d_curve").nextElementSibling.innerHTML=v;gobj[0]+=v;}
+		if (di.slug ==  "curve" ){			$v("d_curve").innerHTML=v;$v("d_curve").nextElementSibling.innerHTML=v;gobj[0]+=Number(V);}
 		if (di.slug ==  "sushiswap" ){		$v("d_sushi").innerHTML=v;}
 		if (di.slug ==  "spookyswap" ){		$v("d_spooky").innerHTML=v;}
 		if (di.slug ==  "spiritswap" ){		$v("d_spirit").innerHTML=v;}
