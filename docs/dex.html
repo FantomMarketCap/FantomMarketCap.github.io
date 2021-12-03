@@ -90,6 +90,24 @@ td:nth-last-child(2){font-size: 1em}
   border-radius: 20px;
   border: 3px solid #147;
 }
+
+td:nth-child(5),td:nth-child(9),th:nth-child(5),th:nth-child(9){display:none}
+
+
+table{
+  counter-reset: rowNumber;
+}
+tbody tr::before {
+  counter-increment: rowNumber;
+  content: counter(rowNumber) ".";
+	position:relative; top:5px;
+}
+thead tr::before{
+  counter-increment: (rowNumber+1);
+  content: "#";
+	position:relative; top:12px
+}
+
 @media(min-width:641px){
 	#spadi{width:80%}
 	.lowerbar{display: grid;grid-template-columns: auto auto auto auto;text-align:center}
@@ -97,9 +115,14 @@ td:nth-last-child(2){font-size: 1em}
 	.pgb{display: grid;grid-template-columns: auto auto auto}
 	.pgb2{display: grid;grid-template-columns: auto auto}
 	.pgb2s{min-width: 40vw;}
-	td{padding: 10px}
+	td{padding: 10px;line-height:0.8}
+	tbody tr::before {
+		counter-increment: rowNumber;
+		content: counter(rowNumber) ".";
+		position:relative; top:10px;
+	}
 }
-td:nth-child(5),td:nth-child(9),th:nth-child(5),th:nth-child(9){display:none}</style>
+</style>
 </head>
 <body>
 
@@ -108,9 +131,9 @@ td:nth-child(5),td:nth-child(9),th:nth-child(5),th:nth-child(9){display:none}</s
 	<div></div>
 	<div>By <a href="https://ftm.guru">FTM.guru</a></div>
 </div>
-<h1 align="center"><img style="position:relative;top:16px" src="img/FMC.svg" width="64px"> FMC.guru<br><span id="tmc"></span> <span id="tmcunit"></span></h1>
+<h1 align="center"><img style="position:relative;top:16px" src="img/FMC.svg" width="64px"> FMC.guru/dex<br><span id="tmc"></span> <span id="tmcunit"></span></h1>
 <div align="center">
-<h4>Discover the best DEXes of Fantom Opera with FantomMarketCap on FMC.guru!</h4>
+<h4>Discover the best DEXes at Fantom Opera with FantomMarketCap!</h4>
 </div>
 <br>
 <div align="center" class="pgb2">
@@ -119,9 +142,6 @@ td:nth-child(5),td:nth-child(9),th:nth-child(5),th:nth-child(9){display:none}</s
 	<div align="center" class="pgb2s"><b>Net Money Exchanged</b><br>$<span id="os_e" style="font-size:2em">0</span></div>
 	<div align="center" class="pgb2s"><b>Total No. of Trades</b><br><span id="os_t" style="font-size:2em">0</span></div>
 </div>
-<br>
-<h2 align="center">List of All Top DEX on Fantom</h2>
-<br>
 <div class="stage" align="center">
 	<table id="maintable" class="centerstage">
 		<thead>
@@ -541,7 +561,7 @@ td:nth-child(5),td:nth-child(9),th:nth-child(5),th:nth-child(9){display:none}</s
 				<td>0</td>
 				<td>0</td>
 				<td>vampireswap.org</td>
-				<td><span><a href="https://vampireswap.org/exchange" target="_blank">💱</a><a href="https://vampireswap.org" target="_blank">🌐</a><a href="https://discord.gg/yYMUA3FSF6" target="_blank">🎮</a><a href="https://analytics.vampireswap.org" target="_blank">📊</a><a href="https://vampireswap.org/vaults" target="_blank">🚜</a><a href="https://vampireswap.org/farm" target="_blank">🚜</a><a href="https://twitter.com/vampireswap" target="_blank">🐦</a></span>--></td>
+				<td><span><a href="https://vampireswap.org/exchange" target="_blank">💱</a><a href="https://vampireswap.org" target="_blank">🌐</a><a href="https://discord.gg/yYMUA3FSF6" target="_blank">🎮</a><a href="https://analytics.vampireswap.org" target="_blank">📊</a><a href="https://vampireswap.org/vaults" target="_blank">🚜</a><a href="https://vampireswap.org/farm" target="_blank">🚜</a><a href="https://twitter.com/vampireswap" target="_blank">🐦</a></span></td>
 			</tr>
 		</tbody>
 	</table>
@@ -568,7 +588,7 @@ td:nth-child(5),td:nth-child(9),th:nth-child(5),th:nth-child(9){display:none}</s
 <br>
 <br>
 <h5 align="center" id="disclaimer"><b><u>Disclaimer & Notice</u></b><br>
-All information presented here is only for aesthetic uses and posesses no validity to settle any claims. It is also non-exhaustive and prone to error. Advertisements are not endorsements. This dashboard is ultra-real time - It means that the data on this page has zero latency, unlike CMC or CG which have 1-10 minutes old data. FTM.guru and FMC.guru are trying to keep up with the <b>Fantom Fast</b> motto. <i>A much deserved shoutout to all developers on F.O., ftmscan.com, defiLllama, thegraph and rpc.ftm.tools for their benign Services!</i>A "0" represents anomalities in data and are masked to remove pollution.<br>We encourage you to report inconsistencies, ask business queries, request listing or start an ad campaign at one of our community channels:<br>
+All information presented here is only for aesthetic uses and posesses no validity to settle any claims. It is also non-exhaustive and prone to error. Advertisements are not endorsements. This dashboard is ultra-real time - It means that the data on this page has zero latency, unlike CMC or CG which have 1-10 minutes old data. FTM.guru and FMC.guru are trying to keep up with the <b>Fantom Fast</b> motto. <i>A much deserved shoutout to all developers on F.O., ftmscan.com, defiLllama, thegraph and rpc.ftm.tools for their benign Services!</i> A "-" or a "0" represents unavailability or anomalities in data and it is masked to suppress pollution.<br>We encourage you to report inconsistencies, ask business queries, request new Token, Protocol or DEX listings or start an ad campaign at one of our community channels:<br>
 <b><a href="https://t.me/FTM1337" target="_blank">Telegram</a> or <a href="https://discord.gg/QpyfMarNrV" target="_blank">Discord.</a></b><!--
 Our Address: 0x921Ed37f62CBe4d86D38b720EF4a4a44B24a1C5D--></h5>
 <br>
@@ -950,6 +970,8 @@ function pt(d)
 		{
 			if(d[j].chains.indexOf("Fantom")>=0){po(d[j])}
 		}
+	sortit(3);sortit(3);
+	;console.log("liqsort-llama");
 }
 function $v(_){return $(_).getElementsByTagName("td")[2]}
 function po (di)
@@ -964,7 +986,7 @@ function po (di)
 //		console.log(di.slug)
 //		console.log(di.slug,di)
 
-		if (di.slug ==  "curve" ){			$v("d_curve").innerHTML=v;$v("d_curve").nextElementSibling.innerHTML=v;gobj[0]+=Number(V);}
+		if (di.slug ==  "curve" ){			$v("d_curve").innerHTML=v;$v("d_curve").nextElementSibling.innerHTML=v;gobj[0]+=Number(V);ref_os()}
 		if (di.slug ==  "sushiswap" ){		$v("d_sushi").innerHTML=v;}
 		if (di.slug ==  "spookyswap" ){		$v("d_spooky").innerHTML=v;}
 		if (di.slug ==  "spiritswap" ){		$v("d_spirit").innerHTML=v;}
