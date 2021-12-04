@@ -958,6 +958,7 @@ function ads()
 	console.log(Date.now())
 }
 ldata={}
+fdata=[]
 async function tc()
 {
 //	pt(d1)
@@ -968,7 +969,7 @@ function pt(d)
 	//console.log(d);
 	for(j=0;j< d.length;j++)
 		{
-			if(d[j].chains.indexOf("Fantom")>=0){po(d[j])}
+			if(d[j].chains.indexOf("Fantom")>=0){po(d[j]);fdata.push(d[j])}
 		}
 	sortit(3);sortit(3);
 	;console.log("liqsort-llama");
@@ -1003,10 +1004,11 @@ function po (di)
 		if (di.slug ==  "dfyn-network" ){	$v("d_dfyn").innerHTML=v;}
 		if (di.slug ==  "morpheus-swap" ){	$v("d_morpheus").innerHTML=v;}
 		if (di.slug ==  "yoshi-exchange" ){	$v("d_yoshi").innerHTML=v;}
-		if (di.slug ==  "iron-exchange" ){	$v("d_iron").innerHTML=v;}
+		if (di.slug ==  "iron-finance" ){	$v("d_iron").innerHTML=v;}
 		if (di.slug ==  "empiredex" ){		$v("d_empire").innerHTML=v;}
 		if (di.slug ==  "stakesteak" ){		$v("d_steaksamm").innerHTML=v;}
 		if (di.slug ==  "vampireswap" ){	$v("d_vampire").innerHTML=v;}
+		if (di.slug ==  "jetswap" ){	$v("d_vampire").innerHTML=v;}
 }
 date_id = Date.now();
 date_id = date_id/1000 - (date_id/1000)%1;
@@ -1015,6 +1017,7 @@ date_id = date_id/86400 - (date_id/86400)%1;
 gobj=[0,0,0,0];
 async function gg()
 {
+try{
 	gdq_wraith =
 		`query {
   		wraithFactories(first:1) {
@@ -1758,6 +1761,41 @@ async function gg()
 
 
 
+	gdq_fbomb =
+		`query {
+  		bombswapFactories(first:1) {
+    		id
+    		totalVolumeUSD    totalVolumeFTM  untrackedVolumeUSD
+    		totalLiquidityUSD    totalLiquidityFTM
+    		totalPairs    totalTransactions
+  		}
+
+  		bombswapDayDatas(where:{id: ${date_id}}){
+    		id  date
+    		dailyVolumeUSD	dailyVolumeFTM	dailyVolumeUntracked
+    		totalVolumeUSD	totalVolumeFTM
+    		totalLiquidityUSD	totalLiquidityFTM
+    		totalTransactions
+			}
+		}`
+	gdqr_fbomb = new XMLHttpRequest();
+	gdqr_fbomb.open("POST","https://api.thegraph.com/subgraphs/name/fbomb-finance/bombswap-exchange",true);
+	gdqr_fbomb.onload=function(){
+		gdqd_fbomb=JSON.parse(this.response).data;
+		$("d_fbomb").getElementsByTagName("td")[3].innerHTML=Number(Number(gdqd_fbomb.bombswapFactories[0].totalLiquidityUSD).toFixed(0)).toLocaleString()
+		$("d_fbomb").getElementsByTagName("td")[5].innerHTML=Number(Number(gdqd_fbomb.bombswapDayDatas[0].dailyVolumeUSD).toFixed(0)).toLocaleString()
+		$("d_fbomb").getElementsByTagName("td")[6].innerHTML=Number(Number(gdqd_fbomb.bombswapFactories[0].totalVolumeUSD).toFixed(0)).toLocaleString()
+		$("d_fbomb").getElementsByTagName("td")[7].innerHTML=Number(Number(gdqd_fbomb.bombswapFactories[0].txCount).toFixed(0)).toLocaleString()
+		gobj[0]+=Number(gdqd_fbomb.bombswapFactories[0].totalLiquidityUSD)
+		gobj[1]+=Number(gdqd_fbomb.bombswapDayDatas[0].dailyVolumeUSD)
+		gobj[2]+=Number(gdqd_fbomb.bombswapFactories[0].totalVolumeUSD)
+		gobj[3]+=Number(gdqd_fbomb.bombswapFactories[0].txCount)
+		ref_os()
+	}
+	gdqr_fbomb.send(JSON.stringify({query:gdq_fbomb}))
+
+
+
 
 
 
@@ -1868,6 +1906,8 @@ synapsei = [{"stateMutability":"view","type":"function","name":"getTokenBalance"
 	})
 
 
+}
+catch(e){}
 }
 function ref_os()
 {
