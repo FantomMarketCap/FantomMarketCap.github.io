@@ -1785,11 +1785,11 @@ try{
 		$("d_fbomb").getElementsByTagName("td")[3].innerHTML=Number(Number(gdqd_fbomb.bombswapFactories[0].totalLiquidityUSD).toFixed(0)).toLocaleString()
 		$("d_fbomb").getElementsByTagName("td")[5].innerHTML=Number(Number(gdqd_fbomb.bombswapDayDatas[0].dailyVolumeUSD).toFixed(0)).toLocaleString()
 		$("d_fbomb").getElementsByTagName("td")[6].innerHTML=Number(Number(gdqd_fbomb.bombswapFactories[0].totalVolumeUSD).toFixed(0)).toLocaleString()
-		$("d_fbomb").getElementsByTagName("td")[7].innerHTML=Number(Number(gdqd_fbomb.bombswapFactories[0].txCount).toFixed(0)).toLocaleString()
+		$("d_fbomb").getElementsByTagName("td")[7].innerHTML=Number(Number(gdqd_fbomb.bombswapFactories[0].totalTransactions).toFixed(0)).toLocaleString()
 		gobj[0]+=Number(gdqd_fbomb.bombswapFactories[0].totalLiquidityUSD)
 		gobj[1]+=Number(gdqd_fbomb.bombswapDayDatas[0].dailyVolumeUSD)
 		gobj[2]+=Number(gdqd_fbomb.bombswapFactories[0].totalVolumeUSD)
-		gobj[3]+=Number(gdqd_fbomb.bombswapFactories[0].txCount)
+		gobj[3]+=Number(gdqd_fbomb.bombswapFactories[0].totalTransactions)
 		ref_os()
 	}
 	gdqr_fbomb.send(JSON.stringify({query:gdq_fbomb}))
