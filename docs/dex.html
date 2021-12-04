@@ -1725,6 +1725,37 @@ async function gg()
 
 
 
+	gdq_soul =
+		`query {
+  			uniswapFactories{
+    			id	pairCount	txCount
+    			totalVolumeUSD	totalVolumeETH	untrackedVolumeUSD
+    			totalLiquidityUSD	totalLiquidityETH
+  			}
+  			uniswapDayDatas(where:{id: ${date_id}}){
+    			id	date
+    			dailyVolumeUSD	dailyVolumeETH	dailyVolumeUntracked
+    			totalVolumeUSD	totalVolumeETH
+    			totalLiquidityUSD	totalLiquidityETH
+    			txCount
+  			}
+		}`
+	gdqr_soul = new XMLHttpRequest();
+	gdqr_soul.open("POST","https://api.thegraph.com/subgraphs/name/soulswapfinance/fantom-soulswap",true);
+	gdqr_soul.onload=function(){
+		gdqd_soul=JSON.parse(this.response).data;
+		$("d_soul").getElementsByTagName("td")[3].innerHTML=Number(Number(gdqd_soul.uniswapFactories[0].totalLiquidityUSD).toFixed(0)).toLocaleString()
+		$("d_soul").getElementsByTagName("td")[5].innerHTML=Number(Number(gdqd_soul.uniswapDayDatas[0].dailyVolumeUSD).toFixed(0)).toLocaleString()
+		$("d_soul").getElementsByTagName("td")[6].innerHTML=Number(Number(gdqd_soul.uniswapFactories[0].totalVolumeUSD).toFixed(0)).toLocaleString()
+		$("d_soul").getElementsByTagName("td")[7].innerHTML=Number(Number(gdqd_soul.uniswapFactories[0].txCount).toFixed(0)).toLocaleString()
+		gobj[0]+=Number(gdqd_soul.uniswapFactories[0].totalLiquidityUSD)
+		gobj[1]+=Number(gdqd_soul.uniswapDayDatas[0].dailyVolumeUSD)
+		gobj[2]+=Number(gdqd_soul.uniswapFactories[0].totalVolumeUSD)
+		gobj[3]+=Number(gdqd_soul.uniswapFactories[0].txCount)
+		ref_os()
+	}
+	gdqr_soul.send(JSON.stringify({query:gdq_soul}))
+
 
 
 
