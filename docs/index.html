@@ -75,11 +75,26 @@ th:last-child{text-align:left}
   border-radius: 20px;
   border: 3px solid #147;
 }
+table{
+  counter-reset: rowNumber;
+}
+tbody tr::before {
+  counter-increment: rowNumber;
+  content: counter(rowNumber) ".";
+}
+thead tr::before{
+  counter-increment: (rowNumber+1);
+  content: "#";
+}
 @media(min-width:641px){
 	#spadi{width:80%}
 	.lowerbar{display: grid;grid-template-columns: auto auto auto auto;text-align:center}
 	.hhr{width: 555px}
 	.pgb{display: grid;grid-template-columns: auto auto auto}
+	tbody tr::before {
+		counter-increment: rowNumber;
+		content: counter(rowNumber) ".";
+	}
 }
 </style>
 </head>
@@ -1228,6 +1243,7 @@ function painter(i,r1,r2,r3)
 	rtd[6].innerHTML=(Number((o[tokes[i]]["ts"]).toFixed(0))).toLocaleString()
 
 	$("tmc").innerHTML=Number((Number(($("tmc").innerHTML).replace(/ |\$|,|%/g,''))+o[tokes[i]]["mc"]).toFixed(0)).toLocaleString();
+	sortit(3);sortit(3);
 }
 
 /*
