@@ -574,7 +574,20 @@ thead tr::before{
 				<td>0</td>
 				<td>0</td>
 				<td>knightswap.financial</td>
-				<td><span><a href="https://darkdex.knightswap.financial/#/swap" target="_blank">💱</a><a href="https://knightswap.financial" target="_blank">🌐</a><a href="https://discord.gg/pvM2kQzv4C" target="_blank">🎮</a><a href="https://info.knightswap.financial" target="_blank">📊</a><a href="https:/darkdex.knightswap.financial/pools" target="_blank">🚜</a><a href="https://t.me/knightswap" target="_blank">✈</a><a href="https:/darkdex.knightswap.financial/farms" target="_blank">🚜</a><a href="https://twitter.com/knightecosystem" target="_blank">🐦</a></span></td>
+				<td><span><a href="https://darkdex.knightswap.financial/#/swap" target="_blank">💱</a><a href="https://knightswap.financial" target="_blank">🌐</a><a href="https://discord.gg/pvM2kQzv4C" target="_blank">🎮</a><a href="https://info.knightswap.financial" target="_blank">📊</a><a href="https://darkdex.knightswap.financial/pools" target="_blank">🚜</a><a href="https://t.me/knightswap" target="_blank">✈</a><a href="https://darkdex.knightswap.financial/farms" target="_blank">🚜</a><a href="https://twitter.com/knightecosystem" target="_blank">🐦</a></span></td>
+			</tr>
+			<tr class="" id="d_defy">
+				<td>DeFy</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>defyswap.finance</td>
+				<td><span><a href="https://defyswap.finance/swap" target="_blank">💱</a><a href="https://defyswap.finance" target="_blank">🌐</a><a href="https://discord.gg/" target="_blank">🎮</a><a href="https://defyswap.finance/pools" target="_blank">🚜</a><a href="https://t.me/defyswap" target="_blank">✈</a><a href="https://defyswap.finance/farms" target="_blank">🚜</a><a href="https://twitter.com/defyswap" target="_blank">🐦</a></span></td>
 			</tr>
 		</tbody>
 	</table>
@@ -771,6 +784,7 @@ di=
 	["Morpheus","0x8aC868293D97761A1fED6d4A01E9FF17C5594Aa3",	"0x9C454510848906FDDc846607E4baa27Ca999FBB6",	1631513046],
 	["Vampire",	"0x9AdE9Bda74a12022cC82C27Ce24C4296397b18d5",	"0xdF0A0a62995ae821d7a5cF88C4112c395fc41358",	1631513046],
 	["Knight",	"0x045312C737a6b7a115906Be0aD0ef53A6AA38106",	"0x7d82F56ea0820A9d42b01C3C28F1997721732218",	1631513046],
+	["DeFy",	"0x35e11136FA9a734AF6B81658D66519854fB6793c",	"0xAffdbEAE1ec595cba4C262Bdb52A6083aEc2e2a6",	1631513046],
 
 ]
 /*
@@ -821,6 +835,8 @@ async function gp()
 		else
 			{await F.methods.allPairsLength().call((e,r)=>{$("d_"+di[i][0].toLowerCase()).getElementsByTagName("td")[1].innerHTML=Number(r).toLocaleString()})}
 	}
+	sortit(0);sortit(0);
+	;console.log("pairsort");
 	sortit(3);sortit(3);
 	;console.log("liqsort");
 }
