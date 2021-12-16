@@ -381,6 +381,19 @@ thead tr::before{
 				<td>stakesteak.app</td>
 				<td><span><a href="https://ftmscan.com/address/0xa0828eE559110b041DEdbf10Ae0cf42274251de1" target="_blank">💱</a><a href="https://stakesteak.app" target="_blank">🌐</a><a href="https://stakesteak.app" target="_blank">🚜</a></span></td>
 			</tr>
+			<tr class="" id="d_swapcat">
+				<td>Swap Cat</td>
+				<td>1</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>swap.cat</td>
+				<td><span><a href="https://swap.cat" target="_blank">💱</a><a href="https://swap.cat" target="_blank">🌐</a><a href="https://swap.cat" target="_blank">🚜</a></span></td>
+			</tr>
 			<tr class="" id="d_synapse">
 				<td>Synapse</td>
 				<td>1</td>
@@ -1031,30 +1044,31 @@ function po (di)
 //		console.log(di.slug)
 //		console.log(di.slug,di)
 
-		if (di.slug ==  "curve" ){			$v("d_curve").innerHTML=v;$v("d_curve").nextElementSibling.innerHTML=v;gobj[0]+=Number(V);ref_os()}
-		if (di.slug ==  "sushiswap" ){		$v("d_sushi").innerHTML=v;}
-		if (di.slug ==  "spookyswap" ){		$v("d_spooky").innerHTML=v;}
-		if (di.slug ==  "spiritswap" ){		$v("d_spirit").innerHTML=v;}
-		if (di.slug ==  "hyperswap" ){		$v("d_hyper").innerHTML=v;}
-		if (di.slug ==  "waka-finance" ){	$v("d_waka").innerHTML=v;}
-		if (di.slug ==  "elk" ){			$v("d_elk").innerHTML=v;}
-		if (di.slug ==  "paint-swap" ){		$v("d_paint").innerHTML=v;}
-		if (di.slug ==  "zoocoin" ){		$v("d_zoo").innerHTML=v;}
-		if (di.slug ==  "shiba-fantom" ){	$v("d_shiba").innerHTML=v;}
-		if (di.slug ==  "soulswap" ){		$v("d_soul").innerHTML=v;}
-		if (di.slug ==  "beethoven-x" ){	$v("d_beethoven").innerHTML=v;}
-		if (di.slug ==  "synapse" ){		$v("d_synapse").innerHTML=v;}
-		if (di.slug ==  "empire-dex" ){		$v("d_empire").innerHTML=v;}
-		if (di.slug ==  "dfyn-network" ){	$v("d_dfyn").innerHTML=v;}
-		if (di.slug ==  "morpheus-swap" ){	$v("d_morpheus").innerHTML=v;}
-		if (di.slug ==  "yoshi-exchange" ){	$v("d_yoshi").innerHTML=v;}
-		if (di.slug ==  "iron-finance" ){	$v("d_iron").innerHTML=v;}
-		if (di.slug ==  "empiredex" ){		$v("d_empire").innerHTML=v;}
-		if (di.slug ==  "stakesteak" ){		$v("d_steaksamm").innerHTML=v;}
-		if (di.slug ==  "vampireswap" ){	$v("d_vampire").innerHTML=v;}
-		if (di.slug ==  "jetswap" ){		$v("d_jet").innerHTML=v;}
-		if (di.slug ==  "defyswap" ){		$v("d_defy").innerHTML=v;}
-		if (di.slug ==  "wingswap" ){		$v("d_wing").innerHTML=v;}
+	if (di.slug ==  "curve" ){			$v("d_curve").innerHTML=v;$v("d_curve").nextElementSibling.innerHTML=v;gobj[0]+=Number(V);ref_os()}
+	if (di.slug ==  "sushiswap" ){		$v("d_sushi").innerHTML=v;}
+	if (di.slug ==  "spookyswap" ){		$v("d_spooky").innerHTML=v;}
+	if (di.slug ==  "spiritswap" ){		$v("d_spirit").innerHTML=v;}
+	if (di.slug ==  "hyperswap" ){		$v("d_hyper").innerHTML=v;}
+	if (di.slug ==  "waka-finance" ){	$v("d_waka").innerHTML=v;}
+	if (di.slug ==  "elk" ){			$v("d_elk").innerHTML=v;}
+	if (di.slug ==  "paint-swap" ){		$v("d_paint").innerHTML=v;}
+	if (di.slug ==  "zoocoin" ){		$v("d_zoo").innerHTML=v;}
+	if (di.slug ==  "shiba-fantom" ){	$v("d_shiba").innerHTML=v;}
+	if (di.slug ==  "soulswap" ){		$v("d_soul").innerHTML=v;}
+	if (di.slug ==  "beethoven-x" ){	$v("d_beethoven").innerHTML=v;}
+	if (di.slug ==  "synapse" ){		$v("d_synapse").innerHTML=v;}
+	if (di.slug ==  "empire-dex" ){		$v("d_empire").innerHTML=v;}
+	if (di.slug ==  "dfyn-network" ){	$v("d_dfyn").innerHTML=v;}
+	if (di.slug ==  "morpheus-swap" ){	$v("d_morpheus").innerHTML=v;}
+	if (di.slug ==  "yoshi-exchange" ){	$v("d_yoshi").innerHTML=v;}
+	if (di.slug ==  "iron-finance" ){	$v("d_iron").innerHTML=v;}
+	if (di.slug ==  "empiredex" ){		$v("d_empire").innerHTML=v;}
+	if (di.slug ==  "stakesteak" ){		$v("d_steaksamm").innerHTML=v;}
+	if (di.slug ==  "vampireswap" ){	$v("d_vampire").innerHTML=v;}
+	if (di.slug ==  "jetswap" ){		$v("d_jet").innerHTML=v;}
+	if (di.slug ==  "defyswap" ){		$v("d_defy").innerHTML=v;}
+	if (di.slug ==  "wingswap" ){		$v("d_wing").innerHTML=v;}
+	if (di.slug ==  "swap-cat" ){		$v("d_swapcat").innerHTML=Number(Number(di.chainTvls["Fantom-offers"]).toFixed(0)).toLocaleString();}
 }
 date_id = Date.now();
 date_id = date_id/1000 - (date_id/1000)%1;
