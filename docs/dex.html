@@ -534,7 +534,7 @@ thead tr::before{
 				<td>0</td>
 				<td>0</td>
 				<td>0</td>
-				<td>dfyn</td>
+				<td>dfyn.network</td>
 				<td><span><a href="https://dfyn.network" target="_blank">💱</a><a href="https://dfyn.network" target="_blank">🌐</a><a href="https://discord.com/invite/" target="_blank">🎮</a><a href="https://info.dfyn.network" target="_blank">📊</a><a href="https://dfyn.network" target="_blank">🚜</a><a href="https://twitter.com/" target="_blank">🐦</a></span></td>
 			</tr>
 			<tr class="" id="d_morpheus">
@@ -849,6 +849,8 @@ async function gp()
 		else
 			{await F.methods.allPairsLength().call((e,r)=>{$("d_"+di[i][0].toLowerCase()).getElementsByTagName("td")[1].innerHTML=Number(r).toLocaleString()})}
 	}
+	sortit(2);sortit(2);
+	;console.log("tvlsort");
 	sortit(3);sortit(3);
 	;console.log("liqsort");
 }
