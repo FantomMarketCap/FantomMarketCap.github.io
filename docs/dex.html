@@ -785,6 +785,7 @@ di=
 	["Vampire",	"0x9AdE9Bda74a12022cC82C27Ce24C4296397b18d5",	"0xdF0A0a62995ae821d7a5cF88C4112c395fc41358",	1631513046],
 	["Knight",	"0x045312C737a6b7a115906Be0aD0ef53A6AA38106",	"0x7d82F56ea0820A9d42b01C3C28F1997721732218",	1631513046],
 	["DeFy",	"0x35e11136FA9a734AF6B81658D66519854fB6793c",	"0xAffdbEAE1ec595cba4C262Bdb52A6083aEc2e2a6",	1631513046],
+	["Wing",	"0x2b660040b289B1B570E053b21dd9A6F1067AD7F5",	"0xc0719a9A35a2D9eBBFdf1C6d383a5E8E7b2ef7a8",	1631513046],
 
 ]
 /*
@@ -835,8 +836,6 @@ async function gp()
 		else
 			{await F.methods.allPairsLength().call((e,r)=>{$("d_"+di[i][0].toLowerCase()).getElementsByTagName("td")[1].innerHTML=Number(r).toLocaleString()})}
 	}
-	sortit(0);sortit(0);
-	;console.log("pairsort");
 	sortit(3);sortit(3);
 	;console.log("liqsort");
 }
@@ -1039,6 +1038,8 @@ function po (di)
 		if (di.slug ==  "stakesteak" ){		$v("d_steaksamm").innerHTML=v;}
 		if (di.slug ==  "vampireswap" ){	$v("d_vampire").innerHTML=v;}
 		if (di.slug ==  "jetswap" ){		$v("d_jet").innerHTML=v;}
+		if (di.slug ==  "defyswap" ){		$v("d_defy").innerHTML=v;}
+		if (di.slug ==  "wingswap" ){		$v("d_wing").innerHTML=v;}
 }
 date_id = Date.now();
 date_id = date_id/1000 - (date_id/1000)%1;
