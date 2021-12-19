@@ -765,18 +765,8 @@ function basics()
 	gp()
 	tc()
 	gg()
+	arf()
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1077,6 +1067,8 @@ date_id = date_id/86400 - (date_id/86400)%1;
 gobj=[0,0,0,0];
 async function gg()
 {
+gobj=[0,0,0,0];
+
 try{
 	gdq_wraith =
 		`query {
@@ -1969,6 +1961,8 @@ synapsei = [{"stateMutability":"view","type":"function","name":"getTokenBalance"
 }
 catch(e){}
 }
+
+
 function ref_os()
 {
 	$("os_l").innerHTML = Number(Number(gobj[0]).toFixed(0)).toLocaleString()
@@ -1978,6 +1972,17 @@ function ref_os()
 }
 
 
+function arf()
+{	iter = 0;
+	var xfr = setInterval(function()
+	{
+		//console.log("refreshing stats", Date.now());
+		(iter==0)?false:gg();
+		(iter%30 == 0)?tc():false;
+		(iter%1000 == 0)?gp():false;
+		iter++;
+	}, 15000);
+}
 </script><!--
 <script defer type="text/javascript" async="true">
 var sc_project=12548358;
