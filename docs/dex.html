@@ -1034,7 +1034,8 @@ function po (di)
 //		console.log(di.slug)
 //		console.log(di.slug,di)
 
-	if (di.slug ==  "curve" ){			$v("d_curve").innerHTML=v;$v("d_curve").nextElementSibling.innerHTML=v;gobj[0]+=Number(V);ref_os()}
+	if (di.slug ==  "curve" ){			$v("d_curve").innerHTML=v;$v("d_curve").nextElementSibling.innerHTML=v;gobj[0]+=Number(V);
+ctvl.push(Number(V));ref_os()}
 	if (di.slug ==  "sushiswap" ){		$v("d_sushi").innerHTML=v;}
 	if (di.slug ==  "spookyswap" ){		$v("d_spooky").innerHTML=v;}
 	if (di.slug ==  "spiritswap" ){		$v("d_spirit").innerHTML=v;}
@@ -1067,7 +1068,7 @@ date_id = date_id/86400 - (date_id/86400)%1;
 gobj=[0,0,0,0];
 async function gg()
 {
-gobj=[0,0,0,0];
+//gobj=[0,0,0,0];
 
 try{
 	gdq_wraith =
@@ -1973,16 +1974,21 @@ function ref_os()
 
 
 function arf()
-{	iter = 0;
+{
+	iter = 0;
+	itera = 25000;
 	var xfr = setInterval(function()
 	{
+
+		gobj=[ctvl[0],0,0,0];
 		//console.log("refreshing stats", Date.now());
-		(iter==0)?false:gg();
+		(iter==0)?itera=15000:gg();
 		(iter%30 == 0)?tc():false;
 		(iter%1000 == 0)?gp():false;
 		iter++;
-	}, 15000);
+	}, itera);
 }
+ctvl=[]
 </script><!--
 <script defer type="text/javascript" async="true">
 var sc_project=12548358;
