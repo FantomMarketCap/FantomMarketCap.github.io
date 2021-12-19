@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="shortcut icon" href="img/FMC.svg" />
 <style>
+
 html{background:radial-gradient(circle at top, #127, #122, #100);color:#e3e9f2;font-family:helvetica nueve, helvetica, robotica, ubuntu, roboto, sans-serif}
 .toprow{display:grid;grid-template-columns:max-content auto max-content}
 .topfind{text-align:center;min-width:80%}
@@ -77,15 +78,18 @@ th:last-child{text-align:left}
 }
 table{
   counter-reset: rowNumber;
+  counter-increment: rowNumber -2;
 }
 tbody tr::before {
   counter-increment: rowNumber;
   content: counter(rowNumber) ".";
+	position:relative; top:1px;
 }
 thead tr::before{
-  counter-increment: (rowNumber+1);
   content: "#";
 }
+tbody tr:nth-child(1)::before{content: "Ad";position:relative; top:2px;}
+tbody tr:nth-child(2)::before{content: "Ad";position:relative; top:2px;}
 @media(min-width:641px){
 	#spadi{width:80%}
 	.lowerbar{display: grid;grid-template-columns: auto auto auto auto;text-align:center}
@@ -94,6 +98,7 @@ thead tr::before{
 	tbody tr::before {
 		counter-increment: rowNumber;
 		content: counter(rowNumber) ".";
+		position:relative; top:1px;
 	}
 }
 </style>
@@ -112,8 +117,8 @@ thead tr::before{
 		<span id="tmcunit">FTM</span>
 	</div>
 	<br>
-	<div style="font-size:1.25em" align="center">54 Tokens @
-	<a href="dex">31 Exchanges</a></div>
+	<div style="font-size:1.25em" align="center">57 Tokens @
+	<a href="dex">36 Exchanges</a></div>
 	<br>
 	<br>
 	<div align="center">
@@ -144,6 +149,7 @@ thead tr::before{
 			<div onclick="togfil(this.innerHTML)">NEW</div>
 			<div onclick="togfil(this.innerHTML)">NFTs</div>
 			<div onclick="togfil(this.innerHTML)">Oracles</div>
+			<div onclick="togfil(this.innerHTML)">Options</div>
 			<div onclick="togfil(this.innerHTML)">Privacy</div>
 			<div onclick="togfil(this.innerHTML)">Seigniorage</div>
 			<div onclick="togfil(this.innerHTML)">Stablecoins</div>
@@ -191,7 +197,7 @@ thead tr::before{
 			YEL, ORION, GEIST, MENSA, SYF, TOTEM, BBOO, MARS, SFI, VEST, EST, KIF, RIP, 0XMR, VISION, SOUL, FTMO, START, DIS, MOD, MORPH, WOO, TREEB, FATCAKE, 1ART, BOUJE, SUMMIT, YOSHI, SCARE, TREAT, SPELL, FS, COFFIN, coUSD, TCS, SING, MESO, DMD, CFS, CGS, FTMO, DEATH, UNDEAD, FANG, FOO, fWINGS, PLAZA, FONT, SAPPHIRE, WAR, fKAVIAN, LAIKA, SPOOK, GHOST, METTI, FMF
 			ckey_3d2df33e49c146249119f506dfd
 			-->
-				<tr class="sca farming gambling natives staking yields tools" id="tr_0xf43Cc235E686d7BC513F53Fbffb61F760c3a1882">
+				<tr class="sca farming gambling natives options staking yields tools" id="tr_0xf43Cc235E686d7BC513F53Fbffb61F760c3a1882">
 					<td>★</td>
 					<td>ELITE</td>
 					<td>ftm.guru</td>
@@ -199,13 +205,26 @@ thead tr::before{
 					<td>420</td>
 					<td>8,888</td>
 					<td>251</td>
-					<td><span><a href="https://ftm.guru" target="_blank">🌐</a><a href="https://discord.gg/EvyDPxPb" target="_blank">🎮</a><a href="https://t.me/FTM1337" target="_blank">✈</a>🐦🐙</span></td>
+					<td><span><a href="https://ftm.guru" target="_blank">🌐</a><a href="https://discord.gg/QpyfMarNrV" target="_blank">🎮</a><a href="https://t.me/FTM1337" target="_blank">✈</a>🐦🐙</span></td>
 					<td><pre>0xf43Cc235E686d7BC513F53Fbffb61F760c3a1882</pre></td>
 					<td><span>😼👻🍣🛩🎨🦎👾🦌🔎</span></td>
-					<td><span>Natives</span> <span>Farming</span> <span>Yields</span> <span>Tools</span></td>
+					<td><span>Natives</span> <span>Farming</span> <span>Options</span> <span>Yields</span> <span>Gambling</span> <span>Staking</span> <span>Tools</span></td>
+				</tr>
+				<tr class="sca farming gambling natives staking yields tools" id="tr_0x1BE23c78038B6057172848534AcD62667fA2620d">
+					<td>★</td>
+					<td>XELITE</td>
+					<td>ftm.guru/xelite</td>
+					<td>98,765</td>
+					<td>420</td>
+					<td>8,888</td>
+					<td>251</td>
+					<td><span><a href="https://ftm.guru/xelite" target="_blank">🌐</a><a href="https://discord.gg/QpyfMarNrV" target="_blank">🎮</a><a href="https://t.me/FTM1337" target="_blank">✈</a>🐦🐙</span></td>
+					<td><pre>0x1BE23c78038B6057172848534AcD62667fA2620d</pre></td>
+					<td><span>😼👻🍣🛩🎨🦎👾🦌🔎</span></td>
+					<td><span>Natives</span> <span>Farming</span> <span>Options</span> <span>Yields</span> <span>Gambling</span> <span>Staking</span> <span>Tools</span></td>
 				</tr>
 				<tr class="sca natives yields" id="tr_0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83">
-					<td>★</td>
+					<td>⁕</td>
 					<td>WFTM</td>
 					<td>Wrapped Fantom</td>
 					<td>?</td>
@@ -1117,9 +1136,6 @@ fiu=1;
 
 degdismod="0";
 degdismodbg="rgba(255,127,63,0)";
-
-
-
 tokes=[
   "0xf43Cc235E686d7BC513F53Fbffb61F760c3a1882",  //ELITE
   "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83",  //WFTM
@@ -1177,6 +1193,7 @@ tokes=[
   "0x818ec0A7Fe18Ff94269904fCED6AE3DaE6d6dC0b",  //ATRI
   "0x627524d78b4fc840c887ffec90563c7a42b671fd",  //KEK
   "0x37C045bE4641328DFEB625f1Dde610D061613497",  //JUST
+  "0x1BE23c78038B6057172848534AcD62667fA2620d"  //XELITE
 ]
 /*
 //GENERATION
@@ -1238,7 +1255,7 @@ function painter(i,r1,r2,r3)
 	//rtd=$("maintable").getElementsByTagName("tbody")[0].getElementsByTagName("tr")[i].getElementsByTagName("td");
 	rtd=$("tr_"+tokes[i]).getElementsByTagName("td");
 	rtd[3].innerHTML=(Number((o[tokes[i]]["mc"]).toFixed(0))).toLocaleString()
-	rtd[4].innerHTML=(Number(o[tokes[i]]["ap"]).toFixed(4))
+	rtd[4].innerHTML=(Number(o[tokes[i]]["ap"]).toFixed(6))
 	rtd[5].innerHTML=(Number((o[tokes[i]]["_r0"]/1e18).toFixed(0))).toLocaleString()
 	rtd[6].innerHTML=(Number((o[tokes[i]]["ts"]).toFixed(0))).toLocaleString()
 
@@ -1360,6 +1377,7 @@ pairs=[
   "0x2ccc88B9EcbB477f68158187f616cFEcB2276641",  //ATRI 2
   "0xf3582dbaebb4287b462f00d308911621a960a5fd",  //KEK 1
   "0x0133660D0578Bf9D085033Ea753a27F5Aa2b9de1",  //JUST 2
+  "0xf97Cd673358086383BFfCd5bC3763F8c450D4810"  //XELITE 1
 ]
 function brr()
 {
@@ -2136,6 +2154,19 @@ function brr()
     	})
 	})
 
+	AC56=new web3.eth.Contract(ab1,tokes[56]);
+	AC56.methods.decimals().call((e,r1)=>
+	{
+    	AC56.methods.totalSupply().call((e,r2)=>
+    	{
+			AC56R=new web3.eth.Contract(ab1,pairs[56])
+        	AC56R.methods.getReserves().call((e,r3)=>
+        	{
+            	painter(56,r1,r2,(new Array(r3[1],r3[0])));
+        	})
+    	})
+	})
+
 
 
 
@@ -2242,7 +2273,7 @@ function sortit(n) {
   while (z) {
     z = false;
     r = t.rows;
-    for (i = 2; i < (r.length - 1); i++) {
+    for (i = 3; i < (r.length - 1); i++) {
       v = false;
       x = (r[i].getElementsByTagName("TD")[n].innerHTML).replace(/,| |\.|\$|%/g,'');
       if(isFinite(x)){x=Number(x)}else{x=x.toLowerCase()}
