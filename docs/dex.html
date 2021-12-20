@@ -1060,6 +1060,7 @@ ctvl.push(Number(V));ref_os()}
 	if (di.slug ==  "defyswap" ){		$v("d_defy").innerHTML=v;}
 	if (di.slug ==  "wingswap" ){		$v("d_wing").innerHTML=v;}
 	if (di.slug ==  "swap-cat" ){		$v("d_swapcat").innerHTML=Number(Number(di.chainTvls["Fantom-offers"]).toFixed(0)).toLocaleString();}
+	if (di.slug ==  "knightswap-finance"){$v("d_knight").innerHTML=v;}
 }
 date_id = Date.now();
 date_id = date_id/1000 - (date_id/1000)%1;
@@ -1816,7 +1817,7 @@ try{
 
 	gdq_fbomb =
 		`query {
-  		bombswapFactories(first:1) {
+  		bombswapFactories(first:1){
     		id
     		totalVolumeUSD    totalVolumeFTM  untrackedVolumeUSD
     		totalLiquidityUSD    totalLiquidityFTM
@@ -1847,6 +1848,41 @@ try{
 	}
 	gdqr_fbomb.send(JSON.stringify({query:gdq_fbomb}))
 
+
+
+
+	gdq_knight =
+		`query {
+  		uniswapFactories{
+    		id
+    		totalVolumeUSD    totalVolumeETH  untrackedVolumeUSD
+    		totalLiquidityUSD    totalLiquidityETH
+    		pairCount    txCount
+  		}
+
+  		uniswapDayDatas(where:{id: ${date_id}}){
+    		id  date
+    		dailyVolumeUSD	dailyVolumeETH	dailyVolumeUntracked
+    		totalVolumeUSD	totalVolumeETH
+    		totalLiquidityUSD	totalLiquidityETH
+    		txCount
+			}
+		}`
+	gdqr_knight = new XMLHttpRequest();
+	gdqr_knight.open("POST","https://api.thegraph.com/subgraphs/name/shahzeb8285/dark-knight-two",true);
+	gdqr_knight.onload=function(){
+		gdqd_knight=JSON.parse(this.response).data;
+		$("d_knight").getElementsByTagName("td")[3].innerHTML=Number(Number(gdqd_knight.uniswapFactories[0].totalLiquidityUSD).toFixed(0)).toLocaleString()
+		$("d_knight").getElementsByTagName("td")[5].innerHTML=Number(Number(gdqd_knight.uniswapDayDatas[0].dailyVolumeUSD).toFixed(0)).toLocaleString()
+		$("d_knight").getElementsByTagName("td")[6].innerHTML=Number(Number(gdqd_knight.uniswapFactories[0].totalVolumeUSD).toFixed(0)).toLocaleString()
+		$("d_knight").getElementsByTagName("td")[7].innerHTML=Number(Number(gdqd_knight.uniswapFactories[0].totalTransactions).toFixed(0)).toLocaleString()
+		gobj[0]+=Number(gdqd_knight.uniswapFactories[0].totalLiquidityUSD)
+		gobj[1]+=Number(gdqd_knight.uniswapDayDatas[0].dailyVolumeUSD)
+		gobj[2]+=Number(gdqd_knight.uniswapFactories[0].totalVolumeUSD)
+		gobj[3]+=Number(gdqd_knight.uniswapFactories[0].totalTransactions)
+		ref_os()
+	}
+	gdqr_knight.send(JSON.stringify({query:gdq_knight}))
 
 
 
