@@ -1875,11 +1875,11 @@ try{
 		$("d_knight").getElementsByTagName("td")[3].innerHTML=Number(Number(gdqd_knight.uniswapFactories[0].totalLiquidityUSD).toFixed(0)).toLocaleString()
 		$("d_knight").getElementsByTagName("td")[5].innerHTML=Number(Number(gdqd_knight.uniswapDayDatas[0].dailyVolumeUSD).toFixed(0)).toLocaleString()
 		$("d_knight").getElementsByTagName("td")[6].innerHTML=Number(Number(gdqd_knight.uniswapFactories[0].totalVolumeUSD).toFixed(0)).toLocaleString()
-		$("d_knight").getElementsByTagName("td")[7].innerHTML=Number(Number(gdqd_knight.uniswapFactories[0].totalTransactions).toFixed(0)).toLocaleString()
+		$("d_knight").getElementsByTagName("td")[7].innerHTML=Number(Number(gdqd_knight.uniswapFactories[0].txCount).toFixed(0)).toLocaleString()
 		gobj[0]+=Number(gdqd_knight.uniswapFactories[0].totalLiquidityUSD)
 		gobj[1]+=Number(gdqd_knight.uniswapDayDatas[0].dailyVolumeUSD)
 		gobj[2]+=Number(gdqd_knight.uniswapFactories[0].totalVolumeUSD)
-		gobj[3]+=Number(gdqd_knight.uniswapFactories[0].totalTransactions)
+		gobj[3]+=Number(gdqd_knight.uniswapFactories[0].txCount)
 		ref_os()
 	}
 	gdqr_knight.send(JSON.stringify({query:gdq_knight}))
