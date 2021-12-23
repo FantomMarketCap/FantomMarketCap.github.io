@@ -1889,19 +1889,19 @@ try{
 
 	gdq_defy =
 		`query {
-  		uniswapFactories{
+  		pancakeFactories(first:1) {
     		id
-    		totalVolumeUSD    totalVolumeETH  untrackedVolumeUSD
-    		totalLiquidityUSD    totalLiquidityETH
-    		pairCount    txCount
+    		totalVolumeUSD    totalVolumeBNB  untrackedVolumeUSD
+    		totalLiquidityUSD    totalLiquidityBNB
+    		totalPairs    totalTransactions
   		}
 
-  		uniswapDayDatas(where:{id: ${date_id}}){
+  		pancakeDayDatas(where:{id: ${date_id}}){
     		id  date
-    		dailyVolumeUSD	dailyVolumeETH	dailyVolumeUntracked
-    		totalVolumeUSD	totalVolumeETH
-    		totalLiquidityUSD	totalLiquidityETH
-    		txCount
+    		dailyVolumeUSD	dailyVolumeBNB	dailyVolumeUntracked
+    		totalVolumeUSD	totalVolumeBNB
+    		totalLiquidityUSD	totalLiquidityBNB
+    		totalTransactions
 			}
 		}`
 	gdqr_defy = new XMLHttpRequest();
