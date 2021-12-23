@@ -1526,7 +1526,8 @@ try{
 	gdqr_beethoven = new XMLHttpRequest();
 	//old:
 	//gdqr_beethoven.open("POST","https://graph-node.beets-ftm-node.com/subgraphs/name/beethovenx",true);
-	gdqr_beethoven.open("POST","https://graph-node.beets-ftm-node.com/subgraphs/name/beethovenx-v4",true);
+	//gdqr_beethoven.open("POST","https://graph-node.beets-ftm-node.com/subgraphs/name/beethovenx-v4",true);
+	gdqr_beethoven.open("POST","https://eu-lb.beets-ftm-node.com/subgraphs/name/beethovenx-canary",true);
 	gdqr_beethoven.onload=function(){
 		gdqd_beethoven=JSON.parse(this.response).data.balancers[0];
 		$("d_beethoven").getElementsByTagName("td")[1].innerHTML=Number(Number(gdqd_beethoven.poolCount).toFixed(0)).toLocaleString()
@@ -1883,6 +1884,41 @@ try{
 		ref_os()
 	}
 	gdqr_knight.send(JSON.stringify({query:gdq_knight}))
+
+
+
+	gdq_defy =
+		`query {
+  		uniswapFactories{
+    		id
+    		totalVolumeUSD    totalVolumeETH  untrackedVolumeUSD
+    		totalLiquidityUSD    totalLiquidityETH
+    		pairCount    txCount
+  		}
+
+  		uniswapDayDatas(where:{id: ${date_id}}){
+    		id  date
+    		dailyVolumeUSD	dailyVolumeETH	dailyVolumeUntracked
+    		totalVolumeUSD	totalVolumeETH
+    		totalLiquidityUSD	totalLiquidityETH
+    		txCount
+			}
+		}`
+	gdqr_defy = new XMLHttpRequest();
+	gdqr_defy.open("POST","https://api.thegraph.com/subgraphs/name/birchydefy/defyswapv2",true);
+	gdqr_defy.onload=function(){
+		gdqd_defy=JSON.parse(this.response).data;
+		$("d_defy").getElementsByTagName("td")[3].innerHTML=Number(Number(gdqd_defy.uniswapFactories[0].totalLiquidityUSD).toFixed(0)).toLocaleString()
+		$("d_defy").getElementsByTagName("td")[5].innerHTML=Number(Number(gdqd_defy.uniswapDayDatas[0].dailyVolumeUSD).toFixed(0)).toLocaleString()
+		$("d_defy").getElementsByTagName("td")[6].innerHTML=Number(Number(gdqd_defy.uniswapFactories[0].totalVolumeUSD).toFixed(0)).toLocaleString()
+		$("d_defy").getElementsByTagName("td")[7].innerHTML=Number(Number(gdqd_defy.uniswapFactories[0].txCount).toFixed(0)).toLocaleString()
+		gobj[0]+=Number(gdqd_defy.uniswapFactories[0].totalLiquidityUSD)
+		gobj[1]+=Number(gdqd_defy.uniswapDayDatas[0].dailyVolumeUSD)
+		gobj[2]+=Number(gdqd_defy.uniswapFactories[0].totalVolumeUSD)
+		gobj[3]+=Number(gdqd_defy.uniswapFactories[0].txCount)
+		ref_os()
+	}
+	gdqr_defy.send(JSON.stringify({query:gdq_defy}))
 
 
 
