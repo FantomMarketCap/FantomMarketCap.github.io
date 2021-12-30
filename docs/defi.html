@@ -95,7 +95,27 @@ td:nth-last-child(2){font-size: 1em}
 .row_1{font-size: 1.5em;}
 .row_1 img{width:20px;}
 .row_1:hover{background:aqua;color: navy}
-.soft_2{display: grid;grid-template-columns: auto;text-align: left;margin:0 calc(min(200px,30%))}
+.soft_2{display: grid;grid-template-columns: auto;text-align: left;margin:0 calc(min(200px,30%))}.cards{
+  display: flex;
+  flex-wrap:  wrap;
+}
+.card{
+  margin:10px 20px 10px 0px;
+  width: 220px;
+  padding: 10px 10px 10px 20px;
+  border: 2px solid #1f5;
+  border-radius: 5px;
+  background: rgba(0,255,255,0.1);
+}
+.card hr{color: #1f5;border:solid 2px}
+.card:hover{
+  transform: translate(5px,-5px);
+  box-shadow: -5px 5px 5px rgba(16,240,80,0.75);
+  transition: 0.25s;
+  background: rgba(16,240,80,0.1);
+  cursor:pointer;
+}
+.ki{font-size: 3em }
 @media(min-width:641px){
 	#spadi{width:80%}
 	.lowerbar{display: grid;grid-template-columns: auto auto auto auto;text-align:center}
@@ -141,16 +161,30 @@ td:nth-child(5),td:nth-child(9),th:nth-child(5),th:nth-child(9){display:none}
 
 <br>
 <br>
-<div align="center" class="pgb">
-	<div align="center" class="pgbs"><a href="index.html"><b>FantomMarketCap Index</b></a></div>
-	<div align="center" class="pgbs"><a href="dex.html"><b>List of All DEX at Fantom</b></a></div>
-	<div align="center" class="pgbs"><a href="defi.html"><b>🔜Most-used Protocols</b></a></div>
-	<div align="center" class="pgbs"><a href="xdao.html"><b>CyberSwap Analytics</b></a></div>
-	<div align="center" class="pgbs"><a href="https://ftm.guru/pair.html" target="_blank"><b>Liquidity Explorer</b></a></div>
-	<div align="center" class="pgbs"><a href="https://ftm.guru/fantomscan.html" target="_blank""><i>ftm.guru's</i> <b>FantomScan™</b></a></div>
-	<div align="center" class="pgbs"><a href="https://ftm.guru/apelist.html" target="_blank""><i>ftm.guru's</i> <b>Ape-List™</b></a></div>
-	<div align="center" class="pgbs"><a hre f="xdao.html"><b>🔜Best-selling NFTs</b></a></div>
-	<div align="center" class="pgbs"><a hre f="xdao.html"><b>🔜List of Top Farms</b></a></div>
+<h2>Explore more FMC Lists</h2>
+<br>
+<br>
+<div class="cards">
+
+	<div class="card" onclick="window.location='index.html'">
+		<span class="ki">Tokens</span>
+		<br><br>
+		<hr>
+		Best Tokens on Fantom, indexed by On-chain Price, Market Cap, Liquidity and Supply.
+	</div>
+	<div class="card" onclick="window.location='dex.html'">
+		<span class="ki">DEXes</span>
+		<br><br>
+		<hr>
+		Ranking of All Decentralized Echanges (DEX) running on the Fantom Opera Blockchain.
+	</div>
+	<div class="card" onclick="window.location='defi.html'">
+		<span class="ki">DeFi Pro.</span>
+		<br><br>
+		<hr>
+		Synopsis of the major DeFi Protocols that harness the speed of Opera the best.
+	</div>
+
 </div>
 <br>
 <br>

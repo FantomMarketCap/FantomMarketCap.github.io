@@ -90,6 +90,28 @@ thead tr::before{
 }
 tbody tr:nth-child(1)::before{content: "Ad";position:relative; top:2px;}
 tbody tr:nth-child(2)::before{content: "Ad";position:relative; top:2px;}
+
+.cards{
+  display: flex;
+  flex-wrap:  wrap;
+}
+.card{
+  margin:10px 20px 10px 0px;
+  width: 220px;
+  padding: 10px 10px 10px 20px;
+  border: 2px solid #1f5;
+  border-radius: 5px;
+  background: rgba(0,255,255,0.1);
+}
+.card hr{color: #1f5;border:solid 2px}
+.card:hover{
+  transform: translate(5px,-5px);
+  box-shadow: -5px 5px 5px rgba(16,240,80,0.75);
+  transition: 0.25s;
+  background: rgba(16,240,80,0.1);
+  cursor:pointer;
+}
+.ki{font-size: 3em }
 @media(min-width:641px){
 	#spadi{width:80%}
 	.lowerbar{display: grid;grid-template-columns: auto auto auto auto;text-align:center}
@@ -971,22 +993,36 @@ tbody tr:nth-child(2)::before{content: "Ad";position:relative; top:2px;}
 	<br>
 	<div align="center" style="margin:0;padding:0">
 		<u>Legend:</u>*Bridged ⁕Native ★Featured 🌐Website 🎮Discord ✈Telegram 🐦Twitter 🐙Github 🔎Explorer 😼SpookySwap 👻SpiritSwap 🍣SushiSwap 🛩HyperJump 🎨PaintSwap 🦎ZooDEX <span class="wakka">👾</span>Waka 🦌Elk
+</div>
+<br>
+<br>
+<h2>Explore more FMC Lists</h2>
+<br>
+<br>
+<div class="cards">
+
+	<div class="card" onclick="window.location='index.html'">
+		<span class="ki">Tokens</span>
+		<br><br>
+		<hr>
+		Best Tokens on Fantom, indexed by On-chain Price, Market Cap, Liquidity and Supply.
 	</div>
-	<br>
-	<br>
-	<div align="center" class="pgb">
-		<div align="center" class="pgbs"><a href="index.html"><b>FantomMarketCap Index</b></a></div>
-		<div align="center" class="pgbs"><a href="dex.html"><b>List of All DEX at Fantom</b></a></div>
-		<div align="center" class="pgbs"><a href="defi.html"><b>🔜Most-used Protocols</b></a></div>
-		<div align="center" class="pgbs"><a href="xdao.html"><b>CyberSwap Analytics</b></a></div>
-		<div align="center" class="pgbs"><a href="https://ftm.guru/pair.html" target="_blank"><b>Liquidity Explorer</b></a></div>
-		<div align="center" class="pgbs"><a href="https://ftm.guru/fantomscan.html" target="_blank""><i>ftm.guru's</i> <b>FantomScan™</b></a></div>
-		<div align="center" class="pgbs"><a href="https://ftm.guru/apelist.html" target="_blank""><i>ftm.guru's</i> <b>Ape-List™</b></a></div>
-		<div align="center" class="pgbs"><a hre f="xdao.html"><b>🔜Best-selling NFTs</b></a></div>
-		<div align="center" class="pgbs"><a hre f="xdao.html"><b>🔜List of Top Farms</b></a></div>
+	<div class="card" onclick="window.location='dex.html'">
+		<span class="ki">DEXes</span>
+		<br><br>
+		<hr>
+		Ranking of All Decentralized Echanges (DEX) running on the Fantom Opera Blockchain.
 	</div>
-	<br>
-	<br>
+	<div class="card" onclick="window.location='defi.html'">
+		<span class="ki">DeFi Pro.</span>
+		<br><br>
+		<hr>
+		Synopsis of the major DeFi Protocols that harness the speed of Opera the best.
+	</div>
+
+</div>
+<br>
+<br>
 	<div align="center" id="spadd" style="">
 		<font id="spadf" size="2" style="text-align:center">(Sponsored Ad)</font>
 		<br>
@@ -1321,11 +1357,11 @@ dexid=
 
 */
 pairs=[
-  "0xEA035A13B64cB49D85E2f0a2736c9604CB21599C",  //ELITE
+  "0xEA035A13B64cB49D85E2f0a2736c9604CB21599C",  //ELITE 1
   "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83",  //WFTM
   "0x2b4c76d0dc16be1c31d4c1dc53bf9b45987fc75c",  //USDC 1
   "0x5965e53aa80a0bcf1cd6dbdd72e6a9b2aa047410",  //USDT 1
-  "0xbaf1b2fd16f7294ca158b3f1065e5f27f9c72b61",  //FUSD 2
+  "0x34Bf23e2f08BFE00CAE2aDC15D4B47cF8B9ee7BF",  //FUSD - unknown1
   "0x0ec0e1629e776272fa3e55548d4a656be0eedcf4",  //FRAX 2
   "0x2789c73e03157d167bcabca1e09aa61b79196074",  //FXS 2
   "0x279b2c897737a50405ed2091694f225d83f2d3ba",  //WBTC 2
@@ -2340,7 +2376,7 @@ function togfil(e)
 	e=e.replace(/ |\$|,|%/g,'').toLowerCase();
 	ae=document.getElementsByClassName(e);
 	ee=document.getElementsByClassName("sca");
-	for(i=0;i< ee.length;i++){ee[i].id=="tr_0xf43Cc235E686d7BC513F53Fbffb61F760c3a1882"?1337:ee[i].hidden=true}
+	for(i=0;i< ee.length;i++){(ee[i].id=="tr_0xf43Cc235E686d7BC513F53Fbffb61F760c3a1882") || (ee[i].id=="tr_0x1BE23c78038B6057172848534AcD62667fA2620d")?1337:ee[i].hidden=true}
 	for(i=0;i< ae.length;i++){ae[i].hidden=false}
 	se=$("tags").children;
 	for(i=0;i< se.length;i++)
@@ -2405,6 +2441,7 @@ function ads()
 	console.log(Date.now())
 }
 </script>
+<!--
 <script defer type="text/javascript" async="true">
 var sc_project=12548358;
 var sc_invisible=0;
@@ -2414,4 +2451,5 @@ var scJsHost = "https://";
 document.write("<sc"+"ript type='text/javascript' src='" + scJsHost+
 "statcounter.com/counter/counter.js'></"+"script>");
 </script>
+-->
 </html>
