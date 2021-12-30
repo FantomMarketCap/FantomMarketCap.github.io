@@ -1727,9 +1727,9 @@ try{
 }`
 	gdqr_beethoven = new XMLHttpRequest();
 	//old:
-	//gdqr_beethoven.open("POST","https://graph-node.beets-ftm-node.com/subgraphs/name/beethovenx",true);
+	gdqr_beethoven.open("POST","https://graph-node.beets-ftm-node.com/subgraphs/name/beethovenx",true);
 	//gdqr_beethoven.open("POST","https://graph-node.beets-ftm-node.com/subgraphs/name/beethovenx-v4",true);
-	gdqr_beethoven.open("POST","https://eu-lb.beets-ftm-node.com/subgraphs/name/beethovenx-canary",true);
+	//gdqr_beethoven.open("POST","https://eu-lb.beets-ftm-node.com/subgraphs/name/beethovenx-canary",true);
 	gdqr_beethoven.onload=function(){
 		gdqd_beethoven=JSON.parse(this.response).data.balancers[0];
 		$("d_beethoven").getElementsByTagName("td")[1].innerHTML=Number(Number(gdqd_beethoven.poolCount).toFixed(0)).toLocaleString()
