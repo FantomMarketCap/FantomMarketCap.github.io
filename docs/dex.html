@@ -11,7 +11,7 @@
 .stage{overflow-x:auto}
 table:hover td:first-child,table:hover th:first-child{position: sticky;left:0;background:rgba(17,27,27,0.75);}
 tr:hover td{background: aqua !important;color:#020611;}
-td,th{min-width:max-content;min-width: -moz-max-content}
+td,th{min-width:max-content;min-width: -moz-max-content;}
 td:first-child{text-align: left}
 td:not(td:first-child){font-family: monospace;font-size:1em}
 thead tr:hover{background: aqua;color:#020611}
@@ -91,7 +91,11 @@ td:nth-last-child(2){font-size: 1em}
   border: 3px solid #147;
 }
 
-td:nth-child(5),td:nth-child(9),th:nth-child(5),th:nth-child(9){display:none}
+td:nth-child(5),th:nth-child(5),
+td:nth-child(6),th:nth-child(6),
+td:nth-child(7),th:nth-child(7),
+td:nth-child(9),th:nth-child(9)
+{display:none}
 
 
 table{
@@ -142,6 +146,12 @@ thead tr::before{
 		position:relative; top:10px;
 	}
 }
+#tags{width: max-content}
+#tags span{width: max-content;float: left;border-radius: 10px;padding:0 2px;margin:4px;padding:4px}
+#tags span:hover{border: 1px solid;cursor: alias ;color:aliceblue}
+.selcol{color:#020611 !important;background:aqua !important; border:1px #e3e9f2 ridge !important;}
+.discol{color:aqua !important;background:rgba(0,255,255,0.25) !important;border:1px #e3e9f2 dashed !important;}
+
 </style>
 </head>
 <body>
@@ -163,20 +173,30 @@ thead tr::before{
 	<div align="center" class="pgb2s"><b>Total No. of Trades</b><br><span id="os_t" style="font-size:2em">0</span></div>
 </div>
 <div class="stage" align="center">
+	<div id="tags">
+		<span onclick="togcol(1)" class="selcol">Pools</span>
+		<span onclick="togcol(2)" class="selcol">Total Value Locked</span>
+		<span onclick="togcol(3)" class="selcol">Total Liquidity</span>
+		<span onclick="togcol(4)" class="discol">Age</span>
+		<span onclick="togcol(5)" class="selcol">Volume Today</span>
+		<span onclick="togcol(6)" class="selcol">All Time Volume</span>
+		<span onclick="togcol(7)" class="selcol">Total Transactions</span>
+		<span onclick="togcol(8)" class="discol">Unique Users</span>
+	</div>
 	<table id="maintable" class="centerstage">
 		<thead>
 			<tr>
-			<th onclick="sortit(0)">D.E.X.⇅</th>
-			<th onclick="sortit(1)">Pools⇅</th>
-			<th onclick="sortit(2)">T.V.Locked⇅</th>
-			<th onclick="sortit(3)">T.Liquidity⇅</th>
-			<th onclick="sortit(4)">Age⇅</th>
-			<th onclick="sortit(5)">Vol. Today⇅</th>
-			<th onclick="sortit(6)">All Time Vol.⇅</th>
-			<th onclick="sortit(7)">Total Txns.⇅</th>
-			<th onclick="sortit(8)">Users⇅</th>
-			<th onclick="sortit(9)">Trading Interface</th>
-			<th>Links</th>
+				<th onclick="sortit(0)">D.E.X.⇅</th>
+				<th onclick="sortit(1)">Pools⇅</th>
+				<th onclick="sortit(2)">Value Locked⇅</th>
+				<th onclick="sortit(3)">Net Liquidity⇅</th>
+				<th onclick="sortit(4)">Age⇅</th>
+				<th onclick="sortit(5)">Vol. Today⇅</th>
+				<th onclick="sortit(6)">All Time Vol.⇅</th>
+				<th onclick="sortit(7)">Total Txns.⇅</th>
+				<th onclick="sortit(8)">Users⇅</th>
+				<th onclick="sortit(9)">Trading Interface</th>
+				<th>Links</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -2322,6 +2342,17 @@ function arf()
 	}, itera);
 }
 ctvl=[]
+
+
+function togcol(e)
+{
+	ad=document.getElementsByTagName("td")
+	for(i=0;i< ad.length/11;i++){ad[11*i+e].style.display=ad[11*i+e].style.display=="none"?"block":"none"}
+	document.getElementsByTagName("th")[e].style.display=document.getElementsByTagName("th")[e].style.display=="none"?"block":"none";
+	if($("tags").getElementsByTagName("span")[e-1].className=="selcol")
+		{$("tags").children[e-1].setAttribute("class","discol")}
+	else{$("tags").children[e-1].setAttribute("class","selcol")}
+}
 </script><!--
 <script defer type="text/javascript" async="true">
 var sc_project=12548358;
