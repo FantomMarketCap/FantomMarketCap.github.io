@@ -691,7 +691,7 @@ thead tr::before{
 				<td>0</td>
 				<td>0</td>
 				<td>0</td>
-				<td>UI DEFUNCT</td>
+				<td>⚠ UI DEFUNCT</td>
 				<td><span><a href="https://ftmscan.com/address/0x18b1cef6fab48c2c006bacb6ef267ad26da1b469#writeContract" target="_blank">💱</a></span></td>
 			</tr>
 		</tbody>
@@ -2170,6 +2170,42 @@ try{
 		ref_os()
 	}
 	gdqr_defy.send(JSON.stringify({query:gdq_defy}))
+
+
+
+
+	gdq_wing =
+		`query {
+  		wingSwapFactories(first:1) {
+    		id
+    		totalVolumeUSD    totalVolumeETH  untrackedVolumeUSD
+    		totalLiquidityUSD    totalLiquidityETH
+    		totalPairs    totalTransactions
+  		}
+
+  		wingSwapDayDatas(where:{id: ${date_id}}){
+    		id  date
+    		dailyVolumeUSD	dailyVolumeETH	dailyVolumeUntracked
+    		totalVolumeUSD	totalVolumeETH
+    		totalLiquidityUSD	totalLiquidityETH
+    		totalTransactions
+			}
+		}`
+	gdqr_wing = new XMLHttpRequest();
+	gdqr_wing.open("POST","https://api.thegraph.com/subgraphs/name/wingswap/wingswap-exchange",true);
+	gdqr_wing.onload=function(){
+		gdqd_wing=JSON.parse(this.response).data;
+		$("d_wing").getElementsByTagName("td")[3].innerHTML=Number(Number(gdqd_wing.wingSwapFactories[0].totalLiquidityUSD).toFixed(0)).toLocaleString()
+		$("d_wing").getElementsByTagName("td")[5].innerHTML=Number(Number(gdqd_wing.wingSwapDayDatas[0].dailyVolumeUSD).toFixed(0)).toLocaleString()
+		$("d_wing").getElementsByTagName("td")[6].innerHTML=Number(Number(gdqd_wing.wingSwapFactories[0].totalVolumeUSD).toFixed(0)).toLocaleString()
+		$("d_wing").getElementsByTagName("td")[7].innerHTML=Number(Number(gdqd_wing.wingSwapFactories[0].totalTransactions).toFixed(0)).toLocaleString()
+		gobj[0]+=Number(gdqd_wing.wingSwapFactories[0].totalLiquidityUSD)
+		gobj[1]+=Number(gdqd_wing.wingSwapDayDatas[0].dailyVolumeUSD)
+		gobj[2]+=Number(gdqd_wing.wingSwapFactories[0].totalVolumeUSD)
+		gobj[3]+=Number(gdqd_wing.wingSwapFactories[0].totalTransactions)
+		ref_os()
+	}
+	gdqr_wing.send(JSON.stringify({query:gdq_wing}))
 
 
 
