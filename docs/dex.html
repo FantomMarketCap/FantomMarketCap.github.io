@@ -165,21 +165,21 @@ thead tr::before{
 <div align="center">
 <h4>Discover the best DEXes at Fantom Opera with FantomMarketCap!</h4>
 </div>
-<br>
 <div align="center" class="pgb2">
 	<div align="center" class="pgb2s"><b>Overall DEX Liquidity</b><br>$<span id="os_l" style="font-size:2em">0</span></div>
 	<div align="center" class="pgb2s"><b>Current USD Velocity</b><br>$<span id="os_v" style="font-size:2em">0</span>/sec.</div>
 	<div align="center" class="pgb2s"><b>Net Money Exchanged</b><br>$<span id="os_e" style="font-size:2em">0</span></div>
 	<div align="center" class="pgb2s"><b>Total No. of Trades</b><br><span id="os_t" style="font-size:2em">0</span></div>
 </div>
+<br>
 <div class="stage" align="center">
 	<div id="tags">
 		<span onclick="togcol(1)" class="selcol">Pools</span>
 		<span onclick="togcol(2)" class="selcol">Total Value Locked</span>
 		<span onclick="togcol(3)" class="selcol">Total Liquidity</span>
 		<span onclick="togcol(4)" class="discol">Age</span>
-		<span onclick="togcol(5)" class="selcol">Volume Today</span>
-		<span onclick="togcol(6)" class="selcol">All Time Volume</span>
+		<span onclick="togcol(5)" class="discol">Volume Today</span>
+		<span onclick="togcol(6)" class="discol">All Time Volume</span>
 		<span onclick="togcol(7)" class="selcol">Total Transactions</span>
 		<span onclick="togcol(8)" class="discol">Unique Users</span>
 	</div>
@@ -855,6 +855,7 @@ function basics()
 {
 	//advertise()
 	copsca()
+	fillage()
 	gp()
 	tc()
 	gg()
@@ -874,6 +875,7 @@ di=
 	["Spooky",	"0xF491e7B69E4244ad4002BC14e878a34207E38c29",	"0x152eE697f2E276fA89E96742e9bB9aB1F2E61bE3",	1616111666],
 	["Spirit",	"0x16327E3FbDaCA3bcF7E38F5Af2599D2DDc33aE52",	"0xEF45d134b73241eDa7703fa787148D9C9F4950b0",	1616111666],
 	["Sushi",	"0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506",	"0xc35DADB65012eC5796536bD9864eD8773aBc74C4",	1616111666],
+	["iron",	"j",	"",	1600654149],
 	["Hyper",	"0x53c153a0df7E050BbEFbb70eE9632061f12795fB",	"0x991152411A7B5A14A8CF0cDDE8439435328070dF",	1616111666],
 	["Paint",	"0xfD000ddCEa75a2E23059881c3589F6425bFf1AbB",	"0x733A9D1585f2d14c77b49d39BC7d7dd14CdA4aa5",	1616111666],
 	["Zoo", 	"0x40b12a3E261416fF0035586ff96e23c2894560f2",	"0x6178C3B21F7cA1adD84c16AD35452c85a85F5df4",	1616111666],
@@ -1092,6 +1094,8 @@ async function gp()
 {
 	for(i=0;i< di.length;i++)
 	{
+		console.log("in",i)
+		if(di[i][2]==""){continue;}
 		F=new web3.eth.Contract(ab,di[i][2]);
 		if(di[i][0]=="Soul")
 			{await F.methods.totalPairs().call((e,r)=>{$("d_"+di[i][0].toLowerCase()).getElementsByTagName("td")[1].innerHTML=Number(r).toLocaleString()})}
@@ -2388,6 +2392,12 @@ function togcol(e)
 	if($("tags").getElementsByTagName("span")[e-1].className=="selcol")
 		{$("tags").children[e-1].setAttribute("class","discol")}
 	else{$("tags").children[e-1].setAttribute("class","selcol")}
+}
+
+function fillage()
+{
+	n = Date.now();
+	for(i=0;i< di.length;i++){$("d_"+di[i][0].toLowerCase()).getElementsByTagName("td")[4].innerHTML=((n-di[i][3]*1e3)/(86400000)).toFixed()}
 }
 </script><!--
 <script defer type="text/javascript" async="true">
