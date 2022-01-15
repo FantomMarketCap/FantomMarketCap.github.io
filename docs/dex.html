@@ -707,6 +707,19 @@ thead tr::before{
 				<td>timechainswap.com</td>
 				<td><span><a href="https://timechainswap.com" target="_blank">💱</a><a href="https://timechainswap.com" target="_blank">🌐</a></span></td>
 			</tr>
+			<tr class="" id="d_degenhaus">
+				<td>DegenHaus</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>app.degen.haus</td>
+				<td><span><a href="https://app.degen.haus" target="_blank">💱</a><a href="https://degen.haus" target="_blank">🌐</a></span></td>
+			</tr>
 		</tbody>
 	</table>
 </div>
@@ -882,13 +895,14 @@ function basics()
 
 
 //AMM: ROU-FAC-GEN
+//Leave Non-Factories Blank: ""
 di=
 [
-	["Curve",		"??????????????????????????????????????????",	"0x686d67265703D1f124c45E33d47d794c566889Ba",	1616111666],
+	["Curve",		"",												"0x686d67265703D1f124c45E33d47d794c566889Ba",	1616111666],
 	["Spooky",		"0xF491e7B69E4244ad4002BC14e878a34207E38c29",	"0x152eE697f2E276fA89E96742e9bB9aB1F2E61bE3",	1616111666],
 	["Spirit",		"0x16327E3FbDaCA3bcF7E38F5Af2599D2DDc33aE52",	"0xEF45d134b73241eDa7703fa787148D9C9F4950b0",	1616111666],
 	["Sushi",		"0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506",	"0xc35DADB65012eC5796536bD9864eD8773aBc74C4",	1616111666],
-	["iron",		"j",	"",	1600654149],
+	["iron",		"",												"",												1600654149],
 	["Hyper",		"0x53c153a0df7E050BbEFbb70eE9632061f12795fB",	"0x991152411A7B5A14A8CF0cDDE8439435328070dF",	1616111666],
 	["Paint",		"0xfD000ddCEa75a2E23059881c3589F6425bFf1AbB",	"0x733A9D1585f2d14c77b49d39BC7d7dd14CdA4aa5",	1616111666],
 	["Zoo", 		"0x40b12a3E261416fF0035586ff96e23c2894560f2",	"0x6178C3B21F7cA1adD84c16AD35452c85a85F5df4",	1616111666],
@@ -918,6 +932,7 @@ di=
 	["PearZap",		"0x434D82dD1c2165111631804Ec3e633518a45cf43",	"0x7D904257C72BFed813011122D1eF08624e7c64A9",	1637843240],
 	["Aura",		"0x18b1CEF6fAB48c2c006baCb6Ef267AD26da1B469",	"0x3EBa855443aD4deE22603B9ce6187E6aa67B435D",	1620654149],
 	["Timechain",	"0xc784BFac74F0319b662D02Ad2E68217601c8041F",	"0x27B73f099AbA34f96b865cE32cf42a63c50070F2",	1640786974],
+	["DegenHaus",	"0xcdA8f0fB4132D977AD427d18555E0cb1b1dfA363",	"0xa01c3d760738c79e10334408ae59684aa36b1131",	1641347158],
 
 ]
 /*
@@ -1119,11 +1134,13 @@ async function gp()
 			{await F.methods.pool_count().call((e,r)=>{$("d_"+di[i][0].toLowerCase()).getElementsByTagName("td")[1].innerHTML=(Number(r)+2).toLocaleString()})}
 		else
 			{await F.methods.allPairsLength().call((e,r)=>{$("d_"+di[i][0].toLowerCase()).getElementsByTagName("td")[1].innerHTML=Number(r).toLocaleString()})}
+		if(i%5==0 || i==di.length-1){
+			sortit(2);sortit(2);
+			;console.log("tvlsort");
+			sortit(3);sortit(3);
+			;console.log("liqsort");
+		}
 	}
-	sortit(2);sortit(2);
-	;console.log("tvlsort");
-	sortit(3);sortit(3);
-	;console.log("liqsort");
 }
 
 ab=
@@ -2225,6 +2242,43 @@ try{
 	}
 	gdqr_wing.send(JSON.stringify({query:gdq_wing}))
 
+
+
+
+
+
+	gdq_degenhaus =
+		`query {
+  		pancakeFactories(first:1) {
+    		id
+    		totalVolumeUSD    totalVolumeBNB  untrackedVolumeUSD
+    		totalLiquidityUSD    totalLiquidityBNB
+    		totalPairs    totalTransactions
+  		}
+
+  		pancakeDayDatas(where:{id: ${date_id}}){
+    		id  date
+    		dailyVolumeUSD	dailyVolumeBNB	dailyVolumeUntracked
+    		totalVolumeUSD	totalVolumeBNB
+    		totalLiquidityUSD	totalLiquidityBNB
+    		totalTransactions
+      	}
+	}`
+	gdqr_degenhaus = new XMLHttpRequest();
+	gdqr_degenhaus.open("POST","https://api.thegraph.com/subgraphs/name/cryptoinhero/degenswap-exchange",true);
+	gdqr_degenhaus.onload=function(){
+		gdqd_degenhaus=JSON.parse(this.response).data;
+		$("d_degenhaus").getElementsByTagName("td")[3].innerHTML=Number(Number(gdqd_degenhaus.pancakeFactories[0].totalLiquidityUSD).toFixed(0)).toLocaleString()
+		$("d_degenhaus").getElementsByTagName("td")[5].innerHTML=Number(Number(gdqd_degenhaus.pancakeDayDatas[0].dailyVolumeUSD).toFixed(0)).toLocaleString()
+		$("d_degenhaus").getElementsByTagName("td")[6].innerHTML=Number(Number(gdqd_degenhaus.pancakeFactories[0].totalVolumeUSD).toFixed(0)).toLocaleString()
+		$("d_degenhaus").getElementsByTagName("td")[7].innerHTML=Number(Number(gdqd_degenhaus.pancakeFactories[0].totalTransactions).toFixed(0)).toLocaleString()
+		gobj[0]+=Number(gdqd_degenhaus.pancakeFactories[0].totalLiquidityUSD)
+		gobj[1]+=Number(gdqd_degenhaus.pancakeDayDatas[0].dailyVolumeUSD)
+		gobj[2]+=Number(gdqd_degenhaus.pancakeFactories[0].totalVolumeUSD)
+		gobj[3]+=Number(gdqd_degenhaus.pancakeFactories[0].totalTransactions)
+		ref_os()
+	}
+	gdqr_degenhaus.send(JSON.stringify({query:gdq_degenhaus}))
 
 
 
