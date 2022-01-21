@@ -116,6 +116,19 @@ td:nth-last-child(2){font-size: 1em}
   cursor:pointer;
 }
 .ki{font-size: 3em }
+table{
+  counter-reset: rowNumber;
+}
+tbody tr::before {
+  counter-increment: rowNumber;
+  content: counter(rowNumber) ".";
+	position:relative; top:14px;
+}
+thead tr::before{
+  counter-increment: (rowNumber+1);
+  content: "#";
+	position:relative; top:12px
+}
 @media(min-width:641px){
 	#spadi{width:80%}
 	.lowerbar{display: grid;grid-template-columns: auto auto auto auto;text-align:center}
@@ -151,9 +164,21 @@ td:nth-child(5),td:nth-child(9),th:nth-child(5),th:nth-child(9){display:none}
 <br>
 <h2 align="center">List of Fantom's Top De-Fi Protocols</h2>
 <br>
-<div id="stage" class="stage" align="center">
-
-</div>
+<table>
+	<thead>
+		<tr>
+			<td onclick="sortit(0)">Name</td>
+			<td onclick="sortit(1)">Total Value Locked</td>
+			<td onclick="sortit(2)">% 1hr</td>
+			<td onclick="sortit(3)">% 24hr</td>
+			<td onclick="sortit(4)">% Week</td>
+			<td onclick="sortit(5)">Token</td>
+			<td onclick="sortit(6)">Market Cap</td>
+			<td onclick="sortit(7)">TVL/MC</td>
+			<td onclick="sortit(8)">Website / Interface</td>
+	</thead>
+	<tbody id="stage" class="stage" align="center"></tbody>
+</table>
 <br>
 <br>
 <br>
@@ -459,15 +484,9 @@ function pt(d)
 		{
 			if(d[j].chains.indexOf("Fantom")>=0){pft.push(d[j])}
 		}
-	po(pft)
+	skel(pft)
 }
 function $v(_){return $(_).getElementsByTagName("td")[2]}
-function po (d)
-{
-		//make skel
-		skel(d)
-}
-
 function skel(d){
 	stage=$("stage");
 	for(i=0;i< d.length;i++)
@@ -477,46 +496,23 @@ function skel(d){
 			typeof d[i].chainTvls.Fantom == "undefined"?
 			d[i].tvl:
 			d[i].chainTvls.Fantom;
-		row=document.createElement("div");
+		row=document.createElement("tr");
 		row.setAttribute("class","row");
 		row.innerHTML = `
-			<div class="row_1">
-				<img src="${d[i].logo}">
-				<span>${d[i].name}</span>
-			</div>
-		`;
-		hard=document.createElement("div");
-		hard.setAttribute("class","hard");
-		hard.innerHTML = `
-			<div class="hard_1">
-				<span><a href="${d[i].url}" target="_blank">${d[i].url}</a></span>
-							</div>
-		`;
-		/*
-				<span>${"$"+$f(d[i].mcap)}</span>
-				<span>${$f(d[i].change_1h)+"%"}</span>
-				<span>${$f(d[i].change_1d)+"%"}</span>
-				<span>${$f(d[i].change_7d)+"%"}</span>
-		*/
-		soft=document.createElement("div");
-		soft.setAttribute("class","soft");
-		soft.innerHTML = `
-			<div class="soft_1">
-				<span>${d[i].description}</span>
-				<br>
-				<div class="soft_2">
-					<span><b>TVL: ${"$"+(d[i].TVL).toLocaleString()}</b></span>
-					<span>Token: ${d[i].symbol}</span>
-					<span>Mkt. Cap: ${"$"+(_$(d[i].mcap)).toLocaleString()}</span>
-					<span>TVL/MC: ${_$(d[i].mcap)>1?
-						(_$(d[i].mcap)/d[i].tvl).toFixed(4):1}</span>
-				</div>
-			</div>
+			<td>${d[i].name}</td>
+			<td>${"$"+Number((d[i].TVL).toFixed()).toLocaleString()}</td>
+			<td>${_$(d[i].change_1h).toFixed(2)+"%"}</td>
+			<td>${_$(d[i].change_1d).toFixed(2)+"%"}</td>
+			<td>${_$(d[i].change_7d).toFixed(2)+"%"}</td>
+			<!--<td>${d[i].description}</td><!--hide-->
+			<td>${d[i].symbol}</td>
+			<td>${"$"+Number((_$(d[i].mcap)).toFixed()).toLocaleString()}</td>
+			<td>${_$(d[i].mcap)>1?(_$(d[i].mcap)/d[i].tvl).toFixed(4):1}</td>
+			<td><a href="${d[i].url}" target="_blank">${d[i].url}</a></td>
 		`;
 		stage.append(row);
-		row.append(hard);
-		row.append(soft);
 	}
+	sortit(1);sortit(1)
 }
 function _$(x)
 {
@@ -531,7 +527,44 @@ function ref_os()
 	$("os_t").innerHTML = Number(Number(gobj[3]).toFixed(0))
 }
 
-
+function sortit(n) {
+  var t, r, z, i, x, y, v, b, c = 0;
+  t = document.getElementById("stage");
+  z = true;
+  b = "a";
+  while (z) {
+    z = false;
+    r = t.rows;
+    for (i = 0; i < (r.length - 1); i++) {
+      v = false;
+      x = (r[i].getElementsByTagName("TD")[n].innerHTML).replace(/,| |\.|\$|%/g,'');
+      if(isFinite(x)){x=Number(x)}else{x=x.toLowerCase()}
+      y = (r[i + 1].getElementsByTagName("TD")[n].innerHTML).replace(/,| |\.|\$|%/g,'');
+      if(isFinite(y)){y=Number(y)}else{y=y.toLowerCase()}
+      if (b == "a") {
+        if ((x) > (y)) {
+          v= true;
+          break;
+        }
+      } else if (b == "d") {
+        if ((x) < (y)) {
+          v = true;
+          break;
+        }
+      }
+    }
+    if (v) {
+      r[i].parentNode.insertBefore(r[i + 1], r[i]);
+      z = true;
+      c ++;
+    } else {
+      if (c == 0 && b == "a") {
+        b = "d";
+        z = true;
+      }
+    }
+  }
+}
 </script><!--
 <script defer type="text/javascript" async="true">
 var sc_project=12548358;

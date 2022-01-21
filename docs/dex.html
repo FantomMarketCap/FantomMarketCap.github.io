@@ -1236,9 +1236,9 @@ function sortit(n) {
     r = t.rows;
     for (i = 1; i < (r.length - 1); i++) {
       v = false;
-      x = (r[i].getElementsByTagName("TD")[n].innerHTML).replace(/,| |\.|\$|%/g,'');
+      x = (r[i].getElementsByTagName("TD")[n].innerHTML).replaceAll(/,| |\.|\$|%/g,'');
       if(isFinite(x)){x=Number(x)}else{x=x.toLowerCase()}
-      y = (r[i + 1].getElementsByTagName("TD")[n].innerHTML).replace(/,| |\.|\$|%/g,'');
+      y = (r[i + 1].getElementsByTagName("TD")[n].innerHTML).replaceAll(/,| |\.|\$|%/g,'');
       if(isFinite(y)){y=Number(y)}else{y=y.toLowerCase()}
       if (b == "a") {
         if ((x) > (y)) {
