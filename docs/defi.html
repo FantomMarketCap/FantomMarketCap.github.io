@@ -177,7 +177,9 @@ td:nth-child(5),td:nth-child(9),th:nth-child(5),th:nth-child(9){display:none}
 			<td onclick="sortit(7)">TVL/MC</td>
 			<td onclick="sortit(8)">Website / Interface</td>
 	</thead>
-	<tbody id="stage" class="stage" align="center"></tbody>
+	<tbody id="stage" class="stage" align="center">
+		<tr id="ftm1337"></tr>
+	</tbody>
 </table>
 <br>
 <br>
@@ -489,6 +491,7 @@ function pt(d)
 function $v(_){return $(_).getElementsByTagName("td")[2]}
 function skel(d){
 	stage=$("stage");
+	ttvl=0;
 	for(i=0;i< d.length;i++)
 	{
 		if(d[i].slug=="multi-chain-miner"){continue}//skip simple ponzi
@@ -496,21 +499,44 @@ function skel(d){
 			typeof d[i].chainTvls.Fantom == "undefined"?
 			d[i].tvl:
 			d[i].chainTvls.Fantom;
+		ftm1337=document.createElement("tr");
+		ftm1337.setAttribute("class","row");
 		row=document.createElement("tr");
 		row.setAttribute("class","row");
-		row.innerHTML = `
-			<td>${d[i].name}</td>
-			<td>${"$"+Number((d[i].TVL).toFixed()).toLocaleString()}</td>
-			<td>${_$(d[i].change_1h).toFixed(2)+"%"}</td>
-			<td>${_$(d[i].change_1d).toFixed(2)+"%"}</td>
-			<td>${_$(d[i].change_7d).toFixed(2)+"%"}</td>
-			<!--<td>${d[i].description}</td><!--hide-->
-			<td>${d[i].symbol}</td>
-			<td>${"$"+Number((_$(d[i].mcap)).toFixed()).toLocaleString()}</td>
-			<td>${_$(d[i].mcap)>1?(_$(d[i].mcap)/d[i].tvl).toFixed(4):1}</td>
-			<td><a href="${d[i].url}" target="_blank">${d[i].url}</a></td>
-		`;
-		stage.append(row);
+		if(d[i].slug=="ftmguru"){
+			ftm1337.innerHTML = `
+				<td>${d[i].name}</td>
+				<td>${"$"+Number((d[i].TVL).toFixed()).toLocaleString()}</td>
+				<td>${_$(d[i].change_1h).toFixed(2)+"%"}</td>
+				<td>${_$(d[i].change_1d).toFixed(2)+"%"}</td>
+				<td>${_$(d[i].change_7d).toFixed(2)+"%"}</td>
+				<!--<td>${d[i].description}</td><!--hide-->
+				<td>${d[i].symbol}</td>
+				<td>${"$"+Number((_$(d[i].mcap)).toFixed()).toLocaleString()}</td>
+				<td>${_$(d[i].mcap)>1?(_$(d[i].mcap)/d[i].tvl).toFixed(4):1}</td>
+				<td><a href="${d[i].url}" target="_blank">${d[i].url}</a></td>
+			`;
+			ttvl+=d[i].TVL;
+			$("ftm1337").innerHTML = ftm1337.innerHTML;
+		}
+		else{
+			row.innerHTML = `
+				<td>${d[i].name}</td>
+				<td>${"$"+Number((d[i].TVL).toFixed()).toLocaleString()}</td>
+				<td>${_$(d[i].change_1h).toFixed(2)+"%"}</td>
+				<td>${_$(d[i].change_1d).toFixed(2)+"%"}</td>
+				<td>${_$(d[i].change_7d).toFixed(2)+"%"}</td>
+				<!--<td>${d[i].description}</td><!--hide-->
+				<td>${d[i].symbol}</td>
+				<td>${"$"+Number((_$(d[i].mcap)).toFixed()).toLocaleString()}</td>
+				<td>${_$(d[i].mcap)>1?(_$(d[i].mcap)/d[i].tvl).toFixed(4):1}</td>
+				<td><a href="${d[i].url}" target="_blank">${d[i].url}</a></td>
+			`;
+			ttvl+=d[i].TVL;
+			stage.append(row);
+		}
+		$("os_n").innerHTML = (d.length).toLocaleString();
+		$("os_t").innerHTML = Number((ttvl).toFixed()).toLocaleString();
 	}
 	sortit(1);sortit(1)
 }
@@ -535,7 +561,7 @@ function sortit(n) {
   while (z) {
     z = false;
     r = t.rows;
-    for (i = 0; i < (r.length - 1); i++) {
+    for (i = 1; i < (r.length - 1); i++) {
       v = false;
       x = (r[i].getElementsByTagName("TD")[n].innerHTML).replace(/,| |\.|\$|%/g,'');
       if(isFinite(x)){x=Number(x)}else{x=x.toLowerCase()}
