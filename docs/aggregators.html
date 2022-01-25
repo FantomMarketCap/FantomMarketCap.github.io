@@ -1,0 +1,576 @@
+<!doctype html><html><meta charset="UTF-8">
+<head>
+<meta name="description" content="FMC.guru (FantomMarketCap) by FTM.guru : Fantom Opera blockchain token prices, markets, DEX listings, Market Cap, Live Trading Data">
+<meta name="keywords" content="Fantom Opera, FTM, Decentralized Finance, ELITE, 1337, defi, farming, FTM1337">
+<title>FantomMarketCap - DEX List | FMC.guru : Fantom Opera Cryptocurrency Tokens Price and Market Capitalization</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="img/FMC.svg" />
+<style>html{background:radial-gradient(circle at center, #127, #122, #100);color:#e3e9f2;font-family:helvetica nueve, helvetica, robotica, ubuntu, roboto, sans-serif;background-attachment: fixed;}
+.toprow{display:grid;grid-template-columns:max-content auto max-content}
+.topfind{text-align:center;min-width:80%}
+.stage{overflow-x:auto}
+table:hover td:first-child,table:hover th:first-child{position: sticky;left:0;background:rgba(17,27,27,0.75);}
+tr:hover td{background: aqua !important;color:#020611;}
+td,th{min-width:max-content;min-width: -moz-max-content;}
+td:first-child{text-align: left}
+td:nth-last-child(2){font-family: mono;font-size:1em}
+thead tr:hover{background: aqua;color:#020611}
+pre{margin:0}
+a{color:white;text-decoration-line:none}
+hr{box-shadow: rgba(0,255,255,0.2) 0px 0px 10px 10px;background: #090919;border-radius: 15px;border:aqua 2px solid;}
+table{border-collapse:collapse;overflow:hidden}
+h5 a{color: aqua}
+#spadi{width:100%}
+option{cursor:pointer}
+#tags div{border: 4px #e3e9f2 dotted;color:aqua;width: max-content;float: right;background: rgba(0,255,255,.25);border-radius: 10px;padding:0 2px;margin:4px;padding:4px}
+#tags div:hover{border: 4px dashed;cursor: alias ;color:aliceblue}
+#usdftm2{border: 4px dashed;color:#020611;background: rgba(255,255,255,1);border-radius: 10px;padding:0 2px;margin:4px;padding:4px}
+#usdftm2:hover{border: 4px dotted;cursor: alias }
+#degmod{border: 4px dashed;color:#020611;background: rgba(255,127,127,1);border-radius: 10px;padding:0 2px;margin:4px;padding:4px}
+#degmod:hover{border: 4px dotted;cursor: alias ;}
+.statcounter{font-size: 0}
+#spadfi{width:100%}
+#maintable{width:max-content}
+.lowercat {text-align: left;padding:10px}
+.lowercat a{text-decoration-line: none}
+.lowercat span{font-size: 1.25em; font-weight:bold}
+.lowerbar{display: grid;grid-template-columns: auto;text-align:center}
+.pgb{display: grid;grid-template-columns: auto}
+.pgbs{
+	min-width: 200px;
+	margin: auto;
+	background: rgba(0,255,255,0.1);
+	border: 2px double aqua;
+	border-right: none;
+	border-top: none;
+	border-bottom: none;
+	padding: 10px 15px 10px 0px;
+	clip-path: polygon(calc(100% - 40px) 0%, 0 0, 0 100%, 95% 100%, 95% 50%);
+	margin-top:15px
+}
+.pgb2s{
+	min-width: 200px;
+	margin: auto;
+	background: rgba(0,255,255,0.1);
+	border: 2px double aqua;
+	border-right: none;
+	border-top: none;
+	border-bottom: none;
+	padding: 10px 15px 10px 0px;
+	clip-path: polygon(100% 0%, 0 0, 0 100%, 100% 100%, 90% 50%);
+	margin-top:15px
+}
+.pgb2s:nth-of-type(2n){
+
+	border:none;
+	border-right: 2px double aqua;
+	border-top: none;
+	border-bottom: none;
+	clip-path: polygon(100% 0%, 0% 0%, 10% 50%, 0% 100%, 100% 1000%);}
+td{padding:2px 5px;text-align:right;}
+td:last-child,td:nth-child(3){text-align:center;}
+td{font-size: 1.25em;}
+th{font-size:1.25em;padding: 12px 5px;text-align:center}
+* {
+  scrollbar-width: thick;
+  scrollbar-color: #07f #147;
+}
+*::-webkit-scrollbar {
+  width: 20px;
+}
+*::-webkit-scrollbar-track {
+  background: #147;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: #07f;
+  border-radius: 20px;
+  border: 3px solid #147;
+}
+
+
+table{
+  counter-reset: rowNumber;
+}
+tbody tr::before {
+  counter-increment: rowNumber;
+  content: counter(rowNumber) ".";
+  position:relative; top:14px !important;;
+}
+thead tr::before{
+  counter-increment: (rowNumber+1);
+  content: "#";
+  position:relative; top:12px
+}
+.cards{
+  display: flex;
+  flex-wrap:  wrap;
+}
+.card{
+  margin:10px 20px 10px 0px;
+  width: 260px;
+  padding: 10px 10px 10px 20px;
+  border: 2px solid #1f5;
+  border-radius: 5px;
+  background: rgba(0,255,255,0.1);
+}
+.card hr{color: #1f5;border:solid 2px}
+.card:hover{
+  transform: translate(5px,-5px);
+  box-shadow: -5px 5px 5px rgba(16,240,80,0.75);
+  transition: 0.25s;
+  background: rgba(16,240,80,0.1);
+  cursor:pointer;
+}
+.ki{font-size: 3em }
+#tags{width: max-content}
+#tags span{width: max-content;float: left;border-radius: 10px;padding:0 2px;margin:4px;padding:4px}
+#tags span:hover{border: 1px solid;cursor: alias ;color:aliceblue}
+.selcol{color:#020611 !important;background:aqua !important; border:1px #e3e9f2 ridge !important;}
+.discol{color:aqua !important;background:rgba(0,255,255,0.25) !important;border:1px #e3e9f2 dashed !important;}
+
+td:nth-child(3) img{width:24px;height:24px}
+
+
+@media(min-width:641px){
+	#spadi{width:80%}
+	.lowerbar{display: grid;grid-template-columns: auto auto auto auto;text-align:center}
+	.hhr{width: 555px}
+	.pgb{display: grid;grid-template-columns: auto auto auto}
+	.pgb2{display: grid;grid-template-columns: auto auto}
+	.pgb2s{min-width: 40vw;}
+	td{padding: 10px;line-height:0.8}
+	tbody tr::before {
+		counter-increment: rowNumber;
+		content: counter(rowNumber) ".";
+		position:relative; top:10px;
+	}
+}
+
+</style>
+</head>
+<body>
+
+<div class="toprow" style="font-weight:bolder">
+	<div><a href="index.html"><img style="position:relative;top:2px" src="img/FMC.svg" width="16px"> FantomMarketCap</a></div>
+	<div></div>
+	<div>By <a href="https://ftm.guru">FTM.guru</a></div>
+</div>
+<h1 align="center"><img style="position:relative;top:16px" src="img/FMC.svg" width="64px"> FMC.guru/aggregators<br><span id="tmc"></span> <span id="tmcunit"></span></h1>
+<div align="center">
+<h4>Discover the best DEX aggregators of Fantom Opera with FantomMarketCap!</h4>
+</div>
+<div align="center" class="pgb2">
+	<div align="center" class="pgb2s"><b>Total Aggregators</b><br><span id="os_ag_num" style="font-size:2em">7</span></div>
+</div>
+<br>
+<div class="stage" align="center">
+	<!--
+	<div id="tags">
+		<span onclick="togcol(1)" class="selcol">Pools</span>
+		<span onclick="togcol(2)" class="selcol">Total Value Locked</span>
+		<span onclick="togcol(3)" class="selcol">Total Liquidity</span>
+		<span onclick="togcol(4)" class="discol">Age</span>
+		<span onclick="togcol(5)" class="discol">Volume Today</span>
+		<span onclick="togcol(6)" class="discol">All Time Volume</span>
+		<span onclick="togcol(7)" class="selcol">Total Transactions</span>
+		<span onclick="togcol(8)" class="discol">Unique Users</span>
+	</div>
+	-->
+	<table id="maintable" class="centerstage">
+	<thead><tr><td>Name</td><td>DEX</td><td>Sources</td><td>Age</td><td>User Interface</td><td>Links</td></tr></thead>
+	<tbody>
+		<tr id="r_zootrade"><td>Zoo Trade</td><td>?</td><td></td><td>Oldest</td><td>trade.zoocoin.cash</td><td><a href="https://trade.zoocoin.cash" target="_blank">🌐</a></td></tr>
+		<tr id="r_kyberswap"><td>Kyberswap</td><td>?</td><td></td><td>?</td><td>kyberswap.com</td><td><a href="https://Kyberswap.com" target="_blank">🌐</a></td></tr>
+		<tr id="r_openocean"><td>OpenOcean</td><td>11</td><td></td><td>?</td><td>openocean.finance</td><td><a href="https://openocean.finance" target="_blank">🌐</a></td></tr>
+		<tr id="r_matcha"><td>0x (Matcha)</td><td>7</td><td></td><td>?</td><td>matcha.xyz</td><td><a href="https://matcha.xyz" target="_blank">🌐</a></td></tr>
+		<tr id="r_firebird"><td>Firebird</td><td>?</td><td></td><td>?</td><td>app.firebird.finance</td><td><a href="https://firebird.finance" target="_blank">🌐</a></td></tr>
+		<tr id="r_timechainswap"><td>TimeChainSwap</td><td>?</td><td></td><td>?</td><td>timechainswap.com</td><td><a href="https://timechainswap.com" target="_blank">🌐</a></td></tr>
+		<tr id="r_paraswap"><td>ParaSwap</td><td>2</td><td></td><td>Newest</td><td>paraswap.io</td><td><a href="https://paraswap.io" target="_blank">🌐</a></td></tr>
+	<tbody>
+	</table>
+</div>
+<!--<div align="center"><br><b>1 2 3 4 5 … 6 7 8 9 10</b></div>-->
+<br>
+<br>
+<br>
+<div align="center" style="margin:0;padding:0"><u>Legend:</u><br>💱DEX-UI 🚜Farm<br>📊Analytics 🌐Website<br>🎮Discord ✈Telegram 🐦Twitter<br>🐙Github 🔎Explorer</div>
+<br>
+<br><h2>Explore more FMC Lists</h2>
+<br>
+<br>
+<div class="cards">
+
+	<div class="card" onclick="window.location='index.html'">
+		<span class="ki">Tokens</span>
+		<br><br>
+		<hr>
+		Best Tokens on Fantom, indexed by On-chain Price, Market Cap, Liquidity and Supply.
+	</div>
+	<div class="card" onclick="window.location='dex.html'">
+		<span class="ki">DEXes</span>
+		<br><br>
+		<hr>
+		Ranking of All Decentralized Echanges (DEX) running on the Fantom Opera Blockchain.
+	</div>
+	<div class="card" onclick="window.location='defi.html'">
+		<span class="ki">DeFi Pro.</span>
+		<br><br>
+		<hr>
+		Synopsis of the major DeFi Protocols that harness the speed of Opera the best.
+	</div>
+	<div class="card" onclick="window.location='defi.html'">
+		<span class="ki">Aggregator</span>
+		<br><br>
+		<hr>
+		List of all DEX and Liquidity Aggregation services present on Opera Network.
+	</div>
+
+</div>
+<br>
+<br>
+<h5 align="center" id="disclaimer"><b><u>Disclaimer & Notice</u></b><br>
+All information presented here is only for aesthetic uses and posesses no validity to settle any claims. It is also non-exhaustive and prone to error. Advertisements are not endorsements. This dashboard is ultra-real time - It means that the data on this page has zero latency, unlike CMC or CG which have 1-10 minutes old data. FTM.guru and FMC.guru are trying to keep up with the <b>Fantom Fast</b> motto. <i>A much deserved shoutout to all developers on F.O., ftmscan.com, defiLllama, thegraph and rpc.ftm.tools for their benign Services!</i> A "-" or a "0" represents unavailability or anomalities in data and it is masked to suppress pollution.<br>We encourage you to report inconsistencies, ask business queries, request new Token, Protocol or DEX listings or start an ad campaign at one of our community channels:<br>
+<b><a href="https://t.me/FTM1337" target="_blank">Telegram</a> or <a href="https://discord.gg/QpyfMarNrV" target="_blank">Discord.</a></b><!--
+Our Address: 0x921Ed37f62CBe4d86D38b720EF4a4a44B24a1C5D--></h5>
+<br>
+<br>
+<div align="center" id="spadd" style="">
+<font id="spadf" size="2" style="text-align:center">(Sponsored Ad)</font>
+<br>
+<i><a href="https://t.me/FTM1337">Please Telegram us for queries.</a></i>
+<br>
+<a id="spada" href="" target="_blank">
+<img id="spadi" src="" width="80%"></img><br>
+</a>
+</div>
+
+<br><br>
+<hr class="hhr">
+<br><br>
+<div class="lowerbar" align="center">
+	<div align="left" class="lowercat">
+		<span>Ecosystem</span><br>
+		<a href="https://fmc.guru" target="_blank">FantomMarketCap</a><br>
+		<a href="https://ftm.guru" target="_blank">FTM1337</a><br>
+		<a href="https://kcc.guru" target="_blank">Kucino Casino</a><br>
+	</div>
+	<div align="left" class="lowercat">
+		<span>Farming</span><br>
+		<a href="https://ftm.guru/yieldstate.html">🔱 YieldState</a><br>
+		<a href="https://ftm.guru/LF">👽 LITE Farmlands</a><br>
+		<a href="https://vfat.tools/fantom/guru">🧑‍🌾 vfat.tools</a>
+	</div>
+	<div class="lowercat">
+		<span><a href="https://kcc.guru/casino.html">Casino & Games</a></span><br>
+		<a href="https://kcc.guru/jackpot_1.html">2-player Jackpot</a><br>
+		<a href="https://kcc.guru/instalotto.html">instaLOTTO</a><br>
+		<a href="https://kcc.guru/21hrlotto.html">🎟 21-hour LOTTO</a>
+	</div>
+	<div class="lowercat">
+		<span><a href="https://kcc.guru/dashboard.html">Dashboard</a></span><br>
+		<a href="https://kcc.guru/claimkcs.html">Claim KCS Earnings</a><br>
+		<a href="https://kcc.guru/markets.html">Market Statistics</a><br>
+		<a href="https://kcc.guru/balancesheet.html">Balance Sheet</a><br>
+	</div>
+	<div align="left" class="lowercat">
+		<span>Our Dapps</span><br>
+		<a href="https://ftm.guru/degam.html">✨ FTM CASINO</a><br>
+		<a href="https://ftm.guru/degam.html">🎰 KCS Kucino</a><br>
+		<a href="https://ftm.guru/approver.html">✅ Approver</a><br>
+		<a href="https://ftm.guru/airdrop.html">Airdrop-Tool</a><br>
+	</div>
+	<div align="left" class="lowercat">
+		<span>Chain Tools</span><br>
+		<a href="https://ftm.guru/pair.html">DEX-Explorer</a><br>
+		<a href="https://ftm.guru/fantomscan.html">🔍 FantomScan</a><br>
+		<a href="https://kcc.guru/kscan" target="_blank">🔎 kscan</a><br>
+		<a href="https://ftm.guru/apelist.html">Ape-List</a><br>
+	</div>
+	<div align="left" class="lowercat">
+		<span>Opera Utilities</span><br>
+		<a href="https://ftm.guru/elite.html">ELITE Analytics</a><br>
+		<a href="https://t.me/FTM1337/12497" target="_blank">🤖 GambleBot Telegram</a><br>
+		<a href="https://ftm.guru/index.html">🗳 Elite-Gems Voting</a>
+	</div>
+	<div class="lowercat">
+		<span>$KUCINO</span><br>
+		<a target="_blank" href="https://swap.kudex.finance/#/swap?outputCurrency=0x4c9fa6297d3413fbbe7ba935e14022d0e5a39dc7">Trade at Kudex</a><br>
+		<a target="_blank" href="https://explorer.kcc.io/token/0x4c9fa6297d3413fbbe7ba935e14022d0e5a39dc7">KCC Explorer</a><br>
+		<a target="_blank" href="https://t.me/kccguru">Chart at Poocoin</a><br>
+		<a target="_blank" href="https://testnet.bscscan.com/address/0x4c9fa6297d3413fbbe7ba935e14022d0e5a39dc7#code">View Source</a>
+	</div>
+	<div class="lowercat">
+		<span>Resources</span><br>
+		<a target="_blank" href="https://kcc.guru/roadmap">Kucino Roadmap</a><br>
+		<a target="_blank" href="https://kcc.guru/roadmap">KUCINO Tokenimcs</a><br>
+		<a target="_blank" href="https://ftmscan.com/address/0x74bfb7e94bef5767f5f6ace2d0df73a224adb689">385 ELITE ETL</a><br>
+		<a target="_blank" href="https://kudex.finance/locker">KCS Liquidity Lock</a><br>
+		<a target="_blank" href="https://kudex.finance/locker">70% KUCINO ETL</a><br>
+		<a target="_blank" href="docs">📚 Documentation</a><br>
+	</div>
+	<div class="lowercat">
+		<span>Telegrams</span><br>
+		<a target="_blank" href="https://t.me/ftm1337">FantomOpera#1337</a><br>
+		<a target="_blank" href="https://t.me/ftmguru">Announcements</a><br>
+		<a target="_blank" href="https://t.me/kucino">Kucino Group</a><br>
+		<a target="_blank" href="https://t.me/kccguru">KCC.guru Channel</a><br>
+		<a target="_blank" href="https://t.me/kccguru">FMC New Listings</a><br>
+	</div>
+	<div class="lowercat">
+		<span>Social & Media</span><br>
+		<a target="_blank" href="https://medium.com/@ftm1337">Medium Journal</a><br>
+		<a target="_blank" href="https://discord.gg/QpyfMarNrV">Discord Server</a><br>
+		<a target="_blank" href="https://twitter.com/kccGuru">Kucino Twitter</a><br>
+		<a target="_blank" href="mailto:ftm1337@protonmail.com">Official Mail</a><br>
+	</div>
+	<div class="lowercat">
+		<a href="https://ftm.guru/index.html"><b style="font-size:2em"><code>FTM.guru</code></b></a><br>
+		<a href="https://fmc.guru/index.html"><b style="font-size:2em"><code>FMC.guru</code></b></a><br>
+		<a href="https://kcc.guru/index.html"><b style="font-size:2em"><code>KCC.guru</code></b></a>
+	</div>
+	<div class="lowercat">
+	</div>
+</div>
+</body>
+<!--<script src="d1.js">
+</script>-->
+<script src="web3.min.js">
+</script>
+<script>
+o={}
+aa=$("maintable").getElementsByTagName("tbody")[0].getElementsByTagName("tr");
+
+window.addEventListener('load',function()
+{
+	//if(window.ethereum&&Number(window.ethereum.chainId==250)){web3 = new Web3(web3.currentProvider);}
+	//else{web3 = new Web3("https://rpc.ftm.tools")}
+	//basics();
+	paintsrc()
+}, false);
+function $(_) {return document.getElementById(_);}
+function basics()
+{
+	//advertise()
+	copsca()
+	fillage()
+	gp()
+	tc()
+	gg()
+	arf()
+}
+function paintsrc()
+{
+	for(i=0;i< md.length;i++)
+	{
+		thisrow = $("r_"+md[i][0]);
+		for(j=0;j< md[i][2].length;j++)
+		{
+			thisrow.children[2].innerHTML+=`<img src='${"img/" + (dexes[(md[i][2][j])])[2]}'>`
+		}
+	}
+}
+dexes =	//[ id,	name,	logo,	url]
+[
+	[0,"spookyswap", "spooky.sq.svg"],
+	[1,"spiritswap", "spirit.svg"],
+	[2,"sushi", "sushi.svg"],
+	[3,"spiritswap", "spirit.svg"],
+	[4,"spiritswap", "spirit.svg"],
+	[5,"spiritswap", "spirit.svg"],
+	[6,"spiritswap", "spirit.svg"],
+	[7,"spiritswap", "spirit.svg"],
+	[8,"spiritswap", "spirit.svg"],
+	[9,"spiritswap", "spirit.svg"],
+	[10,"spiritswap", "spirit.svg"],
+	[11,"spiritswap", "spirit.svg"],
+	[12,"spiritswap", "spirit.svg"],
+	[13,"spiritswap", "spirit.svg"],
+	[14,"spiritswap", "spirit.svg"],
+	[15,"spiritswap", "spirit.svg"],
+	[16,"spiritswap", "spirit.svg"],
+	[17,"spiritswap", "spirit.svg"],
+	[18,"spiritswap", "spirit.svg"],
+	[19,"spiritswap", "spirit.svg"],
+	[20,"shibaswap", "shiba.sq.svg"],
+	[21,"spiritswap", "spirit.svg"],
+	[22,"spiritswap", "spirit.svg"],
+	[23,"spiritswap", "spirit.svg"],
+	[24,"spiritswap", "spirit.svg"],
+	[25,"spiritswap", "spirit.svg"],
+	[26,"spiritswap", "spirit.svg"],
+	[27,"spiritswap", "spirit.svg"],
+	[28,"spiritswap", "spirit.svg"],
+	[29,"spiritswap", "spirit.svg"],
+	[30,"jetswap", "jet.svg"],
+	[31,"spiritswap", "spirit.svg"],
+	[32,"spiritswap", "spirit.svg"],
+	[33,"spiritswap", "spirit.svg"],
+	[34,"spiritswap", "spirit.svg"],
+	[35,"spiritswap", "spirit.svg"],
+	[36,"spiritswap", "spirit.svg"],
+	[37,"spiritswap", "spirit.svg"],
+	[38,"spiritswap", "spirit.svg"],
+	[39,"spiritswap", "spirit.svg"],
+	[39,"spiritswap", "spirit.svg"],
+	[40,"spiritswap", "spirit.svg"],
+	[41,"spiritswap", "spirit.svg"],
+	[42,"spiritswap", "spirit.svg"],
+	[43,"spiritswap", "spirit.svg"],
+	[44,"spiritswap", "spirit.svg"],
+	[45,"spiritswap", "spirit.svg"],
+	[46,"spiritswap", "spirit.svg"],
+	[47,"spiritswap", "spirit.svg"],
+	[48,"spiritswap", "spirit.svg"],
+	[49,"spiritswap", "spirit.svg"],
+	[49,"spiritswap", "spirit.svg"],
+]
+md =
+[
+	["zootrade", "age", [0,1,2,20,30], 13],
+	["kyberswap", "age", [0,1,2], 5],
+	["openocean", "age", [0,1,2,30], 5],
+	["matcha", "age", [0,1,2,30], 5],
+	["firebird", "age", [0,1], 5],
+	["timechainswap", "age", [0,1,2,20], 5],
+	["paraswap", "age", [0,1], 5],
+]
+
+
+
+
+function fornum(n,d)
+{
+	_n=(Number(n)/10**Number(d));
+	n_=_n;
+	if(_n>1e18){n_=(_n/1e18).toFixed(2)+" QN"}
+	else if(_n>1e15){n_=(_n/1e15).toFixed(2)+" QD"}
+	else if(_n>1e12){n_=(_n/1e12).toFixed(2)+" TN"}
+	else if(_n>1e9){n_=(_n/1e9).toFixed(2)+" BN"}
+	else if(_n>1e6){n_=(_n/1e6).toFixed(2)+" MN"}
+	else if(_n>1e3){n_=(_n/1e3).toFixed(2)+" TH"}
+	else if(_n>1){n_=(_n/1e1).toFixed(2)+""}
+	return(n_);
+}
+
+function sortit(n) {
+  var t, r, z, i, x, y, v, b, c = 0;
+  t = document.getElementById("maintable");
+  z = true;
+  b = "a";
+  while (z) {
+    z = false;
+    r = t.rows;
+    for (i = 1; i < (r.length - 1); i++) {
+      v = false;
+      x = (r[i].getElementsByTagName("TD")[n].innerHTML).replaceAll(/,| |\.|\$|%/g,'');
+      if(isFinite(x)){x=Number(x)}else{x=x.toLowerCase()}
+      y = (r[i + 1].getElementsByTagName("TD")[n].innerHTML).replaceAll(/,| |\.|\$|%/g,'');
+      if(isFinite(y)){y=Number(y)}else{y=y.toLowerCase()}
+      if (b == "a") {
+        if ((x) > (y)) {
+          v= true;
+          break;
+        }
+      } else if (b == "d") {
+        if ((x) < (y)) {
+          v = true;
+          break;
+        }
+      }
+    }
+    if (v) {
+      r[i].parentNode.insertBefore(r[i + 1], r[i]);
+      z = true;
+      c ++;
+    } else {
+      if (c == 0 && b == "a") {
+        b = "d";
+        z = true;
+      }
+    }
+  }
+}
+function copsca()
+{
+	rs=$("maintable").getElementsByTagName("tbody")[0].getElementsByTagName("tr");
+	for(i=0;i< rs.length;i++)
+	{
+		sc=rs[i].getElementsByTagName("td")[Object.keys(rs[i].getElementsByTagName("td")).length-2];
+		sc.setAttribute("onClick","copsc(this)");
+		sc.style.cursor="copy";
+	}
+}
+function copsc(el)
+{
+	var inp =document.createElement('input');
+	document.body.appendChild(inp)
+	inp.value ="https://"+el.innerText;
+	inp.select();
+	document.execCommand('copy',false);
+	inp.remove();
+}
+var adi=1;
+function advertise()
+{
+	var x = setInterval(function(){ads()},10000);
+}
+function ads()
+{
+	if(adi==2)
+	{
+		$("spadi").src="img/ad-0001.png";
+		$("spada").href="https://shibafantom.com";
+		adi=1;
+	}
+	else
+	{
+		$("spadi").src="img/ad-0002.gif";
+		$("spada").href="https://spoon.finance";
+		adi=2;
+	}
+	console.log(Date.now())
+}
+function arf()
+{
+	iter = 0;
+	itera = 25000;
+	var xfr = setInterval(function()
+	{
+
+		gobj=[ctvl[0],0,0,0];
+		//console.log("refreshing stats", Date.now());
+		(iter==0)?itera=15000:gg();
+		(iter%30 == 0)?tc():false;
+		(iter%1000 == 0)?gp():false;
+		iter++;
+	}, itera);
+}
+ctvl=[]
+
+
+function togcol(e)
+{
+	ad=document.getElementsByTagName("td")
+	for(i=0;i< ad.length/11;i++){ad[11*i+e].style.display=ad[11*i+e].style.display!="block"?"block":"none"}
+	document.getElementsByTagName("th")[e].style.display=document.getElementsByTagName("th")[e].style.display!="block"?"block":"none";
+	if($("tags").getElementsByTagName("span")[e-1].className=="selcol")
+		{$("tags").children[e-1].setAttribute("class","discol")}
+	else{$("tags").children[e-1].setAttribute("class","selcol")}
+}
+
+function fillage()
+{
+	n = Date.now();
+	for(i=0;i< di.length;i++){$("d_"+di[i][0].toLowerCase()).getElementsByTagName("td")[4].innerHTML=((n-di[i][3]*1e3)/(86400000)).toFixed()}
+}
+</script><!--
+<script defer type="text/javascript" async="true">
+var sc_project=12548358;
+var sc_invisible=0;
+var sc_security="da086e3e";
+var sc_remove_link=1;
+var scJsHost = "https://";
+document.write("<sc"+"ript type='text/javascript' src='" + scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>-->
+</html>
