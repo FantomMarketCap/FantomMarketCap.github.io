@@ -200,8 +200,8 @@ thead tr::before{
 			</tr>
 		</thead>
 		<tbody>
-			<tr class="" id="d_unknown1">
-				<td>Unknown1</td>
+			<tr class="" id="d_funi">
+				<td>fUNI</td>
 				<td>0</td>
 				<td>0</td>
 				<td>0</td>
@@ -210,8 +210,8 @@ thead tr::before{
 				<td>0</td>
 				<td>0</td>
 				<td>0</td>
-				<td>UI NOT FOUND</td>
-				<td><span><a href="https://ftmscan.com/address/0xBFd1cE8E6D85e911e80c169293d5c1F5c950Fe03" target="_blank">💱</a></td>
+				<td>funi.exchange</td>
+				<td><span><a href="https://funi.exchange/#/swap/" target="_blank">💱</a></td>
 			</tr>
 			<tr class="" id="d_sushi">
 				<td>Sushi</td>
@@ -488,7 +488,7 @@ thead tr::before{
 			</tr>
 			<tr class="" id="d_wraith">
 				<td>Wraith</td>
-				<td>0</td>
+				<td>0</td>https
 				<td>0</td>
 				<td>0</td>
 				<td>0</td>
@@ -947,7 +947,7 @@ di=
 	["Knight",		"0x045312C737a6b7a115906Be0aD0ef53A6AA38106",	"0x7d82F56ea0820A9d42b01C3C28F1997721732218",	1631513046],
 	["DeFy",		"0x35e11136FA9a734AF6B81658D66519854fB6793c",	"0xAffdbEAE1ec595cba4C262Bdb52A6083aEc2e2a6",	1631513046],
 	["Wing",		"0x2b660040b289B1B570E053b21dd9A6F1067AD7F5",	"0xc0719a9A35a2D9eBBFdf1C6d383a5E8E7b2ef7a8",	1631513046],
-	["Unknown1",	"0x67A937eA41Cd05ec8c832a044afC0100F30Aa4b5",	"0xBFd1cE8E6D85e911e80c169293d5c1F5c950Fe03",	1600852112],
+	["funi",	"0x67A937eA41Cd05ec8c832a044afC0100F30Aa4b5",	"0xBFd1cE8E6D85e911e80c169293d5c1F5c950Fe03",	1600852112],
 	["PearZap",		"0x434D82dD1c2165111631804Ec3e633518a45cf43",	"0x7D904257C72BFed813011122D1eF08624e7c64A9",	1637843240],
 	["Aura",		"0x18b1CEF6fAB48c2c006baCb6Ef267AD26da1B469",	"0x3EBa855443aD4deE22603B9ce6187E6aa67B435D",	1620654149],
 	["Timechain",	"0xc784BFac74F0319b662D02Ad2E68217601c8041F",	"0x27B73f099AbA34f96b865cE32cf42a63c50070F2",	1640786974],
@@ -2422,19 +2422,19 @@ mim   = new web3.eth.Contract(ab,MIM);
 	})
 
 
-	// Unknown1
+	// funi
 	// Main pair has FUSD+WFTM, counting just 1 pool.
 	// Uses tvlGuru to find out TVL, & TVL === Liq
-	UNKNOWN1_0 = "0x34Bf23e2f08BFE00CAE2aDC15D4B47cF8B9ee7BF";	//Pair#0: FUSD-WFTM LPT
-	unknown1_0 = new web3.eth.Contract(ab,UNKNOWN1_0);
+	funi_0 = "0x34Bf23e2f08BFE00CAE2aDC15D4B47cF8B9ee7BF";	//Pair#0: FUSD-WFTM LPT
+	funi_0 = new web3.eth.Contract(ab,funi_0);
 	Promise.all([
-		tvlGuru.methods.p_lpt_coin_usd(UNKNOWN1_0).call(),
-		unknown1_0.methods.totalSupply().call()
-	]).then(unknown1_0_l=>{
-		console.log("at uk",unknown1_0_l);
-		unknown1_0_tl = (Number(unknown1_0_l[0])*Number(unknown1_0_l[1]))/1e36;
-		$("d_unknown1").getElementsByTagName("td")[3].innerHTML=Number(Number(unknown1_0_tl).toFixed(0)).toLocaleString();
-		gobj[0]+=unknown1_0_tl;
+		tvlGuru.methods.p_lpt_coin_usd(funi_0).call(),
+		funi_0.methods.totalSupply().call()
+	]).then(funi_0_l=>{
+		console.log("at uk",funi_0_l);
+		funi_0_tl = (Number(funi_0_l[0])*Number(funi_0_l[1]))/1e36;
+		$("d_funi").getElementsByTagName("td")[3].innerHTML=Number(Number(funi_0_tl).toFixed(0)).toLocaleString();
+		gobj[0]+=funi_0_tl;
 		ref_os();
 	})
 
