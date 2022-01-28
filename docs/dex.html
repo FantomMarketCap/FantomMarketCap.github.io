@@ -488,7 +488,7 @@ thead tr::before{
 			</tr>
 			<tr class="" id="d_wraith">
 				<td>Wraith</td>
-				<td>0</td>https
+				<td>0</td>
 				<td>0</td>
 				<td>0</td>
 				<td>0</td>
@@ -2425,10 +2425,10 @@ mim   = new web3.eth.Contract(ab,MIM);
 	// funi
 	// Main pair has FUSD+WFTM, counting just 1 pool.
 	// Uses tvlGuru to find out TVL, & TVL === Liq
-	funi_0 = "0x34Bf23e2f08BFE00CAE2aDC15D4B47cF8B9ee7BF";	//Pair#0: FUSD-WFTM LPT
-	funi_0 = new web3.eth.Contract(ab,funi_0);
+	FUNI_0 = "0x34Bf23e2f08BFE00CAE2aDC15D4B47cF8B9ee7BF";	//Pair#0: FUSD-WFTM LPT
+	funi_0 = new web3.eth.Contract(ab,FUNI_0);
 	Promise.all([
-		tvlGuru.methods.p_lpt_coin_usd(funi_0).call(),
+		tvlGuru.methods.p_lpt_coin_usd(FUNI_0).call(),
 		funi_0.methods.totalSupply().call()
 	]).then(funi_0_l=>{
 		console.log("at uk",funi_0_l);
