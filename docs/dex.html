@@ -720,6 +720,19 @@ thead tr::before{
 				<td>app.degen.haus</td>
 				<td><span><a href="https://app.degen.haus" target="_blank">💱</a><a href="https://degen.haus" target="_blank">🌐</a></span></td>
 			</tr>
+			<tr class="" id="d_saddle">
+				<td>Saddle</td>
+				<td>1</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>saddle.exchange</td>
+				<td><span><a href="https://saddle.exchange" target="_blank">💱</a><a href="https://saddle.finance" target="_blank">🌐</a></span></td>
+			</tr>
 			<tr class="" id="d_protofi">
 				<td>ProtoFi</td>
 				<td>0</td>
@@ -947,11 +960,12 @@ di=
 	["Knight",		"0x045312C737a6b7a115906Be0aD0ef53A6AA38106",	"0x7d82F56ea0820A9d42b01C3C28F1997721732218",	1631513046],
 	["DeFy",		"0x35e11136FA9a734AF6B81658D66519854fB6793c",	"0xAffdbEAE1ec595cba4C262Bdb52A6083aEc2e2a6",	1631513046],
 	["Wing",		"0x2b660040b289B1B570E053b21dd9A6F1067AD7F5",	"0xc0719a9A35a2D9eBBFdf1C6d383a5E8E7b2ef7a8",	1631513046],
-	["funi",	"0x67A937eA41Cd05ec8c832a044afC0100F30Aa4b5",	"0xBFd1cE8E6D85e911e80c169293d5c1F5c950Fe03",	1600852112],
+	["funi",		"0x67A937eA41Cd05ec8c832a044afC0100F30Aa4b5",	"0xBFd1cE8E6D85e911e80c169293d5c1F5c950Fe03",	1600852112],
 	["PearZap",		"0x434D82dD1c2165111631804Ec3e633518a45cf43",	"0x7D904257C72BFed813011122D1eF08624e7c64A9",	1637843240],
 	["Aura",		"0x18b1CEF6fAB48c2c006baCb6Ef267AD26da1B469",	"0x3EBa855443aD4deE22603B9ce6187E6aa67B435D",	1620654149],
 	["Timechain",	"0xc784BFac74F0319b662D02Ad2E68217601c8041F",	"0x27B73f099AbA34f96b865cE32cf42a63c50070F2",	1640786974],
 	["DegenHaus",	"0xcdA8f0fB4132D977AD427d18555E0cb1b1dfA363",	"0xa01c3d760738c79e10334408ae59684aa36b1131",	1641347158],
+	["Saddle",		"",	"",	1642808458],
 	["ProtoFi",		"0xcdA8f0fB4132D977AD427d18555E0cb1b1dfA363",	"0x39720E5Fe53BEEeb9De4759cb91d8E7d42c17b76",	1641731621],
 
 ]
@@ -1128,7 +1142,10 @@ Stable AMM - Steak
 	[USDC-FUSD]
 	LPT + DEX = 0xa0828eE559110b041DEdbf10Ae0cf42274251de1
 
-
+Saddle
+	[USDC-FRAX]
+	LPT = 0xc969dd0a7ab0f8a0c5a69c0839db39b6c928bc08
+	DEX = 0xbea9f78090bdb9e662d8cb301a00ad09a5b756e9
 Dictionary
 
 
@@ -1340,8 +1357,7 @@ function po (di)
 //		console.log(di.slug)
 //		console.log(di.slug,di)
 
-	if (di.slug ==  "curve" ){			$v("d_curve").innerHTML=v;$v("d_curve").nextElementSibling.innerHTML=v;gobj[0]+=Number(V);
-ctvl.push(Number(V));ref_os()}
+	if (di.slug ==  "curve" ){			$v("d_curve").innerHTML=v;$v("d_curve").nextElementSibling.innerHTML=v;gobj[0]+=Number(V);ctvl.push(Number(V));ref_os()}
 	if (di.slug ==  "sushiswap" ){		$v("d_sushi").innerHTML=v;}
 	if (di.slug ==  "spookyswap" ){		$v("d_spooky").innerHTML=v;}
 	if (di.slug ==  "spiritswap" ){		$v("d_spirit").innerHTML=v;}
@@ -1367,6 +1383,8 @@ ctvl.push(Number(V));ref_os()}
 	if (di.slug ==  "wingswap" ){		$v("d_wing").innerHTML=v;}
 	if (di.slug ==  "swap-cat" ){		$v("d_swapcat").innerHTML=Number(Number(di.chainTvls["Fantom-offers"]).toFixed(0)).toLocaleString();}
 	if (di.slug ==  "knightswap-finance"){$v("d_knight").innerHTML=v;}
+	if (di.slug ==  "saddle-finance")	{$v("d_saddle").innerHTML=v;$v("d_saddle").nextElementSibling.innerHTML=v;gobj[0]+=Number(V);ctvl.push(Number(V));ref_os()}
+	if (di.slug ==  "protofi")			{$v("d_protofi").innerHTML=v;}
 }
 date_id = Date.now();
 date_id = date_id/1000 - (date_id/1000)%1;
