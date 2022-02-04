@@ -91,7 +91,6 @@ td:nth-last-child(2){font-size: 1em}
   border: 3px solid #147;
 }
 
-td:nth-child(5),th:nth-child(5),
 td:nth-child(6),th:nth-child(6),
 td:nth-child(7),th:nth-child(7),
 td:nth-child(9),th:nth-child(9)
@@ -177,7 +176,7 @@ thead tr::before{
 		<span onclick="togcol(1)" class="selcol">Pools</span>
 		<span onclick="togcol(2)" class="selcol">Total Value Locked</span>
 		<span onclick="togcol(3)" class="selcol">Total Liquidity</span>
-		<span onclick="togcol(4)" class="discol">Age</span>
+		<span onclick="togcol(4)" class="selcol">Age</span>
 		<span onclick="togcol(5)" class="discol">Volume Today</span>
 		<span onclick="togcol(6)" class="discol">All Time Volume</span>
 		<span onclick="togcol(7)" class="selcol">Total Transactions</span>
@@ -746,6 +745,19 @@ thead tr::before{
 				<td>protofi.app</td>
 				<td><span><a href="https://protofi.app" target="_blank">💱</a><a href="https://protofi.app" target="_blank">🌐</a></span></td>
 			</tr>
+			<tr class="" id="d_wigo">
+				<td>Wigo</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>wigoswap.io</td>
+				<td><span><a href="https://wigoswap.io" target="_blank">💱</a><a href="https://wigoswap.io" target="_blank">🌐</a></span></td>
+			</tr>
 		</tbody>
 	</table>
 </div>
@@ -930,16 +942,16 @@ function basics()
 //Leave Non-Factories Blank: ""
 di=
 [
-	["Curve",		"",												"0x686d67265703D1f124c45E33d47d794c566889Ba",	Date.now()/1e3],
+	["Curve",		"",												"0x686d67265703D1f124c45E33d47d794c566889Ba",	1623450732],
 	["Spooky",		"0xF491e7B69E4244ad4002BC14e878a34207E38c29",	"0x152eE697f2E276fA89E96742e9bB9aB1F2E61bE3",	1618665431],
 	["Spirit",		"0x16327E3FbDaCA3bcF7E38F5Af2599D2DDc33aE52",	"0xEF45d134b73241eDa7703fa787148D9C9F4950b0",	1619330757],
 	["Sushi",		"0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506",	"0xc35DADB65012eC5796536bD9864eD8773aBc74C4",	1614311685],
 	["iron",		"",												"",												1630685829],
 	["Hyper",		"0x53c153a0df7E050BbEFbb70eE9632061f12795fB",	"0x991152411A7B5A14A8CF0cDDE8439435328070dF",	1618701236],
-	["Paint",		"0xfD000ddCEa75a2E23059881c3589F6425bFf1AbB",	"0x733A9D1585f2d14c77b49d39BC7d7dd14CdA4aa5",	Date.now()/1e3],
-	["Zoo", 		"0x40b12a3E261416fF0035586ff96e23c2894560f2",	"0x6178C3B21F7cA1adD84c16AD35452c85a85F5df4",	Date.now()/1e3],
-	["Waka",		"0x7b17021fcb7bc888641dc3bedfed3734fcaf2c87",	"0xB2435253C71FcA27bE41206EB2793E44e1Df6b6D",	Date.now()/1e3],
-	["Elk", 		"0x4D2cf285a519261F30b4d9c2c344Baf260d65Fa2",	"0x7Ba73c99e6f01a37f3e33854c8F544BbbadD3420",	Date.now()/1e3],
+	["Paint",		"0xfD000ddCEa75a2E23059881c3589F6425bFf1AbB",	"0x733A9D1585f2d14c77b49d39BC7d7dd14CdA4aa5",	1621446866],
+	["Zoo", 		"0x40b12a3E261416fF0035586ff96e23c2894560f2",	"0x6178C3B21F7cA1adD84c16AD35452c85a85F5df4",	1621692429],
+	["Waka",		"0x7b17021fcb7bc888641dc3bedfed3734fcaf2c87",	"0xB2435253C71FcA27bE41206EB2793E44e1Df6b6D",	1619560066],
+	["Elk", 		"0x4D2cf285a519261F30b4d9c2c344Baf260d65Fa2",	"0x7Ba73c99e6f01a37f3e33854c8F544BbbadD3420",	1621287841],
 	["Opera",		"0xe372753f66644a1197ab85ff529ed02995ed2d6c",	"0x8ebB6B4eD61b6b2eA663569D0Be3F7b33a481178",	Date.now()/1e3],
 	["fBomb",		"0xb9799De71100e20aC1cdbCc63C69ddA2D0D81710",	"0xD9473A05b2edf4f614593bA5D1dBd3021d8e0Ebe",	Date.now()/1e3],
 	["Shiba",		"0xB6f7b3d8CD9dBf30805C0dd79809dace5603Ce6A",	"0xeAcC845E4db0aB59A326513347a37ed4E999aBD8",	Date.now()/1e3],
@@ -959,7 +971,7 @@ di=
 	["Vampire",		"0x9AdE9Bda74a12022cC82C27Ce24C4296397b18d5",	"0xdF0A0a62995ae821d7a5cF88C4112c395fc41358",	Date.now()/1e3],
 	["Knight",		"0x045312C737a6b7a115906Be0aD0ef53A6AA38106",	"0x7d82F56ea0820A9d42b01C3C28F1997721732218",	Date.now()/1e3],
 	["DeFy",		"0x35e11136FA9a734AF6B81658D66519854fB6793c",	"0xAffdbEAE1ec595cba4C262Bdb52A6083aEc2e2a6",	Date.now()/1e3],
-	["Wing",		"0x2b660040b289B1B570E053b21dd9A6F1067AD7F5",	"0xc0719a9A35a2D9eBBFdf1C6d383a5E8E7b2ef7a8",	Date.now()/1e3],
+	["Wing",		"0x2b660040b289B1B570E053b21dd9A6F1067AD7F5",	"0xc0719a9A35a2D9eBBFdf1C6d383a5E8E7b2ef7a8",	1637389711],
 	["funi",		"0x67A937eA41Cd05ec8c832a044afC0100F30Aa4b5",	"0xBFd1cE8E6D85e911e80c169293d5c1F5c950Fe03",	1600852112],
 	["PearZap",		"0x434D82dD1c2165111631804Ec3e633518a45cf43",	"0x7D904257C72BFed813011122D1eF08624e7c64A9",	1637843240],
 	["Aura",		"0x18b1CEF6fAB48c2c006baCb6Ef267AD26da1B469",	"0x3EBa855443aD4deE22603B9ce6187E6aa67B435D",	1620654149],
@@ -967,158 +979,10 @@ di=
 	["DegenHaus",	"0xcdA8f0fB4132D977AD427d18555E0cb1b1dfA363",	"0xa01c3d760738c79e10334408ae59684aa36b1131",	1641347158],
 	["Saddle",		"",	"",	1642808458],
 	["ProtoFi",		"0xcdA8f0fB4132D977AD427d18555E0cb1b1dfA363",	"0x39720E5Fe53BEEeb9De4759cb91d8E7d42c17b76",	1641731621],
+	["Wigo",		"0x5023882f4D1EC10544FCB2066abE9C1645E95AA0",	"0xC831A5cBfb4aC2Da5ed5B194385DFD9bF5bFcBa7",	1643015980],
 
 ]
 /*
-di2={
-  "Curve": [
-    "??????????????????????????????????????????",
-    "0x686d67265703D1f124c45E33d47d794c566889Ba",
-    Date.now()
-  ],
-  "Spooky": [
-    "0xF491e7B69E4244ad4002BC14e878a34207E38c29",
-    "0x152eE697f2E276fA89E96742e9bB9aB1F2E61bE3",
-    Date.now()
-  ],
-  "Spirit": [
-    "0x16327E3FbDaCA3bcF7E38F5Af2599D2DDc33aE52",
-    "0xEF45d134b73241eDa7703fa787148D9C9F4950b0",
-    Date.now()
-  ],
-  "Sushi": [
-    "0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506",
-    "0xc35DADB65012eC5796536bD9864eD8773aBc74C4",
-    Date.now()
-  ],
-  "Hyper": [
-    "0x53c153a0df7E050BbEFbb70eE9632061f12795fB",
-    "0x991152411A7B5A14A8CF0cDDE8439435328070dF",
-    Date.now()
-  ],
-  "Paint": [
-    "0xfD000ddCEa75a2E23059881c3589F6425bFf1AbB",
-    "0x733A9D1585f2d14c77b49d39BC7d7dd14CdA4aa5",
-    Date.now()
-  ],
-  "Zoo": [
-    "0x40b12a3E261416fF0035586ff96e23c2894560f2",
-    "0x6178C3B21F7cA1adD84c16AD35452c85a85F5df4",
-    Date.now()
-  ],
-  "Waka": [
-    "0x7b17021fcb7bc888641dc3bedfed3734fcaf2c87",
-    "0xB2435253C71FcA27bE41206EB2793E44e1Df6b6D",
-    Date.now()
-  ],
-  "Elk": [
-    "0x4D2cf285a519261F30b4d9c2c344Baf260d65Fa2",
-    "0x7Ba73c99e6f01a37f3e33854c8F544BbbadD3420",
-    Date.now()
-  ],
-  "Opera": [
-    "0xe372753f66644a1197ab85ff529ed02995ed2d6c",
-    "0x8ebB6B4eD61b6b2eA663569D0Be3F7b33a481178",
-    Date.now()
-  ],
-  "fBomb": [
-    "0xb9799De71100e20aC1cdbCc63C69ddA2D0D81710",
-    "0xD9473A05b2edf4f614593bA5D1dBd3021d8e0Ebe",
-    Date.now()
-  ],
-  "Shiba": [
-    "0xB6f7b3d8CD9dBf30805C0dd79809dace5603Ce6A",
-    "0xeAcC845E4db0aB59A326513347a37ed4E999aBD8",
-    Date.now()
-  ],
-  "Cyber": [
-    "0xD9B37cA21e53581F784fFB265F9BFBcF9AD255d6",
-    "0xcB9eA67A5eB76D22688BF21D6689c435D4e25077",
-    Date.now()
-  ],
-  "Totem": [
-    "0xE1D3c87EA897B9AA03FA49332e398c4e95a9A769",
-    "0xd60FaDE08c25b76b2DbdeaF42f0C4D68236A1079",
-    Date.now()
-  ],
-  "Nipple": [
-    "0xB5ab49A8127FFf2Fc3084D5323b1Ad83890E5Bb4",
-    "0x41A75C3d6CDe54170e6a67d8D61752cc8Abb0275",
-    Date.now()
-  ],
-  "Soul": [
-    "0x6b3d631B87FE27aF29efeC61d2ab8CE4d621cCBF",
-    "0x1120e150dA9def6Fe930f4fEDeD18ef57c0CA7eF",
-    Date.now()
-  ],
-  "Wraith": [
-    "0x8C9E059a729C17fB294cd782eB66Df3871D29173",
-    "0xCC738D2fDE18fe66773b84c8E6C869aB233766D1",
-    Date.now()
-  ],
-  "Empire": [
-    "0xdADaae6cDFE4FA3c35d54811087b3bC3Cd60F348",
-    "0x06530550A48F990360DFD642d2132354A144F31d",
-    Date.now()
-  ],
-  "Nugget": [
-    "0x6a3459091e3e425E324ad666f1EBC92d22B19422",
-    "0x598F046E61598CCedA9d76598e848DA0AC48B103",
-    1631513046
-  ],
-  "Jet": [
-    "0x845E76A8691423fbc4ECb8Dd77556Cb61c09eE25",
-    "0xf6488205957f0b4497053d6422F49e27944eE3Dd",
-    1631513046
-  ],
-  "Firebird": [
-    "0xe0C38b2a8D09aAD53f1C67734B9A95E43d5981c0",
-    "0xc7A50FE12C864963Ea5A5E0858a0E7Abe5b875c4",
-    1631513046
-  ],
-  "Yoshi": [
-    "??????????????????????????????????????????",
-    "0xc5bC174CB6382FbAB17771d05e6a918441deCeea",
-    1631513046
-  ],
-  "DMM": [
-    "0x5d5A5a0a465129848c2549669e12cDC2f8DE039A",
-    "0x78df70615ffc8066cc0887917f2Cd72092C86409",
-    1631513046
-  ],
-  "Dfyn": [
-    "0x2724B9497b2cF3325C6BE3ea430b3cec34B5Ef2d",
-    "0xd9820a17053d6314B20642E465a84Bf01a3D64f5",
-    1631513046
-  ],
-  "Morpheus": [
-    "0x8aC868293D97761A1fED6d4A01E9FF17C5594Aa3",
-    "0x9C454510848906FDDc846607E4baa27Ca999FBB6",
-    1631513046
-  ],
-  "Vampire": [
-    "0x9AdE9Bda74a12022cC82C27Ce24C4296397b18d5",
-    "0xdF0A0a62995ae821d7a5cF88C4112c395fc41358",
-    1631513046
-  ],
-  "Knight": [
-    "0x045312C737a6b7a115906Be0aD0ef53A6AA38106",
-    "0x7d82F56ea0820A9d42b01C3C28F1997721732218",
-    1631513046
-  ],
-  "DeFy": [
-    "0x35e11136FA9a734AF6B81658D66519854fB6793c",
-    "0xAffdbEAE1ec595cba4C262Bdb52A6083aEc2e2a6",
-    1631513046
-  ],
-  "Wing": [
-    "0x2b660040b289B1B570E053b21dd9A6F1067AD7F5",
-    "0xc0719a9A35a2D9eBBFdf1C6d383a5E8E7b2ef7a8",
-    1631513046
-  ]
-}
-
-
 
 
 					[[ STABLE-SWAPS ]]
@@ -2354,7 +2218,42 @@ try{
 		ref_os()
 	}
 	gdqr_protofi.send(JSON.stringify({query:gdq_protofi}))
-	console.log("EEEEEEEEEEEEEEEEEEEEE")
+
+
+
+
+	gdq_wigo =
+		`query {
+  			wigoswapFactories(first: 1) {
+    			id
+    			totalPairs	totalTransactions
+    			totalVolumeUSD    totalVolumeFTM	untrackedVolumeUSD
+    			totalLiquidityUSD	totalLiquidityFTM
+  			}
+  			wigoDayDatas(first:15)
+  			{
+    			id	date
+    			totalTransactions
+    			dailyVolumeUSD	dailyVolumeFTM	dailyVolumeUntracked
+    			totalVolumeUSD	totalVolumeFTM
+    			totalLiquidityUSD	totalLiquidityFTM
+  			}
+        }`
+	gdqr_wigo = new XMLHttpRequest();
+	gdqr_wigo.open("POST","https://api.thegraph.com/subgraphs/name/wigoswap/exchange",true);
+	gdqr_wigo.onload=function(){
+		gdqd_wigo=JSON.parse(this.response).data;
+		$("d_wigo").getElementsByTagName("td")[3].innerHTML=Number(Number(gdqd_wigo.wigoswapFactories[0].totalLiquidityUSD).toFixed(0)).toLocaleString()
+		$("d_wigo").getElementsByTagName("td")[5].innerHTML=Number(Number(gdqd_wigo.wigoDayDatas[0].dailyVolumeUSD).toFixed(0)).toLocaleString()
+		$("d_wigo").getElementsByTagName("td")[6].innerHTML=Number(Number(gdqd_wigo.wigoswapFactories[0].totalVolumeUSD).toFixed(0)).toLocaleString()
+		$("d_wigo").getElementsByTagName("td")[7].innerHTML=Number(Number(gdqd_wigo.wigoswapFactories[0].totalTransactions).toFixed(0)).toLocaleString()
+		gobj[0]+=Number(gdqd_wigo.wigoswapFactories[0].totalLiquidityUSD)
+		gobj[1]+=Number(gdqd_wigo.wigoDayDatas[0].dailyVolumeUSD)
+		gobj[2]+=Number(gdqd_wigo.wigoswapFactories[0].totalVolumeUSD)
+		gobj[3]+=Number(gdqd_wigo.wigoswapFactories[0].totalTransactions)
+		ref_os()
+	}
+	gdqr_wigo.send(JSON.stringify({query:gdq_wigo}))
 
 
 
