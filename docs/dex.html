@@ -758,6 +758,19 @@ thead tr::before{
 				<td>wigoswap.io</td>
 				<td><span><a href="https://wigoswap.io" target="_blank">💱</a><a href="https://wigoswap.io" target="_blank">🌐</a></span></td>
 			</tr>
+			<tr class="" id="d_solidly">
+				<td>Solildy</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>solidly.exchange</td>
+				<td><span><a href="https://solidly.exchange" target="_blank">💱</a><a href="https://solidly.exchange" target="_blank">🌐</a></span></td>
+			</tr>
 		</tbody>
 	</table>
 </div>
@@ -978,13 +991,14 @@ di=
 	["Timechain",	"0xc784BFac74F0319b662D02Ad2E68217601c8041F",	"0x27B73f099AbA34f96b865cE32cf42a63c50070F2",	1640786974],
 	["DegenHaus",	"0xcdA8f0fB4132D977AD427d18555E0cb1b1dfA363",	"0xa01c3d760738c79e10334408ae59684aa36b1131",	1641347158],
 	["Saddle",		"",	"",	1642808458],
-	["ProtoFi",		"0xcdA8f0fB4132D977AD427d18555E0cb1b1dfA363",	"0x39720E5Fe53BEEeb9De4759cb91d8E7d42c17b76",	1641731621],
+	["ProtoFi",		"0xF4C587a0972Ac2039BFF67Bc44574bB403eF5235",	"0x39720E5Fe53BEEeb9De4759cb91d8E7d42c17b76",	1641731621],
 	["Wigo",		"0x5023882f4D1EC10544FCB2066abE9C1645E95AA0",	"0xC831A5cBfb4aC2Da5ed5B194385DFD9bF5bFcBa7",	1643015980],
 	["Synapse",		"",	"",	1633594766],	//0xd5609cD0e1675331E4Fb1d43207C8d9D83AAb17C
 	["Froyo",		"",	"",	1620302999],
 	["SteaksAMM",	"",	"",	1630789838],
 	["Beethoven",	"",	"",	1631377915],	//0x20dd72ed959b6147912c2e529f0a0c651c33c9ce
 	["SwapCat",	"",	"",	1602606404],	//0xb18713ac02fc2090c0447e539524a5c76f327a3b
+	["Solidly"],	"0xa38cd27185a464914D3046f0AB9d43356B34829D",	"0x3fAaB499b519fdC5819e3D7ed0C26111904cbc28",	"1644462536"],
 
 
 ]
@@ -1727,7 +1741,7 @@ try{
 		gdqd_beethoven=JSON.parse(this.response).data.balancers[0];
 		$("d_beethoven").getElementsByTagName("td")[1].innerHTML=Number(Number(gdqd_beethoven.poolCount).toFixed(0)).toLocaleString()
 		$("d_beethoven").getElementsByTagName("td")[3].innerHTML=Number(Number(gdqd_beethoven.totalLiquidity).toFixed(0)).toLocaleString()
-		$("d_beethoven").getElementsByTagName("td")[6].innerHTML=Number(Number(gdqd_beethoven.totalSwapVolume).toFixed(0)).toLocaleString()
+		$("d_beethoven").getElementsByTagName("td")[6].innerHTML=NumBER(Number(gdqd_beethoven.totalSwapVolume).toFixed(0)).toLocaleString()
 		$("d_beethoven").getElementsByTagName("td")[7].innerHTML=Number(Number(gdqd_beethoven.totalSwapCount).toFixed(0)).toLocaleString()
 		gobj[0]+=Number(gdqd_beethoven.totalLiquidity)
 		//gobj[1]+=Number(gdqd_beethoven.uniswapDayDatas[0].dailyVolumeUSD)
