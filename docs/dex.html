@@ -91,8 +91,8 @@ td:nth-last-child(2){font-size: 1em}
   border: 3px solid #147;
 }
 
-td:nth-child(6),th:nth-child(6),
 td:nth-child(7),th:nth-child(7),
+td:nth-child(8),th:nth-child(8),
 td:nth-child(9),th:nth-child(9)
 {display:none}
 
@@ -784,6 +784,19 @@ thead tr::before{
 				<td>fanswap.fantomlive.finance</td>
 				<td><span><a href="https://fanswap.fantomlive.finance" target="_blank">💱</a><a href="https://fanswap.fantomlive.finance" target="_blank">🌐</a></span></td>
 			</tr>
+			<tr class="" id="d_panic">
+				<td>PanicSwap</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>panicswap.com</td>
+				<td><span><a href="https://panicswap.com" target="_blank">💱</a><a href="https://panicswap.com" target="_blank">🌐</a></span></td>
+			</tr>
 		</tbody>
 	</table>
 </div>
@@ -800,7 +813,7 @@ thead tr::before{
 <br>
 <div class="cards">
 
-	<div class="card" onclick="window.location='index.html'">
+	<div class="card" onclick="window.location='tokens.html'">
 		<span class="ki">Tokens</span>
 		<br><br>
 		<hr>
@@ -1013,6 +1026,7 @@ di=
 	["SwapCat",	"",	"",	1602606404],	//0xb18713ac02fc2090c0447e539524a5c76f327a3b
 	["Solidly",	"0xa38cd27185a464914D3046f0AB9d43356B34829D",	"0x3fAaB499b519fdC5819e3D7ed0C26111904cbc28",	"1644462536"],
 	["Fan",		"0xeF37DC7fdDdFa03d536C845bc19a55b2CaE76278",	"0x1F95004EfaD8A202250F4c5bC166469865FcC9dA",	"1641027739"],
+	["Panic",		"0x37d2b865846293892257717aD9acD4f854AFDe3b",	"0x1a60482b1bca074f3e6e17e89f92adbb578bd63a",	"1644683203"],
 
 
 ]
@@ -2457,11 +2471,23 @@ neth   = new web3.eth.Contract(ab,NETH);
 
 	//fanSwap
 	// Main pair has FTL+USDC, counting just 1 pool.
-	// Uses tvlGuru to find out TVL, & TVL === Liq
+	// TVL === Liq
 	usdc.methods.balanceOf("0x202D9b3ECA3C856F169FE383e2Ad326530aF0628").call((e,r)=>{	//Pair#0
 		$("d_fan").getElementsByTagName("td")[2].innerHTML=Number((Number(r)/1e6*2).toFixed(0)).toLocaleString();
 		$("d_fan").getElementsByTagName("td")[3].innerHTML=Number((Number(r)/1e6*2).toFixed(0)).toLocaleString();
-		gobj[0]+=funi_0_tl;
+		gobj[0]+=(Number(r)/1e6*2);
+		ref_os();
+	})
+
+	//PanicSwap
+	// Main pair has FTL+USDC, counting just 1 pool.
+	// Uses tvlGuru to find out TVL, & TVL === Liq
+	panic_0_p = tvlGuru.methods.p_lpt_coin_usd("0x2502f5d1f11DEC4691FC75Fe46b2AC07bffdEF55").call()	//Pair#0
+	panic_0_s = (new web3.eth.Contract(ab,"0x2502f5d1f11DEC4691FC75Fe46b2AC07bffdEF55")).methods.totalSupply().call()
+	Promise.all([panic_0_p,panic_0_s]).then(r=>{
+		//$("d_panic").getElementsByTagName("td")[2].innerHTML=Number((Number(r[0])*Number(r[1])/1e36).toFixed(0)).toLocaleString();
+		$("d_panic").getElementsByTagName("td")[3].innerHTML=Number((Number(r[0])*Number(r[1])/1e36).toFixed(0)).toLocaleString();
+		gobj[0]+=(Number(r[0])*Number(r[1])/1e36);
 		ref_os();
 	})
 
