@@ -797,6 +797,19 @@ thead tr::before{
 				<td>panicswap.com</td>
 				<td><span><a href="https://panicswap.com" target="_blank">💱</a><a href="https://panicswap.com" target="_blank">🌐</a></span></td>
 			</tr>
+			<tr class="" id="d_tomb">
+				<td>TombSwap</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>swap.tomb.com</td>
+				<td><span><a href="https://swap.tomb.com" target="_blank">💱</a><a href="https://tomb.com" target="_blank">🌐</a></span></td>
+			</tr>
 		</tbody>
 	</table>
 </div>
@@ -1024,9 +1037,10 @@ di=
 	["SteaksAMM",	"",	"",	1630789838],
 	["Beethoven",	"",	"",	1631377915],	//0x20dd72ed959b6147912c2e529f0a0c651c33c9ce
 	["SwapCat",	"",	"",	1602606404],	//0xb18713ac02fc2090c0447e539524a5c76f327a3b
-	["Solidly",	"0xa38cd27185a464914D3046f0AB9d43356B34829D",	"0x3fAaB499b519fdC5819e3D7ed0C26111904cbc28",	"1644462536"],
-	["Fan",		"0xeF37DC7fdDdFa03d536C845bc19a55b2CaE76278",	"0x1F95004EfaD8A202250F4c5bC166469865FcC9dA",	"1641027739"],
+	["Solidly",		"0xa38cd27185a464914D3046f0AB9d43356B34829D",	"0x3fAaB499b519fdC5819e3D7ed0C26111904cbc28",	"1644462536"],
+	["Fan",			"0xeF37DC7fdDdFa03d536C845bc19a55b2CaE76278",	"0x1F95004EfaD8A202250F4c5bC166469865FcC9dA",	"1641027739"],
 	["Panic",		"0x37d2b865846293892257717aD9acD4f854AFDe3b",	"0x1a60482b1bca074f3e6e17e89f92adbb578bd63a",	"1644683203"],
+	["Tomb",		"0x6D0176C5ea1e44b08D3dd001b0784cE42F47a3A7",	"0xE236f6890F1824fa0a7ffc39b1597A5A6077Cfe9",	"1644721072"],
 
 
 ]
@@ -1072,24 +1086,42 @@ async function gp()
 {
 	for(i=0;i< di.length;i++)
 	{
-		console.log("in",i)
+		console.log("in gp at i= ",i)
 		if(di[i][2]==""){continue;}
-		F=new web3.eth.Contract(ab,di[i][2]);
-		if(di[i][0]=="Soul")
-			{await F.methods.totalPairs().call((e,r)=>{$("d_"+di[i][0].toLowerCase()).getElementsByTagName("td")[1].innerHTML=Number(r).toLocaleString()})}
-		else if(di[i][0]=="DMM")
-			{await F.methods.allPoolsLength().call((e,r)=>{$("d_"+di[i][0].toLowerCase()).getElementsByTagName("td")[1].innerHTML=Number(r).toLocaleString()})}
-		else if(di[i][0]=="Curve")
-			{await F.methods.pool_count().call((e,r)=>{$("d_"+di[i][0].toLowerCase()).getElementsByTagName("td")[1].innerHTML=(Number(r)+2).toLocaleString()})}
-		else
-			{await F.methods.allPairsLength().call((e,r)=>{$("d_"+di[i][0].toLowerCase()).getElementsByTagName("td")[1].innerHTML=Number(r).toLocaleString()})}
-		if(i%5==0 || i==di.length-1){
-			sortit(2);sortit(2);
-			;console.log("tvlsort");
-			sortit(3);sortit(3);
-			;console.log("liqsort");
-		}
+		gpi(i,di[i][2],"d_"+di[i][0].toLowerCase())
 	}
+}
+
+async function gpi(i,sc,el)
+{	console.log("in gpi at i=",i)
+	F=new web3.eth.Contract(ab,di[i][2]);
+	if(el=="d_soul")
+	{
+		F=new web3.eth.Contract(ab,sc);
+		F.methods.totalPairs().call((e,r)=>{$(el).getElementsByTagName("td")[1].innerHTML=Number(r).toLocaleString()})
+	}
+	else if(el=="d_dmm")
+	{
+		F=new web3.eth.Contract(ab,sc);
+		F.methods.allPoolsLength().call((e,r)=>{$(el).getElementsByTagName("td")[1].innerHTML=Number(r).toLocaleString()})
+	}
+	else if(el=="d_curve")
+	{
+		F=new web3.eth.Contract(ab,sc);
+		F.methods.pool_count().call((e,r)=>{$(el).getElementsByTagName("td")[1].innerHTML=(Number(r)+2).toLocaleString()})
+	}
+	else
+	{
+		F=new web3.eth.Contract(ab,sc);
+		F.methods.allPairsLength().call((e,r)=>{$("d_"+di[i][0].toLowerCase()).getElementsByTagName("td")[1].innerHTML=Number(r).toLocaleString()})
+	}
+	/*
+	if(i%5==0 || i==di.length-1){
+		sortit(2);sortit(2);
+		;console.log("tvlsort");
+		sortit(3);sortit(3);
+		;console.log("liqsort");
+	}*/
 }
 
 ab=
@@ -1289,16 +1321,17 @@ function po (di)
 	if (di.slug ==  "iron-finance" ){	$v("d_iron").innerHTML=v;}
 	if (di.slug ==  "empiredex" ){		$v("d_empire").innerHTML=v;}
 	if (di.slug ==  "stakesteak" ){		$v("d_steaksamm").innerHTML=v;}
-	if (di.slug ==  "vampireswap" ){	$v("d_vampire").innerHTML=v;}
+	if (di.slug ==  "vampireswap" ){	$v("d_vampire").innerHTML=v;_vam=di.chainTvls["Fantom"];$v("d_vampire").nextElementSibling.innerHTML=Number((_vam).toFixed(0)).toLocaleString();gobj[0]+=Number(_vam);ref_os()}
 	if (di.slug ==  "jetswap" ){		$v("d_jet").innerHTML=v;}
 	if (di.slug ==  "defyswap" ){		$v("d_defy").innerHTML=v;}
 	if (di.slug ==  "wingswap" ){		$v("d_wing").innerHTML=v;}
-	if (di.slug ==  "swap-cat" ){		$v("d_swapcat").innerHTML=Number(Number(di.chainTvls["Fantom-offers"]).toFixed(0)).toLocaleString();}
+	if (di.slug ==  "swap-cat" ){		tvl=Number((di.chainTvls["Fantom-offers"]).toFixed(0)).toLocaleString();$v("d_swapcat").innerHTML=tvl;$v("d_swapcat").nextElementSibling.innerHTML=tvl}
 	if (di.slug ==  "knightswap-finance"){$v("d_knight").innerHTML=v;}
 	if (di.slug ==  "saddle-finance")	{$v("d_saddle").innerHTML=v;$v("d_saddle").nextElementSibling.innerHTML=v;gobj[0]+=Number(V);ref_os()}
 	if (di.slug ==  "protofi")			{$v("d_protofi").innerHTML=v;}
 	if (di.slug ==  "degen-haus")		{$v("d_degenhaus").innerHTML=v;}
 	if (di.slug ==  "kyberswap")		{$v("d_dmm").innerHTML=v;}
+	if (di.slug ==  "pearzap")			{$v("d_pearzap").innerHTML=v;}
 }
 date_id = Date.now();
 date_id = date_id/1000 - (date_id/1000)%1;
@@ -1770,7 +1803,7 @@ try{
 		gdqd_beethoven=JSON.parse(this.response).data.balancers[0];
 		$("d_beethoven").getElementsByTagName("td")[1].innerHTML=Number(Number(gdqd_beethoven.poolCount).toFixed(0)).toLocaleString()
 		$("d_beethoven").getElementsByTagName("td")[3].innerHTML=Number(Number(gdqd_beethoven.totalLiquidity).toFixed(0)).toLocaleString()
-		$("d_beethoven").getElementsByTagName("td")[6].innerHTML=NumBER(Number(gdqd_beethoven.totalSwapVolume).toFixed(0)).toLocaleString()
+		$("d_beethoven").getElementsByTagName("td")[6].innerHTML=Number(Number(gdqd_beethoven.totalSwapVolume).toFixed(0)).toLocaleString()
 		$("d_beethoven").getElementsByTagName("td")[7].innerHTML=Number(Number(gdqd_beethoven.totalSwapCount).toFixed(0)).toLocaleString()
 		gobj[0]+=Number(gdqd_beethoven.totalLiquidity)
 		//gobj[1]+=Number(gdqd_beethoven.uniswapDayDatas[0].dailyVolumeUSD)
@@ -2490,6 +2523,33 @@ neth   = new web3.eth.Contract(ab,NETH);
 		$("d_panic").getElementsByTagName("td")[3].innerHTML=Number((Number(r[0])*Number(r[1])/1e36).toFixed(0)).toLocaleString();
 		gobj[0]+=(Number(r[0])*Number(r[1])/1e36);
 		ref_os();
+	})
+
+	//TombSwap
+	//0x9d2f00f684960Ec83a3d042F3EAdD70e105f83cb	0	tomb-tshare
+	//0xfca12A13ac324C09e9F43B5e5cfC9262f3Ab3223	1	tomb-ftm
+	//0x846f03785F665AC77862ED0F8F5061C0f5B3c7Bf	2	tshare-ftm
+	//0x2B2703716D3234b787C42E89950653688C012dEa	3	tomb-tbond
+	//0x45f4682B560d4e3B8FF1F1b3A38FDBe775C7177b	4	tomb-mai
+	//0xD4B8c09b1D79138bF2727b1656f552A543111914	5	ftm-tbond
+	// Uses tvlGuru to find out price of tomb, 2x those for balances in LP
+	// find p_lpt of tshare-ftm, x TotalSuppl
+	tomb_tom = new web3.eth.Contract(ab,"0x6c021ae822bea943b2e66552bde1d2696a53fbb7")
+	tomb_p_tom = tvlGuru.methods.p_t_coin_usd("0xfca12A13ac324C09e9F43B5e5cfC9262f3Ab3223").call()	//Price of tomb
+	tomb_plp_tsh = tvlGuru.methods.p_lpt_coin_usd("0x846f03785F665AC77862ED0F8F5061C0f5B3c7Bf").call()	//Price of tshare
+	tomb_lts_tsh = (new web3.eth.Contract(ab,"0x2502f5d1f11DEC4691FC75Fe46b2AC07bffdEF55")).methods.totalSupply().call() //tsup
+	tomb_tom_0 = tomb_tom.methods.balanceOf("0x9d2f00f684960Ec83a3d042F3EAdD70e105f83cb").call();
+	tomb_tom_1 = tomb_tom.methods.balanceOf("0xfca12A13ac324C09e9F43B5e5cfC9262f3Ab3223").call();
+	tomb_tom_3 = tomb_tom.methods.balanceOf("0x2B2703716D3234b787C42E89950653688C012dEa").call();
+	tomb_tom_4 = tomb_tom.methods.balanceOf("0x45f4682B560d4e3B8FF1F1b3A38FDBe775C7177b").call();
+	Promise.all([tomb_plp_tsh,tomb_lts_tsh, tomb_p_tom, tomb_tom_0,tomb_tom_1,tomb_tom_3,tomb_tom_4]).then(r=>{
+		tl = Number(r[0])*Number(r[1])/1e36	// tvl_lp_tsh#2
+			+ (Number(r[2])/1e18) *2	//p_tom
+			* (Number(r[3]) + Number(r[4]) + Number(r[5]) + Number(r[6])) /1e18;	//tom_bals
+		$("d_tomb").getElementsByTagName("td")[3].innerHTML=Number((tl).toFixed(0)).toLocaleString();
+		gobj[0]+=tl;
+		ref_os();
+		//console.log("TOMB: ",r)
 	})
 
 
