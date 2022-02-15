@@ -13,7 +13,6 @@ table:hover td:first-child,table:hover th:first-child{position: sticky;left:0;ba
 tr:hover td{background: aqua !important;color:#020611;}
 td,th{min-width:max-content;min-width: -moz-max-content;}
 td:first-child{text-align: left}
-td:not(td:first-child){font-family: monospace;font-size:1em}
 thead tr:hover{background: aqua;color:#020611}
 pre{margin:0}
 a{color:white;text-decoration-line:none}
@@ -68,8 +67,8 @@ option{cursor:pointer}
 	border-bottom: none;
 	clip-path: polygon(100% 0%, 0% 0%, 10% 50%, 0% 100%, 100% 1000%);}
 td{padding:2px 5px;text-align:right;}
-td{font-family: mono}
-td:first-child,td:nth-last-child(2){font-family: inherit}
+td{font-family: mono, monospace;font-weight:bold}
+td:first-child,td:nth-last-child(2){font-family: inherit;font-weight: normal}
 /*td:nth-child(4),td:nth-child(5),th:nth-child(4),th:nth-child(5){display:none}*/
 td:last-child{text-align:center}
 td{font-size: 1.25em;}
