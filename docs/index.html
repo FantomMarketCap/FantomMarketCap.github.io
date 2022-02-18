@@ -809,6 +809,19 @@ thead tr::before{
 				<td>swap.tomb.com</td>
 				<td><span><a href="https://swap.tomb.com" target="_blank">💱</a><a href="https://tomb.com" target="_blank">🌐</a></span></td>
 			</tr>
+			<tr class="" id="d_metro">
+				<td>MetroSwap</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>metroswap.com</td>
+				<td><span><a href="https://metroswap.com" target="_blank">💱</a><a href="https://metroswap.com" target="_blank">🌐</a></span></td>
+			</tr>
 		</tbody>
 	</table>
 </div>
@@ -1040,6 +1053,7 @@ di=
 	["Fan",			"0xeF37DC7fdDdFa03d536C845bc19a55b2CaE76278",	"0x1F95004EfaD8A202250F4c5bC166469865FcC9dA",	"1641027739"],
 	["Panic",		"0x37d2b865846293892257717aD9acD4f854AFDe3b",	"0x1a60482b1bca074f3e6e17e89f92adbb578bd63a",	"1644683203"],
 	["Tomb",		"0x6D0176C5ea1e44b08D3dd001b0784cE42F47a3A7",	"0xE236f6890F1824fa0a7ffc39b1597A5A6077Cfe9",	"1644721072"],
+	["Metro",		"0x71F83A462C6d2674c731C0a67a0A6Ddf6562DC2d",	"0x9EA3fBcF8173555e1eb7326B664BeaF1F5f86F01",	"1639464399"],
 
 
 ]
@@ -1085,14 +1099,14 @@ async function gp()
 {
 	for(i=0;i< di.length;i++)
 	{
-		console.log("in gp at i= ",i)
+		//console.log("in gp at i= ",i)
 		if(di[i][2]==""){continue;}
 		gpi(i,di[i][2],"d_"+di[i][0].toLowerCase())
 	}
 }
 
 async function gpi(i,sc,el)
-{	console.log("in gpi at i=",i)
+{	//console.log("in gpi at i=",i)
 	F=new web3.eth.Contract(ab,di[i][2]);
 	if(el=="d_soul")
 	{
@@ -1117,9 +1131,9 @@ async function gpi(i,sc,el)
 	/*
 	if(i%5==0 || i==di.length-1){
 		sortit(2);sortit(2);
-		;console.log("tvlsort");
+		//;console.log("tvlsort");
 		sortit(3);sortit(3);
-		;console.log("liqsort");
+		//;console.log("liqsort");
 	}*/
 }
 
@@ -1268,7 +1282,7 @@ function ads()
 		$("spada").href="https://spoon.finance";
 		adi=2;
 	}
-	console.log(Date.now())
+	//console.log(Date.now())
 }
 ldata={}
 fdata=[]
@@ -1285,7 +1299,7 @@ function pt(d)
 			if(d[j].chains.indexOf("Fantom")>=0){po(d[j]);fdata.push(d[j])}
 		}
 	sortit(3);sortit(3);
-	;console.log("liqsort-llama");
+	//;console.log("liqsort-llama");
 }
 function $v(_){return $(_).getElementsByTagName("td")[2]}
 function ssum (n){
@@ -1303,8 +1317,8 @@ function po (di)
 		(ssum([di.chainTvls["Fantom"],di.chainTvls["Fantom-pool2"],di.chainTvls["Fantom-staking"],di.chainTvls["Fantom-Treasury"],di.chainTvls["Fantom-offers"]])).toFixed(0);
 
 
-		console.log(di.slug)
-		console.log(di.slug,di)
+		//console.log(di.slug)
+		//console.log(di.slug,di)
 
 	if (di.slug ==  "curve" ){			$v("d_curve").innerHTML=v;$v("d_curve").nextElementSibling.innerHTML=v;gobj[0]+=Number(V);ctvl.push(Number(V));ref_os()}
 	if (di.slug ==  "sushiswap" ){		$v("d_sushi").innerHTML=v;}
@@ -2338,6 +2352,43 @@ try{
 
 
 
+	gdq_metro =
+		`query {
+  			uniswapFactories(first: 1) {
+    			id
+    			pairCount	txCount
+    			totalVolumeUSD    totalVolumeNativeCurrency	untrackedVolumeUSD
+    			totalLiquidityUSD	totalLiquidityNativeCurrency
+  			}
+  			uniswapDayDatas#(where:{id: ${date_id}}){
+  			{
+    			id	date
+    			txCount
+    			dailyVolumeUSD	dailyVolumeNativeCurrency	dailyVolumeUntracked
+    			totalVolumeUSD	totalVolumeNativeCurrency
+    			totalLiquidityUSD	totalLiquidityNativeCurrency
+  			}
+        }`
+	gdqr_metro = new XMLHttpRequest();
+	gdqr_metro.open("POST","https://api.thegraph.com/subgraphs/name/tetcoin/metroswap-fantom",true);
+	gdqr_metro.onload=function(){
+		gdqd_metro=JSON.parse(this.response).data;
+		//$("d_metro").getElementsByTagName("td")[3].innerHTML=Number(Number(gdqd_metro.uniswapFactories[0].totalLiquidityUSD).toFixed(0)).toLocaleString()
+		$("d_metro").getElementsByTagName("td")[5].innerHTML=Number(Number(gdqd_metro.uniDayDatas[0].dailyVolumeUSD).toFixed(0)).toLocaleString()
+		//$("d_metro").getElementsByTagName("td")[6].innerHTML=Number(Number(gdqd_metro.uniswapFactories[0].totalVolumeUSD).toFixed(0)).toLocaleString()
+		$("d_metro").getElementsByTagName("td")[7].innerHTML=Number(Number(gdqd_metro.uniswapFactories[0].txCount).toFixed(0)).toLocaleString()
+		//gobj[0]+=Number(gdqd_metro.uniswapFactories[0].totalLiquidityUSD)
+		gobj[1]+=Number(gdqd_metro.uniDayDatas[0].dailyVolumeUSD)
+		//gobj[2]+=Number(gdqd_metro.uniswapFactories[0].totalVolumeUSD)
+		gobj[3]+=Number(gdqd_metro.uniswapFactories[0].txCount)
+		ref_os();
+		sortit(3);sortit(3);
+	}
+	gdqr_metro.send(JSON.stringify({query:gdq_metro}))
+	//console.log("sent metro")
+
+
+
 	gdq_wigo =
 		`query {
   			wigoswapFactories(first: 1) {
@@ -2357,7 +2408,7 @@ try{
 	gdqr_wigo = new XMLHttpRequest();
 	gdqr_wigo.open("POST","https://api.thegraph.com/subgraphs/name/wigoswap/exchange",true);
 	gdqr_wigo.onload=function(){
-		gdqd_wigo=JSON.parse(this.response).data;console.log("WIGO",gdqd_wigo)
+		gdqd_wigo=JSON.parse(this.response).data;//console.log("WIGO",gdqd_wigo)
 		$("d_wigo").getElementsByTagName("td")[3].innerHTML=Number(Number(gdqd_wigo.wigoswapFactories[0].totalLiquidityUSD).toFixed(0)).toLocaleString()
 		$("d_wigo").getElementsByTagName("td")[5].innerHTML=Number(Number(gdqd_wigo.wigoDayDatas[0].dailyVolumeUSD).toFixed(0)).toLocaleString()
 		$("d_wigo").getElementsByTagName("td")[6].innerHTML=Number(Number(gdqd_wigo.wigoswapFactories[0].totalVolumeUSD).toFixed(0)).toLocaleString()
@@ -2370,7 +2421,6 @@ try{
 		sortit(3);sortit(3);
 	}
 	gdqr_wigo.send(JSON.stringify({query:gdq_wigo}))
-	console.log("sent wigo")
 
 
 
@@ -2529,7 +2579,7 @@ neth   = new web3.eth.Contract(ab,NETH);
 		tvlGuru.methods.p_lpt_coin_usd(FUNI_0).call(),
 		funi_0.methods.totalSupply().call()
 	]).then(funi_0_l=>{
-		console.log("at uk",funi_0_l);
+		//console.log("at uk",funi_0_l);
 		funi_0_tl = (Number(funi_0_l[0])*Number(funi_0_l[1]))/1e36;
 		$("d_funi").getElementsByTagName("td")[2].innerHTML=Number(Number(funi_0_tl).toFixed(0)).toLocaleString();
 		$("d_funi").getElementsByTagName("td")[3].innerHTML=Number(Number(funi_0_tl).toFixed(0)).toLocaleString();
@@ -2585,6 +2635,7 @@ neth   = new web3.eth.Contract(ab,NETH);
 		gobj[0]+=tl;
 		ref_os();
 		//console.log("TOMB: ",r)
+		sortit(3);sortit(3);
 	})
 
 
