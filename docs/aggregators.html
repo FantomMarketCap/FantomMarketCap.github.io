@@ -94,12 +94,12 @@ table{
 tbody tr::before {
   counter-increment: rowNumber;
   content: counter(rowNumber) ".";
-  position:relative; top:38px !important;;
+  position:relative; top:32px !important;;
 }
 thead tr::before{
   counter-increment: (rowNumber+1);
   content: "#";
-  position:relative; top:38px
+  position:relative; top:32px
 }
 .cards{
   display: flex;
@@ -127,11 +127,11 @@ thead tr::before{
 #tags span:hover{border: 1px solid;cursor: alias ;color:aliceblue}
 .selcol{color:#020611 !important;background:aqua !important; border:1px #e3e9f2 ridge !important;}
 .discol{color:aqua !important;background:rgba(0,255,255,0.25) !important;border:1px #e3e9f2 dashed !important;}
-tbody td:nth-child(2) {font-size: 2em}
+tbody td:nth-child(2) {font-size: 2.5em}
 td:nth-child(3) img{width:24px;height:24px}
 td:nth-child(3) {
  min-width:min-content;
- width: 180px !important;
+ width: 200px !important;
  height: 75px
 }
 
@@ -143,6 +143,7 @@ td:nth-child(3) {
 	.pgb2{display: grid;grid-template-columns: auto auto}
 	.pgb2s{min-width: 40vw;}
 	td{padding: 10px;line-height:0.8}
+	tbody tr::before {position:relative; top:38px !important;}
 }</style>
 </head>
 <body>
@@ -421,7 +422,7 @@ dexes =	//[ id,	name,	logo,	url]
 	[47,"spiritswap", "spirit.svg"],
 	[48,"solidly", "solidly.svg"],
 	[49,"spiritswap", "spirit.svg"],
-	[49,"spiritswap", "spirit.svg"],
+	[50,"spiritswap", "spirit.svg"],
 ]
 md =
 [
@@ -430,7 +431,7 @@ md =
 	["openocean",		"age", [0,1,2,3,5,6,10,22,29,30,39], 5],
 	["matcha",			"age", [0,1,2,3,10,22,29,30,31], 5],
 	["firebird",		"age", [0,1,2,3,10,21,22,29,30,31,32,33,41,42,43,48], 5],			//
-	["timechainswap",	"age", [0,1,2,3,4,5,6,10,11,12,20,21,22,35,40,41,42,44], 5],		//
+	["timechainswap",	"age", [0,1,2,3,4,5,6,10,11,12,20,21,22,28,30,31,35,40,41,42,44], 5],		//
 	["paraswap",		"age", [0,1,2,3,10,29,31,41], 5],
 ]
 
