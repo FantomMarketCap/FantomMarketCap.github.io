@@ -176,7 +176,7 @@ thead tr::before{
 		<span onclick="togcol(2)" class="selcol">Total Value Locked</span>
 		<span onclick="togcol(3)" class="selcol">Total Liquidity</span>
 		<span onclick="togcol(4)" class="selcol">Age</span>
-		<span onclick="togcol(5)" class="selcol">Volume Today</span>
+		<span onclick="togcol(5)" class="selcol">12AM Volume</span>
 		<span onclick="togcol(6)" class="discol">All Time Volume</span>
 		<span onclick="togcol(7)" class="discol">Total Transactions</span>
 		<span onclick="togcol(8)" class="discol">Unique Users</span>
@@ -189,7 +189,7 @@ thead tr::before{
 				<th onclick="sortit(2)">Value Locked⇅</th>
 				<th onclick="sortit(3)">Net Liquidity⇅</th>
 				<th onclick="sortit(4)">Age⇅</th>
-				<th onclick="sortit(5)">Vol. Today⇅</th>
+				<th onclick="sortit(5)">12AM Volume⇅</th>
 				<th onclick="sortit(6)">All Time Vol.⇅</th>
 				<th onclick="sortit(7)">Total Txns.⇅</th>
 				<th onclick="sortit(8)">Users⇅</th>
@@ -848,6 +848,19 @@ thead tr::before{
 				<td>excalibur.exchange</td>
 				<td><span><a href="https://excalibur.exchange" target="_blank">💱</a><a href="https://excalibur.exchange" target="_blank">🌐</a></span></td>
 			</tr>
+			<tr class="" id="d_redemption">
+				<td>Redemption</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>app.redemption.fi</td>
+				<td><span><a href="https://app.redemption.fi" target="_blank">💱</a><a href="https://redemption.fi" target="_blank">🌐</a><a href="https://discord.com/invite/6UtPRdDCez" target="_blank">🎮</a></span></td>
+			</tr>
 		</tbody>
 	</table>
 </div>
@@ -1082,6 +1095,7 @@ di=
 	["Metro",		"0x71F83A462C6d2674c731C0a67a0A6Ddf6562DC2d",	"0x9EA3fBcF8173555e1eb7326B664BeaF1F5f86F01",	"1639464399"],
 	["Excalibur",	"0xc8Fe105cEB91e485fb0AC338F2994Ea655C78691",	"0x08b3cca975a82cfa6f912e0eedde53a629770d3f",	"1646358543"],
 	["Farmtom",		"0x07fa1db1d12a704b26efd03671573943e6982a6a",	"0xA54354b43AA6bF6AAED94E579AA9a3B88de2528f",	"1644741252"],
+	["Redemption",	"0x71F017289f8243Ccab5928a27f946617c76f17Ef",	"0x50B45D4E37dF16d880eD6d37C3737Bb4126033bA",	"1649038957"],
 ]
 /*
 
@@ -1805,7 +1819,8 @@ try{
 	fetch('https://api.studio.thegraph.com/query/7564/xdaoexchange/1.1.2', {
   	method: 'POST',
   	body: JSON.stringify({
-    	query: `query {
+    	query: `
+    	  query {
   			xdaoFactories(first:1) {
     			id
     			totalVolumeUSD    totalVolumeFTM  untrackedVolumeUSD
@@ -1845,30 +1860,36 @@ try{
 
 	gdq_beethoven =
 		`query {
-  balancers(first:1){
-    totalLiquidity
-    totalSwapCount
-    poolCount
-    totalSwapVolume
-    totalSwapFee
-    id
-  }
-}`
+  			balancers(first:1){
+    			totalLiquidity
+    			totalSwapCount
+    			poolCount
+    			totalSwapVolume
+    			totalSwapFee
+    			id
+  			}
+
+  			balancerSnapshots(first:2,orderBy:timestamp,orderDirection:desc){
+    			id timestamp poolCount
+    			totalLiquidity totalSwapFee totalSwapCount totalSwapVolume
+  			}
+  		}`
 	gdqr_beethoven = new XMLHttpRequest();
-	//old:
 	gdqr_beethoven.open("POST","https://graph-node.beets-ftm-node.com/subgraphs/name/beethovenx",true);
 	//gdqr_beethoven.open("POST","https://graph-node.beets-ftm-node.com/subgraphs/name/beethovenx-v4",true);
 	//gdqr_beethoven.open("POST","https://eu-lb.beets-ftm-node.com/subgraphs/name/beethovenx-canary",true);
 	gdqr_beethoven.onload=function(){
-		gdqd_beethoven=JSON.parse(this.response).data.balancers[0];
-		$("d_beethoven").getElementsByTagName("td")[1].innerHTML=Number(Number(gdqd_beethoven.poolCount).toFixed(0)).toLocaleString()
-		$("d_beethoven").getElementsByTagName("td")[3].innerHTML=Number(Number(gdqd_beethoven.totalLiquidity).toFixed(0)).toLocaleString()
-		$("d_beethoven").getElementsByTagName("td")[6].innerHTML=Number(Number(gdqd_beethoven.totalSwapVolume).toFixed(0)).toLocaleString()
-		$("d_beethoven").getElementsByTagName("td")[7].innerHTML=Number(Number(gdqd_beethoven.totalSwapCount).toFixed(0)).toLocaleString()
-		gobj[0]+=Number(gdqd_beethoven.totalLiquidity)
-		//gobj[1]+=Number(gdqd_beethoven.uniswapDayDatas[0].dailyVolumeUSD)
-		gobj[2]+=Number(gdqd_beethoven.totalSwapVolume)
-		gobj[3]+=Number(gdqd_beethoven.totalSwapCount)
+		gdqd_beethoven=JSON.parse(this.response).data;
+		gdqd_beethoven_v24 = Number(gdqd_beethoven.balancerSnapshots[0].totalSwapVolume) - Number(gdqd_beethoven.balancerSnapshots[1].totalSwapVolume)
+		$("d_beethoven").getElementsByTagName("td")[1].innerHTML=Number(Number(gdqd_beethoven.balancers[0].poolCount).toFixed(0)).toLocaleString()
+		$("d_beethoven").getElementsByTagName("td")[3].innerHTML=Number(Number(gdqd_beethoven.balancers[0].totalLiquidity).toFixed(0)).toLocaleString()
+		$("d_beethoven").getElementsByTagName("td")[5].innerHTML=Number(gdqd_beethoven_v24.toFixed(0)).toLocaleString()
+		$("d_beethoven").getElementsByTagName("td")[6].innerHTML=Number(Number(gdqd_beethoven.balancers[0].totalSwapVolume).toFixed(0)).toLocaleString()
+		$("d_beethoven").getElementsByTagName("td")[7].innerHTML=Number(Number(gdqd_beethoven.balancers[0].totalSwapCount).toFixed(0)).toLocaleString()
+		gobj[0]+=Number(gdqd_beethoven.balancers[0].totalLiquidity)
+		gobj[1]+=gdqd_beethoven_v24
+		gobj[2]+=Number(gdqd_beethoven.balancers[0].totalSwapVolume)
+		gobj[3]+=Number(gdqd_beethoven.balancers[0].totalSwapCount)
 		ref_os();
 		sortit(3);sortit(3);
 	}
@@ -2458,7 +2479,7 @@ try{
     			totalVolumeUSD    totalVolumeETH	untrackedVolumeUSD
     			totalLiquidityUSD	totalLiquidityETH
   			}
-  			uniswapDayDatas#(where:{id: ${date_id}}){
+  			uniswapDayDatas(where:{id: ${date_id}}){
   			{
     			id	date
     			txCount
@@ -2483,7 +2504,81 @@ try{
 		sortit(3);sortit(3);
 	}
 	gdqr_excalibur.send(JSON.stringify({query:gdq_excalibur}))
-	console.log("sent excalibur")
+
+
+
+	gdq_tomb =
+		`query {
+  			uniswapFactories(first: 1)
+  			{
+    			id
+    			pairCount	txCount
+    			totalVolumeUSD    totalVolumeETH	untrackedVolumeUSD
+    			totalLiquidityUSD	totalLiquidityETH
+  			}
+  			uniswapDayDatas(where:{id: ${date_id}})
+  			{
+    			id	date
+    			txCount
+    			dailyVolumeUSD	dailyVolumeETH	dailyVolumeUntracked
+    			totalVolumeUSD	totalVolumeETH
+    			totalLiquidityUSD	totalLiquidityETH
+  			}
+        }`
+	gdqr_tomb = new XMLHttpRequest();
+	gdqr_tomb.open("POST","https://api.thegraph.com/subgraphs/name/jamjomjim/tomb-finance",true);
+	gdqr_tomb.onload=function(){
+		gdqd_tomb=JSON.parse(this.response).data;
+		$("d_tomb").getElementsByTagName("td")[3].innerHTML=Number(Number(gdqd_tomb.uniswapFactories[0].totalLiquidityUSD).toFixed(0)).toLocaleString()
+		$("d_tomb").getElementsByTagName("td")[5].innerHTML=Number(Number(gdqd_tomb.uniswapDayDatas[0].dailyVolumeUSD).toFixed(0)).toLocaleString()
+		$("d_tomb").getElementsByTagName("td")[6].innerHTML=Number(Number(gdqd_tomb.uniswapFactories[0].totalVolumeUSD).toFixed(0)).toLocaleString()
+		$("d_tomb").getElementsByTagName("td")[7].innerHTML=Number(Number(gdqd_tomb.uniswapFactories[0].txCount).toFixed(0)).toLocaleString()
+		gobj[0]+=Number(gdqd_tomb.uniswapFactories[0].totalLiquidityUSD)
+		gobj[1]+=Number(gdqd_tomb.uniswapDayDatas[0].dailyVolumeUSD)
+		gobj[2]+=Number(gdqd_tomb.uniswapFactories[0].totalVolumeUSD)
+		gobj[3]+=Number(gdqd_tomb.uniswapFactories[0].txCount)
+		ref_os();
+		sortit(3);sortit(3);
+	}
+	gdqr_tomb.send(JSON.stringify({query:gdq_tomb}))
+	console.log("sent tomb")
+
+
+
+	gdq_solidly =
+		`query {
+  			uniswapFactories(first: 1) {
+    			id
+    			pairCount	txCount
+    			totalVolumeUSD    totalVolumeETH	untrackedVolumeUSD
+    			totalLiquidityUSD	totalLiquidityETH
+    			txCount
+  			}
+  			uniswapDayDatas(where:{id: ${date_id}}) {
+    			id	date
+    			txCount
+    			dailyVolumeUSD	dailyVolumeETH	dailyVolumeUntracked
+    			totalVolumeUSD	totalVolumeETH
+    			totalLiquidityUSD	totalLiquidityETH
+  			}
+		}`
+	gdqr_solidly = new XMLHttpRequest();
+	gdqr_solidly.open("POST","https://api.thegraph.com/subgraphs/name/spartacus-finance/solidly",true);
+	gdqr_solidly.onload=function(){
+		gdqd_solidly=JSON.parse(this.response).data;
+		$("d_solidly").getElementsByTagName("td")[3].innerHTML=Number(Number(gdqd_solidly.uniswapFactories[0].totalLiquidityUSD).toFixed(0)).toLocaleString()
+		$("d_solidly").getElementsByTagName("td")[5].innerHTML=Number(Number(gdqd_solidly.uniswapDayDatas[0].dailyVolumeUSD).toFixed(0)).toLocaleString()
+		$("d_solidly").getElementsByTagName("td")[6].innerHTML=Number(Number(gdqd_solidly.uniswapFactories[0].totalVolumeUSD).toFixed(0)).toLocaleString()
+		$("d_solidly").getElementsByTagName("td")[7].innerHTML=Number(Number(gdqd_solidly.uniswapFactories[0].txCount).toFixed(0)).toLocaleString()
+		gobj[0]+=Number(gdqd_solidly.uniswapFactories[0].totalLiquidityUSD)
+		gobj[1]+=Number(gdqd_solidly.uniswapDayDatas[0].dailyVolumeUSD)
+		gobj[2]+=Number(gdqd_solidly.uniswapFactories[0].totalVolumeUSD)
+		gobj[3]+=Number(gdqd_solidly.uniswapFactories[0].txCount)
+		ref_os();
+		sortit(3);sortit(3);
+	}
+	gdqr_solidly.send(JSON.stringify({query:gdq_solidly}))
+
 
 
 
@@ -2698,6 +2793,9 @@ neth   = new web3.eth.Contract(ab,NETH);
 		sortit(3);sortit(3);
 	})
 
+/*
+	USING SUBGRAPH NOW
+
 	//TombSwap
 	//0x9d2f00f684960Ec83a3d042F3EAdD70e105f83cb	0	tomb-tshare
 	//0xfca12A13ac324C09e9F43B5e5cfC9262f3Ab3223	1	tomb-ftm
@@ -2725,7 +2823,7 @@ neth   = new web3.eth.Contract(ab,NETH);
 		//console.log("TOMB: ",r)
 		sortit(3);sortit(3);
 	})
-
+*/
 
 
 }
@@ -2745,13 +2843,13 @@ function ref_os()
 function arf()
 {
 	iter = 0;
-	itera = 45000;
+	itera = 100000;
 	var xfr = setInterval(function()
 	{
 
 		gobj=[ctvl[0],0,0,0];
 		//console.log("refreshing stats", Date.now());
-		(iter==0)?itera=45000:gg();
+		(iter==0)?itera=100000:gg();
 		(iter%1e5 == 0)?tc():false;
 		(iter%1e6 == 0)?gp():false;
 		iter++;
