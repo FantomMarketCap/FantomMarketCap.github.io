@@ -155,7 +155,12 @@ td:nth-child(3){display: none}
 <h4>Discover the best Yield Compounders of Fantom with FantomMarketCap!</h4>
 </div>
 <div align="center" class="pgb2">
-	<div align="center" class="pgb2s"><b>Total Compounders</b><br><span id="os_yc_num" style="font-size:2em">7</span></div>
+	<div align="center" class="pgb2s">
+		<b>Total Compounders</b><br>
+		<span id="os_yc_num" style="font-size:2em">
+			10
+		</span>
+	</div>
 </div>
 <br>
 <div class="stage" align="center">
@@ -174,11 +179,11 @@ td:nth-child(3){display: none}
 	<table id="maintable" class="centerstage">
 		<thead>
 			<tr>
-				<td onclick="sortit(0)">Name</td>
-				<td onclick="sortit(2)">Total Value Locked</td>
-				<td onclick="sortit(2)">Age</td>
-				<td onclick="sortit(2)">User Interface</td>
-				<td onclick="sortit(2)">Other Links</td>
+				<td onclick="sortit(0)">Name ⇅</td>
+				<td onclick="sortit(1)">Value Locked ⇅</td>
+				<td onclick="sortit(2)">Age ⇅</td>
+				<td onclick="sortit(3)">User Interface</td>
+				<td onclick="sortit(4)">Other Links</td>
 			</tr>
 		</thead>
 		<tbody>
@@ -457,7 +462,7 @@ function pt(d)
 			fdata.push(d[j])
 		}
 	}
-	sortit(2);sortit(2);
+	sortit(1);sortit(1);
 	//;console.log("liqsort-llama");
 }
 function $v(_){return $(_).getElementsByTagName("td")[1]}
