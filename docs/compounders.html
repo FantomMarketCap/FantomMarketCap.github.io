@@ -1,19 +1,20 @@
 <!doctype html><html><meta charset="UTF-8">
 <head>
-<meta name="description" content="FMC.guru (FantomMarketCap) by FTM.guru : Fantom Opera blockchain token prices, markets, DEX listings, Market Cap, Live Trading Data">
-<meta name="keywords" content="Fantom Opera, FTM, Decentralized Finance, ELITE, 1337, defi, farming, FTM1337">
-<title>Top DeFi Protocols on Fantom Opera | FantomMarketCap - FMC.guru : Fantom Opera Cryptocurrency Tokens Price and Market Capitalization</title>
+<meta name="description" content="FMC.guru (FantomMarketCap) by FTM.guru : Fantom Opera blockchain token prices, markets, DEX listings, Market Cap, Live Trading Data, List of Liquidity Aggregators, Yield COmpounders and more!">
+<meta name="keywords" content="Fantom Opera, List, Dashboard, Tracker, Explorer, FTM, Decentralized Finance, ELITE, 1337, defi, farming, FTM1337">
+<title>List of Compounders - FantomMarketCap | FMC.guru : Fantom Opera Cryptocurrency Tokens Price and Market Capitalization</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="shortcut icon" href="../img/ftm1337.jpg" />
+<link rel="shortcut icon" href="img/FMC.svg" />
 <style>html{background:radial-gradient(circle at center, #127, #122, #100);color:#e3e9f2;font-family:helvetica nueve, helvetica, robotica, ubuntu, roboto, sans-serif;background-attachment: fixed;}
 .toprow{display:grid;grid-template-columns:max-content auto max-content}
 .topfind{text-align:center;min-width:80%}
 .stage{overflow-x:auto}
 table:hover td:first-child,table:hover th:first-child{position: sticky;left:0;background:rgba(17,27,27,0.75);}
 tr:hover td{background: aqua !important;color:#020611;}
-td,th{min-width:max-content;min-width: -moz-max-content}
+tr:hover td a{background: aqua !important;color:#00f;}
+td,th{min-width:max-content;min-width: -moz-max-content;}
 td:first-child{text-align: left}
-td:not(td:first-child){font-family: monospace;font-size:1em}
+td:nth-last-child(2){font-family: mono;font-size:1em}
 thead tr:hover{background: aqua;color:#020611}
 pre{margin:0}
 a{color:white;text-decoration-line:none}
@@ -67,14 +68,10 @@ option{cursor:pointer}
 	border-top: none;
 	border-bottom: none;
 	clip-path: polygon(100% 0%, 0% 0%, 10% 50%, 0% 100%, 100% 1000%);}
-td{padding:2px 5px;text-align:right;}
-td{font-family: mono}
-td:first-child,td:nth-last-child(2){font-family: inherit}
-/*td:nth-child(4),td:nth-child(5),th:nth-child(4),th:nth-child(5){display:none}*/
-td:last-child{text-align:center}
+td{padding:2px 5px;text-align:right;font-weight:bold}
+td:last-child,td:nth-child(3){text-align:center;}
 td{font-size: 1.25em;}
 th{font-size:1.25em;padding: 12px 5px;text-align:center}
-td:nth-last-child(2){font-size: 1em}
 * {
   scrollbar-width: thick;
   scrollbar-color: #07f #147;
@@ -90,12 +87,22 @@ td:nth-last-child(2){font-size: 1em}
   border-radius: 20px;
   border: 3px solid #147;
 }
-.row{margin:5%}
-.row a{color: aqua}
-.row_1{font-size: 1.5em;}
-.row_1 img{width:20px;}
-.row_1:hover{background:aqua;color: navy}
-.soft_2{display: grid;grid-template-columns: auto;text-align: left;margin:0 calc(min(200px,30%))}.cards{
+
+
+table{
+  counter-reset: rowNumber;
+}
+tbody tr::before {
+  counter-increment: rowNumber;
+  content: counter(rowNumber) ".";
+  position:relative; top:10px !important;;
+}
+thead tr::before{
+  counter-increment: (rowNumber+1);
+  content: "#";
+  position:relative; top:10px;
+}
+.cards{
   display: flex;
   flex-wrap:  wrap;
 }
@@ -116,19 +123,15 @@ td:nth-last-child(2){font-size: 1em}
   cursor:pointer;
 }
 .ki{font-size: 3em }
-table{
-  counter-reset: rowNumber;
-}
-tbody tr::before {
-  counter-increment: rowNumber;
-  content: counter(rowNumber) ".";
-	position:relative; top:14px;
-}
-thead tr::before{
-  counter-increment: (rowNumber+1);
-  content: "#";
-	position:relative; top:12px
-}
+#tags{width: max-content}
+#tags span{width: max-content;float: left;border-radius: 10px;padding:0 2px;margin:4px;padding:4px}
+#tags span:hover{border: 1px solid;cursor: alias ;color:aliceblue}
+.selcol{color:#020611 !important;background:aqua !important; border:1px #e3e9f2 ridge !important;}
+.discol{color:aqua !important;background:rgba(0,255,255,0.25) !important;border:1px #e3e9f2 dashed !important;}
+td:last-child{text-align:left}
+
+td:nth-child(3){display: none}
+
 @media(min-width:641px){
 	#spadi{width:80%}
 	.lowerbar{display: grid;grid-template-columns: auto auto auto auto;text-align:center}
@@ -136,14 +139,9 @@ thead tr::before{
 	.pgb{display: grid;grid-template-columns: auto auto auto}
 	.pgb2{display: grid;grid-template-columns: auto auto}
 	.pgb2s{min-width: 40vw;}
-	td{padding: 10px}
-	.row_1{font-size: 2.5em}
-	.row_1 img{width:32px;}
-}
-/*
-td:nth-child(5),td:nth-child(9),th:nth-child(5),th:nth-child(9){display:none}
-*/
-</style>
+	td{padding: 10px;line-height:0.8}
+	tbody tr::before {position:relative; top:10px !important;}
+}</style>
 </head>
 <body>
 
@@ -152,40 +150,117 @@ td:nth-child(5),td:nth-child(9),th:nth-child(5),th:nth-child(9){display:none}
 	<div></div>
 	<div>By <a href="https://ftm.guru">FTM.guru</a></div>
 </div>
-<h1 align="center"><img style="position:relative;top:16px" src="img/FMC.svg" width="64px"> FMC.guru<br><span id="tmc"></span> <span id="tmcunit"></span></h1>
+<h1 align="center"><img style="position:relative;top:16px" src="img/FMC.svg" width="64px"> FMC.guru/compounders<br><span id="tmc"></span> <span id="tmcunit"></span></h1>
 <div align="center">
-<h4>Discover the best Decentralized Finance Protocols of Fantom Opera with FantomMarketCap on FMC.guru!</h4>
+<h4>Discover the best Yield Compounders of Fantom with FantomMarketCap!</h4>
 </div>
-<br>
 <div align="center" class="pgb2">
-	<div align="center" class="pgb2s"><b>Overall TVL on Opera</b><br>$<span id="os_t" style="font-size:2em">0</span></div>
-	<div align="center" class="pgb2s"><b>FMC Listed Protocols</b><br><span id="os_n" style="font-size:2em">0</span></div>
+	<div align="center" class="pgb2s"><b>Total Compounders</b><br><span id="os_yc_num" style="font-size:2em">7</span></div>
 </div>
 <br>
-<h2 align="center">List of Fantom's Top De-Fi Protocols</h2>
+<div class="stage" align="center">
+	<!--
+	<div id="tags">
+		<span onclick="togcol(1)" class="selcol">Pools</span>
+		<span onclick="togcol(2)" class="selcol">Total Value Locked</span>
+		<span onclick="togcol(3)" class="selcol">Total Liquidity</span>
+		<span onclick="togcol(4)" class="discol">Age</span>
+		<span onclick="togcol(5)" class="discol">Volume Today</span>
+		<span onclick="togcol(6)" class="discol">All Time Volume</span>
+		<span onclick="togcol(7)" class="selcol">Total Transactions</span>
+		<span onclick="togcol(8)" class="discol">Unique Users</span>
+	</div>
+	-->
+	<table id="maintable" class="centerstage">
+		<thead>
+			<tr>
+				<td onclick="sortit(0)">Name</td>
+				<td onclick="sortit(2)">Total Value Locked</td>
+				<td onclick="sortit(2)">Age</td>
+				<td onclick="sortit(2)">User Interface</td>
+				<td onclick="sortit(2)">Other Links</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr id="r_reaper">
+				<td>Reaper</td>
+				<td>0</td>
+				<td>0</td>
+				<td><a href="https://reaper.farm" target="_blank">reaper.farm</a></td>
+				<td><a href="https://reaper.farm" target="_blank">🌐</a> <a href="https://docs.reaper.farm" target="_blank">📚</a></td>
+			</tr>
+			<tr id="r_grim">
+				<td>Grim</td>
+				<td>0</td>
+				<td>0</td>
+				<td><a href="https://grim.finance" target="_blank">grim.finance</a></td>
+				<td><a href="https://grim.finance" target="_blank">🌐</a> <a href="https://docs.grim.finance" target="_blank">📚</a></td>
+			</tr>
+			<tr id="r_tarot">
+				<td>Tarot</td>
+				<td>0</td>
+				<td>0</td>
+				<td><a href="https://tarot.finance" target="_blank">tarot.finance</a></td>
+				<td><a href="https://tarot.finance" target="_blank">🌐</a> <a href="https://docs.tarot.finance" target="_blank">📚</a></td>
+			</tr>
+			<tr id="r_ftmguru">
+				<td>ftm.guru</td>
+				<td>0</td>
+				<td>0</td>
+				<td><a href="https://ftm.guru" target="_blank">ftm.guru/GRAIN</a></td>
+				<td><a href="https://ftm.guru" target="_blank">🌐</a> <a href="https://twitter.com/ftm1337" target="_blank">🐦</a> <a href="https://discord.gg/QpyfMarNrV" target="_blank">🎮</a> <a href="https://t.me/FTM1337" target="_blank">✈</a> </td>
+			</tr>
+			<tr id="r_yieldwolf">
+				<td>YieldWolf</td>
+				<td>0</td>
+				<td>0</td>
+				<td><a href="https://YieldWolf.finance" target="_blank">yieldwolf.finance/fantom</a></td>
+				<td><a href="https://YieldWolf.finance" target="_blank">🌐</a> <a href="https://docs.YieldWolf.finance" target="_blank">📚</a></td>
+			</tr>
+			<tr id="r_fastyield">
+				<td>FastYield</td>
+				<td>0</td>
+				<td>0</td>
+				<td><a href="https://fastyield.app" target="_blank">fastyield.finance</a></td>
+				<td><a href="https://fastyield.app" target="_blank">🌐</a> <a href="https://docs.fastyield.app" target="_blank">📚</a></td>
+			</tr>
+			<tr id="r_impermax">
+				<td>Impermax</td>
+				<td>0</td>
+				<td>0</td>
+				<td><a href="https://fantom.impermax.finance" target="_blank">fantom.impermax.finance</a></td>
+				<td><a href="https://fantom.impermax.finance" target="_blank">🌐</a> <a href="https://docs.impermax.finance" target="_blank">📚</a></td>
+			</tr>
+			<tr id="r_beefy">
+				<td>Beefy</td>
+				<td>0</td>
+				<td>0</td>
+				<td><a href="https://beefy.finance" target="_blank">beefy.finance</a></td>
+				<td><a href="https://beefy.finance" target="_blank">🌐</a> <a href="https://docs.beefy.finance" target="_blank">📚</a></td>
+			</tr>
+			<tr id="r_yearn">
+				<td>Yearn</td>
+				<td>0</td>
+				<td>0</td>
+				<td><a href="https://yearn.finance" target="_blank">yearn.finance</a></td>
+				<td><a href="https://yearn.finance" target="_blank">🌐</a> <a href="https://docs.yearn.finance" target="_blank">📚</a></td>
+			</tr>
+			<tr id="r_autofarm">
+				<td>AutoFarm</td>
+				<td>0</td>
+				<td>0</td>
+				<td><a href="https://autofarm.network" target="_blank">autofarm.network</a></td>
+				<td><a href="https://autofarm.network" target="_blank">🌐</a> <a href="https://docs.autofarm.network" target="_blank">📚</a></td>
+			</tr>
+		<tbody>
+	</table>
+</div>
+<!--<div align="center"><br><b>1 2 3 4 5 … 6 7 8 9 10</b></div>-->
 <br>
-<table>
-	<thead>
-		<tr>
-			<td onclick="sortit(0)">Name</td>
-			<td onclick="sortit(1)">Total Value Locked</td>
-			<td onclick="sortit(2)">% 1hr</td>
-			<td onclick="sortit(3)">% 24hr</td>
-			<td onclick="sortit(4)">% Week</td>
-			<td onclick="sortit(5)">Token</td>
-			<td onclick="sortit(6)">Market Cap</td>
-			<td onclick="sortit(7)">TVL/MC</td>
-			<td onclick="sortit(8)">Website / Interface</td>
-	</thead>
-	<tbody id="stage" class="stage" align="center">
-		<tr id="ftm1337"></tr>
-	</tbody>
-</table>
 <br>
 <br>
-<br>
-<div align="center" style="margin:0;padding:0"><u>Legend:</u><br>💱DEX-UI 🚜Farm<br>📊Analytics 🌐Website<br>🎮Discord ✈Telegram 🐦Twitter<br>🐙Github 🔎Explorer</div>
-
+<div align="center" style="margin:0;padding:0"><u>Legend:</u><br>💱DEX-UI 🚜Farm<br>📊Analytics 🌐Website<br>🎮Discord ✈Telegram 🐦Twitter<br>🐙Github 🔎Explorer
+<br><br>List does not include single-platform or native-only compounders.</div>
 <br>
 <br><br>
 <hr class="hhr">
@@ -230,7 +305,7 @@ td:nth-child(5),td:nth-child(9),th:nth-child(5),th:nth-child(9){display:none}
 <br>
 <br>
 <h5 align="center" id="disclaimer"><b><u>Disclaimer & Notice</u></b><br>
-All information presented here is only for aesthetic uses and posesses no validity to settle any claims. It is also non-exhaustive and prone to error. Advertisements are not endorsements. This dashboard is ultra-real time - It means that the data on this page has zero latency, unlike CMC or CG which have 1-10 minutes old data. FTM.guru and FMC.guru are trying to keep up with the <b>Fantom Fast</b> motto. <i>A much deserved shoutout to all developers on F.O., ftmscan.com, defiLllama, thegraph and rpc.ftm.tools for their benign Services!</i>A "0" represents anomalities in data and are masked to remove pollution.<br>We encourage you to report inconsistencies, ask business queries, request listing or start an ad campaign at one of our community channels:<br>
+All information presented here is only for aesthetic uses and posesses no validity to settle any claims. It is also non-exhaustive and prone to error. Advertisements are not endorsements. This dashboard is ultra-real time - It means that the data on this page has zero latency, unlike CMC or CG which have 1-10 minutes old data. FTM.guru and FMC.guru are trying to keep up with the <b>Fantom Fast</b> motto. <i>A much deserved shoutout to all developers on F.O., ftmscan.com, defiLllama, thegraph and rpc.ftm.tools for their benign Services!</i> A "-" or a "0" represents unavailability or anomalities in data and it is masked to suppress pollution.<br>We encourage you to report inconsistencies, ask business queries, request new Token, Protocol or DEX listings or start an ad campaign at one of our community channels:<br>
 <b><a href="https://t.me/FTM1337" target="_blank">Telegram</a> or <a href="https://discord.gg/QpyfMarNrV" target="_blank">Discord.</a></b><!--
 Our Address: 0x921Ed37f62CBe4d86D38b720EF4a4a44B24a1C5D--></h5>
 <br>
@@ -339,27 +414,83 @@ Our Address: 0x921Ed37f62CBe4d86D38b720EF4a4a44B24a1C5D--></h5>
 </script>
 <script>
 o={}
+function $(_) {return document.getElementById(_);}
+aa=$("maintable").getElementsByTagName("tbody")[0].getElementsByTagName("tr");
 
 window.addEventListener('load',function()
 {
-	if(window.ethereum&&Number(window.ethereum.chainId==250)){web3 = new Web3(web3.currentProvider);}
-	else{web3 = new Web3("https://rpc.ftm.tools")}
-	basics();
+	//if(window.ethereum&&Number(window.ethereum.chainId==250)){web3 = new Web3(web3.currentProvider);}
+	//else{web3 = new Web3("https://rpc.ftm.tools")}
+	//basics();
+	//paintsrc();
+	//fillage();
+	tc()
+	//sortit(1);sortit(1);
 }, false);
-function $(_) {return document.getElementById(_);}
 function basics()
 {
 	//advertise()
-	//copsca()
-	//gp()
+	copsca()
+	fillage()
+	gp()
 	tc()
-	//gg()
+	gg()
+	arf()
 }
 
 
+ldata={}
+fdata=[]
+async function tc()
+{
+//	pt(d1)
+	fetch("https://api.llama.fi/protocols").then(d1=>{return d1.json()}).then(d2d=>{pt(d2d);ldata=d2d})
+}
+function pt(d)
+{
+	//console.log(d);
+	for(j=0;j< d.length;j++)
+	{
+		if(d[j].chains.indexOf("Fantom")>=0)
+		{
+			po(d[j]);
+			fdata.push(d[j])
+		}
+	}
+	sortit(2);sortit(2);
+	//;console.log("liqsort-llama");
+}
+function $v(_){return $(_).getElementsByTagName("td")[1]}
+function ssum (n){
+	let s = 0;
+	for(i=0;i < n.length;i++){	if(isFinite(n[i])){s+=Number(n[i])}	}
+	return s;
+}
+function po (di)
+{
+	v=typeof di.chainTvls.Fantom == "undefined"?
+		Number(di.tvl.toFixed(0)).toLocaleString():
+		Number((ssum([di.chainTvls["Fantom"],di.chainTvls["Fantom-pool2"],di.chainTvls["Fantom-staking"],di.chainTvls["Fantom-Treasury"],di.chainTvls["Fantom-offers"]])).toFixed(0)).toLocaleString();
+	V=typeof di.chainTvls.Fantom == "undefined"?
+		Number((di.tvl).toFixed(0)) :
+		(ssum([di.chainTvls["Fantom"],di.chainTvls["Fantom-pool2"],di.chainTvls["Fantom-staking"],di.chainTvls["Fantom-Treasury"],di.chainTvls["Fantom-offers"]])).toFixed(0);
 
 
+		//console.log(di.slug)
+		//console.log(di.slug,di)
 
+
+	if (di.slug ==  "yearn-finance")	{		$v("r_yearn").innerHTML=v;}
+	if (di.slug ==  "tarot")			{		$v("r_tarot").innerHTML=v;}
+	if (di.slug ==  "autofarm")			{		$v("r_autofarm").innerHTML=v;}
+	if (di.slug ==  "beefy-finance")	{		$v("r_beefy").innerHTML=v;}
+	if (di.slug ==  "reaper-farm")		{		$v("r_reaper").innerHTML=v;}
+	if (di.slug ==  "ftmguru")			{		$v("r_ftmguru").innerHTML=v;}
+	if (di.slug ==  "impermax-finance")	{		$v("r_impermax").innerHTML=v;}
+	if (di.slug ==  "grim-finance")		{		$v("r_grim").innerHTML=v;}
+	if (di.slug ==  "fastyield-finance"){		$v("r_fastyield").innerHTML=v;}
+	if (di.slug ==  "yieldwolf")		{		$v("r_yieldwolf").innerHTML=v;}
+}
 
 function fornum(n,d)
 {
@@ -383,11 +514,11 @@ function sortit(n) {
   while (z) {
     z = false;
     r = t.rows;
-    for (i = 1; i < (r.length - 1); i++) {
+    for (i = 0; i < (r.length - 1); i++) {
       v = false;
-      x = (r[i].getElementsByTagName("TD")[n].innerHTML).replace(/,| |\.|\$|%/g,'');
+      x = (r[i].getElementsByTagName("TD")[n].innerHTML).replaceAll(/,| |\.|\$|%/g,'');
       if(isFinite(x)){x=Number(x)}else{x=x.toLowerCase()}
-      y = (r[i + 1].getElementsByTagName("TD")[n].innerHTML).replace(/,| |\.|\$|%/g,'');
+      y = (r[i + 1].getElementsByTagName("TD")[n].innerHTML).replaceAll(/,| |\.|\$|%/g,'');
       if(isFinite(y)){y=Number(y)}else{y=y.toLowerCase()}
       if (b == "a") {
         if ((x) > (y)) {
@@ -413,7 +544,6 @@ function sortit(n) {
     }
   }
 }
-/*
 function copsca()
 {
 	rs=$("maintable").getElementsByTagName("tbody")[0].getElementsByTagName("tr");
@@ -433,7 +563,6 @@ function copsc(el)
 	document.execCommand('copy',false);
 	inp.remove();
 }
-*/
 var adi=1;
 function advertise()
 {
@@ -455,155 +584,28 @@ function ads()
 	}
 	console.log(Date.now())
 }
-pft=[];
-lprops =[
-  "id",
-  "name",
-  "address",
-  "symbol",
-  "url",
-  "description",
-  "chain",
-  "logo",
-  "audits",
-  "audit_note",
-  "gecko_id",
-  "cmcId",
-  "category",
-  "chains",
-  "module",
-  "twitter",
-  "audit_links",
-  "oracles",
-  "slug",
-  "tvl",
-  "chainTvls",
-  "change_1h",
-  "change_1d",
-  "change_7d",
-  "fdv",
-  "mcap",
-  "forkedFrom",
-  "staking",
-  "listedAt",
-  "pool2"
-]
-async function tc()
+
+
+
+function togcol(e)
 {
-//	pt(d1)
-	fetch("https://api.llama.fi/protocols").then(d1=>{return d1.json()}).then(d2d=>{pt(d2d)})
-}
-function pt(d)
-{
-	//console.log(d);
-	for(j=0;j< d.length;j++)
-		{
-			if(d[j].chains.indexOf("Fantom")>=0){pft.push(d[j])}
-		}
-	skel(pft)
-}
-function $v(_){return $(_).getElementsByTagName("td")[2]}
-function skel(d){
-	stage=$("stage");
-	ttvl=0;
-	for(i=0;i< d.length;i++)
-	{
-		if(d[i].slug=="multi-chain-miner"){continue}//skip simple ponzi
-		d[i].TVL =
-			typeof d[i].chainTvls.Fantom == "undefined"?
-			d[i].tvl:
-			d[i].chainTvls.Fantom;
-		ftm1337=document.createElement("tr");
-		ftm1337.setAttribute("class","row");
-		row=document.createElement("tr");
-		row.setAttribute("class","row");
-		if(d[i].slug=="ftmguru"){
-			ftm1337.innerHTML = `
-				<td>${d[i].name}</td>
-				<td>${"$"+Number((d[i].TVL).toFixed()).toLocaleString()}</td>
-				<td>${_$(d[i].change_1h).toFixed(2)+"%"}</td>
-				<td>${_$(d[i].change_1d).toFixed(2)+"%"}</td>
-				<td>${_$(d[i].change_7d).toFixed(2)+"%"}</td>
-				<!--<td>${d[i].description}</td><!--hide-->
-				<td>${d[i].symbol}</td>
-				<td>${"$"+Number((_$(d[i].mcap)).toFixed()).toLocaleString()}</td>
-				<td>${_$(d[i].mcap)>1?(_$(d[i].mcap)/d[i].tvl).toFixed(4):1}</td>
-				<td><a href="${d[i].url}" target="_blank">${d[i].url}</a></td>
-			`;
-			ttvl+=d[i].TVL;
-			$("ftm1337").innerHTML = ftm1337.innerHTML;
-		}
-		else{
-			row.innerHTML = `
-				<td>${d[i].name}</td>
-				<td>${"$"+Number((d[i].TVL).toFixed()).toLocaleString()}</td>
-				<td>${_$(d[i].change_1h).toFixed(2)+"%"}</td>
-				<td>${_$(d[i].change_1d).toFixed(2)+"%"}</td>
-				<td>${_$(d[i].change_7d).toFixed(2)+"%"}</td>
-				<!--<td>${d[i].description}</td><!--hide-->
-				<td>${d[i].symbol}</td>
-				<td>${"$"+Number((_$(d[i].mcap)).toFixed()).toLocaleString()}</td>
-				<td>${_$(d[i].mcap)>1?(_$(d[i].mcap)/d[i].tvl).toFixed(4):1}</td>
-				<td><a href="${d[i].url}" target="_blank">${d[i].url}</a></td>
-			`;
-			ttvl+=d[i].TVL;
-			stage.append(row);
-		}
-		$("os_n").innerHTML = (d.length).toLocaleString();
-		$("os_t").innerHTML = Number((ttvl).toFixed()).toLocaleString();
-	}
-	sortit(1);sortit(1)
-}
-function _$(x)
-{
-	if(x==null || typeof x == "undefined") {return 1}
-	else return Number(x)
-}
-function ref_os()
-{
-	$("os_l").innerHTML = Number(Number(gobj[0]).toFixed(0))
-	$("os_v").innerHTML = Number(Number(gobj[0]/((Date.now()%86400000)/1000)).toFixed(0));
-	$("os_e").innerHTML = Number(Number(gobj[2]).toFixed(0))
-	$("os_t").innerHTML = Number(Number(gobj[3]).toFixed(0))
+	ad=document.getElementsByTagName("td")
+	for(i=0;i< ad.length/11;i++){ad[11*i+e].style.display=ad[11*i+e].style.display!="block"?"block":"none"}
+	document.getElementsByTagName("th")[e].style.display=document.getElementsByTagName("th")[e].style.display!="block"?"block":"none";
+	if($("tags").getElementsByTagName("span")[e-1].className=="selcol")
+		{$("tags").children[e-1].setAttribute("class","discol")}
+	else{$("tags").children[e-1].setAttribute("class","selcol")}
 }
 
-function sortit(n) {
-  var t, r, z, i, x, y, v, b, c = 0;
-  t = document.getElementById("stage");
-  z = true;
-  b = "a";
-  while (z) {
-    z = false;
-    r = t.rows;
-    for (i = 0; i < (r.length - 1); i++) {
-      v = false;
-      x = (r[i].getElementsByTagName("TD")[n].innerHTML).replace(/,| |\.|\$|%/g,'');
-      if(isFinite(x)){x=Number(x)}else{x=x.toLowerCase()}
-      y = (r[i + 1].getElementsByTagName("TD")[n].innerHTML).replace(/,| |\.|\$|%/g,'');
-      if(isFinite(y)){y=Number(y)}else{y=y.toLowerCase()}
-      if (b == "a") {
-        if ((x) > (y)) {
-          v= true;
-          break;
-        }
-      } else if (b == "d") {
-        if ((x) < (y)) {
-          v = true;
-          break;
-        }
-      }
-    }
-    if (v) {
-      r[i].parentNode.insertBefore(r[i + 1], r[i]);
-      z = true;
-      c ++;
-    } else {
-      if (c == 0 && b == "a") {
-        b = "d";
-        z = true;
-      }
-    }
-  }
+function fillage()
+{
+	n = Date.now();
+	di=md;
+	for(i=0;i< di.length;i++)
+	{
+		//$("r_"+di[i][0].toLowerCase()).getElementsByTagName("td")[4].innerHTML=((n-di[i][3]*1e3)/(86400000)).toFixed()
+		$("r_"+di[i][0].toLowerCase()).getElementsByTagName("td")[1].innerHTML=di[i][2].length
+	}
 }
 </script><!--
 <script defer type="text/javascript" async="true">
