@@ -264,6 +264,13 @@ td:nth-child(3){display: none}
 				<td><a href="https://Matrix.Farm" target="_blank">matrix.farm</a></td>
 				<td><a href="https://Matrix.Farm" target="_blank">🌐</a> <a href="https://docs.Matrix.Farm" target="_blank">📚</a></td>
 			</tr>
+			<tr id="r_beluga">
+				<td>Beluga</td>
+				<td>0</td>
+				<td>0</td>
+				<td><a href="https://beluga.fi" target="_blank">beluga.fi</a></td>
+				<td><a href="https://beluga.fi" target="_blank">🌐</a> <a href="https://docs.beluga.fi" target="_blank">📚</a></td>
+			</tr>
 		<tbody>
 	</table>
 </div>
@@ -437,6 +444,7 @@ window.addEventListener('load',function()
 	//paintsrc();
 	//fillage();
 	tc()
+	$("os_yc_num")=aa.length-1;
 	//sortit(1);sortit(1);
 }, false);
 function basics()
@@ -503,6 +511,7 @@ function po (di)
 	if (di.slug ==  "fastyield-finance"){		$v("r_fastyield").innerHTML=v;}
 	if (di.slug ==  "yieldwolf")		{		$v("r_yieldwolf").innerHTML=v;}
 	if (di.slug ==  "matrix-farm")		{		$v("r_matrixfarm").innerHTML=v;}
+	if (di.slug ==  "beluga")			{		$v("r_beluga").innerHTML=v;}
 }
 
 function fornum(n,d)
