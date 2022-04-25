@@ -848,6 +848,19 @@ thead tr::before{
 				<td>excalibur.exchange</td>
 				<td><span><a href="https://excalibur.exchange" target="_blank">💱</a><a href="https://excalibur.exchange" target="_blank">🌐</a></span></td>
 			</tr>
+			<tr class="" id="d_woofi">
+				<td>WooFI</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>fi.woo.org</td>
+				<td><span><a href="https://fi.woo.org/" target="_blank">💱</a><a href="https://woo.org" target="_blank">🌐</a></span></td>
+			</tr>
 			<tr class="" id="d_redemption">
 				<td>Redemption</td>
 				<td>0</td>
@@ -1104,6 +1117,7 @@ di=
 	["Metro",		"0x71F83A462C6d2674c731C0a67a0A6Ddf6562DC2d",	"0x9EA3fBcF8173555e1eb7326B664BeaF1F5f86F01",	"1639464399"],
 	["Excalibur",	"0xc8Fe105cEB91e485fb0AC338F2994Ea655C78691",	"0x08b3cca975a82cfa6f912e0eedde53a629770d3f",	"1646358543"],
 	["Farmtom",		"0x07fa1db1d12a704b26efd03671573943e6982a6a",	"0xA54354b43AA6bF6AAED94E579AA9a3B88de2528f",	"1644741252"],
+	["WooFI",		"0x37b5a5a730dad670874f26cc5507bb1b9705e447",	"0x9503E7517D3C5bc4f9E4A1c6AE4f8B33AC2546f2",	"1649321085"],
 	["Redemption",	"0x71F017289f8243Ccab5928a27f946617c76f17Ef",	"0x50B45D4E37dF16d880eD6d37C3737Bb4126033bA",	"1649038957"],
 ]
 /*
@@ -1171,6 +1185,10 @@ async function gpi(i,sc,el)
 	{
 		F=new web3.eth.Contract(ab,sc);
 		F.methods.pool_count().call((e,r)=>{$(el).getElementsByTagName("td")[1].innerHTML=(Number(r)+2).toLocaleString()})
+	}
+	else if(el=="d_woofi")
+	{
+		$(el).getElementsByTagName("td")[1].innerHTML=1
 	}
 	else
 	{
@@ -1403,6 +1421,8 @@ function po (di)
 	if (di.slug ==  "wigoswap")			{$v("d_wigo").innerHTML=v;}
 	if (di.slug ==  "tomb-finance")		{$v("d_tomb").innerHTML=v;}
 	if (di.slug ==  "solidly")	{$v("d_solidly").innerHTML=v;$v("d_solidly").nextElementSibling.innerHTML=v;gobj[0]+=Number(V);ref_os()}
+	if (di.slug ==  "excalibur")		{$v("d_excalibur").innerHTML=v;}
+	if (di.slug ==  "woofi")			{$v("d_woofi").innerHTML=v;}
 }
 date_id = Date.now();
 date_id = date_id/1000 - (date_id/1000)%1;
@@ -2488,7 +2508,7 @@ try{
     			totalVolumeUSD    totalVolumeETH	untrackedVolumeUSD
     			totalLiquidityUSD	totalLiquidityETH
   			}
-  			uniswapDayDatas(where:{id: ${date_id}}){
+  			uniswapDayDatas(where:{id: ${date_id}})
   			{
     			id	date
     			txCount
@@ -2833,6 +2853,19 @@ neth   = new web3.eth.Contract(ab,NETH);
 		sortit(3);sortit(3);
 	})
 */
+
+
+
+	//WooFI
+	woofi_pp_1 = fetch("https://openapi.debank.com/v1/user/chain_balance?id=0x9503e7517d3c5bc4f9e4a1c6ae4f8b33ac2546f2&chain_id=ftm")
+	.then(res=>res.json())
+	.then(rd=>{
+		$("d_woofi").getElementsByTagName("td")[3].innerHTML=Number(Number(rd.usd_value).toFixed(0)).toLocaleString()
+		gobj[0]+=Number(rd.usd_value)
+		ref_os();
+		sortit(3);sortit(3);
+
+	});
 
 
 }
