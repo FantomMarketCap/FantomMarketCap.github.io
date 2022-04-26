@@ -15,6 +15,7 @@ td,th{min-width:max-content;min-width: -moz-max-content}
 td:first-child{text-align: left}
 td:not(td:first-child){font-family: monospace;font-size:1em}
 thead tr:hover{background: aqua;color:#020611}
+thead{font-weight:bold}
 pre{margin:0}
 a{color:white;text-decoration-line:none}
 hr{box-shadow: rgba(0,255,255,0.2) 0px 0px 10px 10px;background: #090919;border-radius: 15px;border:aqua 2px solid;}
@@ -502,17 +503,34 @@ function pt(d)
 		}
 	skel(pft)
 }
+function ssum (n){_tvl_
+	let s = 0;
+	for(i=0;i < n.length;i++){	if(isFinite(n[i])){s+=Number(n[i])}	}
+	return s;
+}
 function $v(_){return $(_).getElementsByTagName("td")[2]}
 function skel(d){
 	stage=$("stage");
 	ttvl=0;
 	for(i=0;i< d.length;i++)
 	{
-		if(d[i].slug=="multi-chain-miner"){continue}//skip simple ponzi
-		d[i].TVL =
-			typeof d[i].chainTvls.Fantom == "undefined"?
-			d[i].tvl:
-			d[i].chainTvls.Fantom;
+		//if(d[i].slug=="multi-chain-miner"){continue}//skip simple ponzi
+
+
+		di = d[i];
+		let v = 0
+		if (typeof di.chainTvls["Fantom"] !== "undefined" ) 		{	v += di.chainTvls["Fantom"] }
+		if (typeof di.chainTvls["Fantom-pool2"] !== "undefined" )	{	v += di.chainTvls["Fantom-pool2"] }
+		if (typeof di.chainTvls["Fantom-staking"] !== "undefined" )	{	v += di.chainTvls["Fantom-staking"] }
+		if (typeof di.chainTvls["Fantom-Treasury"] !== "undefined" ){	v += di.chainTvls["Fantom-Treasury"] }
+		if (typeof di.chainTvls["Fantom-offers"] !== "undefined" )	{	v += di.chainTvls["Fantom-offers"] }
+
+
+
+		let _tvl_ = Number(v)
+		//console.log(di.slug,_tvl_,ttvl)
+
+
 		ftm1337=document.createElement("tr");
 		ftm1337.setAttribute("class","row");
 		row=document.createElement("tr");
@@ -520,33 +538,33 @@ function skel(d){
 		if(d[i].slug=="ftmguru"){
 			ftm1337.innerHTML = `
 				<td>${d[i].name}</td>
-				<td>${"$"+Number((d[i].TVL).toFixed()).toLocaleString()}</td>
+				<td>${"$"+Number((_tvl_).toFixed()).toLocaleString()}</td>
 				<td>${_$(d[i].change_1h).toFixed(2)+"%"}</td>
 				<td>${_$(d[i].change_1d).toFixed(2)+"%"}</td>
 				<td>${_$(d[i].change_7d).toFixed(2)+"%"}</td>
 				<!--<td>${d[i].description}</td><!--hide-->
 				<td>${d[i].symbol}</td>
 				<td>${"$"+Number((_$(d[i].mcap)).toFixed()).toLocaleString()}</td>
-				<td>${_$(d[i].mcap)>1?(_$(d[i].mcap)/d[i].tvl).toFixed(4):1}</td>
+				<td>${_$(d[i].mcap)>1?(_$(d[i].mcap)/_tvl_).toFixed(4):1}</td>
 				<td><a href="${d[i].url}" target="_blank">${d[i].url}</a></td>
 			`;
-			ttvl+=d[i].TVL;
+			ttvl+=ttvl;
 			$("ftm1337").innerHTML = ftm1337.innerHTML;
 		}
 		else{
 			row.innerHTML = `
 				<td>${d[i].name}</td>
-				<td>${"$"+Number((d[i].TVL).toFixed()).toLocaleString()}</td>
+				<td>${"$"+Number((_tvl_).toFixed()).toLocaleString()}</td>
 				<td>${_$(d[i].change_1h).toFixed(2)+"%"}</td>
 				<td>${_$(d[i].change_1d).toFixed(2)+"%"}</td>
 				<td>${_$(d[i].change_7d).toFixed(2)+"%"}</td>
 				<!--<td>${d[i].description}</td><!--hide-->
 				<td>${d[i].symbol}</td>
 				<td>${"$"+Number((_$(d[i].mcap)).toFixed()).toLocaleString()}</td>
-				<td>${_$(d[i].mcap)>1?(_$(d[i].mcap)/d[i].tvl).toFixed(4):1}</td>
+				<td>${_$(d[i].mcap)>1?(_$(d[i].mcap)/_tvl_).toFixed(4):1}</td>
 				<td><a href="${d[i].url}" target="_blank">${d[i].url}</a></td>
 			`;
-			ttvl+=d[i].TVL;
+			ttvl+=Number(_tvl_);
 			stage.append(row);
 		}
 		$("os_n").innerHTML = (d.length).toLocaleString();
