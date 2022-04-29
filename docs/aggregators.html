@@ -158,8 +158,8 @@ td:nth-child(3) {
 <h4>Discover the best DEX aggregators of Fantom Opera with FantomMarketCap!</h4>
 </div>
 <div align="center" class="pgb2">
-	<div align="center" class="pgb2s"><b>Total Aggregators</b><br><span id="os_ag_num" style="font-size:2em">7</span></div>
-	<div align="center" class="pgb2s"><b>Aggregated Sources</b><br><span id="os_ag_num" style="font-size:2em">28</span></div>
+	<div align="center" class="pgb2s"><b>Total Aggregators</b><br><span id="os_agr" style="font-size:2em">7</span></div>
+	<div align="center" class="pgb2s"><b>Aggregated Sources</b><br><span id="os_src" style="font-size:2em">28</span></div>
 </div>
 <br>
 <div class="stage" align="center">
@@ -371,6 +371,10 @@ function basics()
 }
 function paintsrc()
 {
+	adx = new Set
+	for(i=0;i< dexes.length;i++){adx.add(dexes[i][1])}
+	$("os_src").innerHTML = adx.size;
+	$("os_agr").innerHTML = md.length;
 	for(i=0;i< md.length;i++)
 	{
 		thisrow = $("r_"+md[i][0]);
@@ -399,8 +403,8 @@ dexes =	//[ id,	name,	logo,	url]
 	[14,"spiritswap", "spirit.svg"],
 	[15,"spiritswap", "spirit.svg"],
 	[16,"spiritswap", "spirit.svg"],
-	[17,"spiritswap", "spirit.svg"],
-	[18,"spiritswap", "spirit.svg"],
+	[17,"operaswap", "operaswap.png"],
+	[18,"wraithswap", "wraith.svg"],
 	[19,"totemswap", "totem.png"],
 	[20,"shibaswap", "shiba.sq.svg"],
 	[21,"soulswap", "soul.webp"],
@@ -436,6 +440,7 @@ dexes =	//[ id,	name,	logo,	url]
 	[51,"spiritswap", "spirit.svg"],
 	[52,"spiritswap", "spirit.svg"],
 	[53,"1inch", "1inch.svg"],
+	[54,"woofi", "woofi.png"],
 ]
 md =
 [
@@ -443,8 +448,8 @@ md =
 	["kyberswap",		"age", [0,1,2,3,5,10,22,29,30,31,34], 5],
 	["openocean",		"age", [0,1,2,3,5,6,10,21,22,29,30,31,32,39,41,42,43,47,48], 5],
 	["matcha",			"age", [0,1,2,3,10,22,29,30,31], 5],
-	["firebird",		"age", [0,1,2,3,10,21,22,29,30,31,32,33,41,42,43,45,47,48,49], 5],
-	["timechainswap",	"age", [0,1,2,3,4,5,6,10,11,12,20,21,22,28,30,31,35,40,41,42,44], 5],
+	["firebird",		"age", [0,1,2,3,10,21,22,29,30,31,32,33,41,42,43,45,47,48,49,54], 5],
+	["timechainswap",	"age", [0,1,2,3,4,5,6,10,11,12,17,18,20,21,22,28,30,31,35,40,41,42,44], 5],
 	["paraswap",		"age", [0,1,2,3,10,29,31,41], 5],
 	["1inch",			"age", [0,1,2,3,10,11,22,29,31,42,47,48], 5],
 ]
