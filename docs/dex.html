@@ -874,6 +874,19 @@ thead tr::before{
 				<td>app.redemption.fi</td>
 				<td><span><a href="https://app.redemption.fi" target="_blank">💱</a><a href="https://redemption.fi" target="_blank">🌐</a><a href="https://discord.com/invite/6UtPRdDCez" target="_blank">🎮</a></span></td>
 			</tr>
+			<tr class="" id="d_tetu">
+				<td>Tetu</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>app.tetu.io</td>
+				<td><span><a href="https://app.tetu.io" target="_blank">💱</a><a href="https://tetu.io" target="_blank">🌐</a><a href="https://discord.com/invite/" target="_blank">🎮</a></span></td>
+			</tr>
 		</tbody>
 	</table>
 </div>
@@ -1119,6 +1132,7 @@ di=
 	["Farmtom",		"0x07fa1db1d12a704b26efd03671573943e6982a6a",	"0xA54354b43AA6bF6AAED94E579AA9a3B88de2528f",	"1644741252"],
 	["WooFI",		"0x37b5a5a730dad670874f26cc5507bb1b9705e447",	"0x9503E7517D3C5bc4f9E4A1c6AE4f8B33AC2546f2",	"1649321085"],
 	["Redemption",	"0x71F017289f8243Ccab5928a27f946617c76f17Ef",	"0x50B45D4E37dF16d880eD6d37C3737Bb4126033bA",	"1649038957"],
+	["Tetu",		"0x1c7F7210a7ACc13d26824A8267cf9CA5D4020Bc1",	"0x3651465aa43AfC9bd45613cF3cD8D4439E60123C",	"1671453542"],
 ]
 /*
 
@@ -1423,6 +1437,7 @@ function po (di)
 	if (di.slug ==  "solidly")	{$v("d_solidly").innerHTML=v;$v("d_solidly").nextElementSibling.innerHTML=v;gobj[0]+=Number(V);ref_os()}
 	if (di.slug ==  "excalibur")		{$v("d_excalibur").innerHTML=v;}
 	if (di.slug ==  "woofi")			{$v("d_woofi").innerHTML=v;}
+	if (di.slug ==  "tetu")				{$v("r_tetu").innerHTML=v;}
 }
 date_id = Date.now();
 date_id = date_id/1000 - (date_id/1000)%1;
