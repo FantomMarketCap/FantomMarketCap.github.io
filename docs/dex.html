@@ -846,8 +846,8 @@ thead tr::before{
 				<td>0</td>
 				<td>0</td>
 				<td>0</td>
-				<td>excalibur.exchange</td>
-				<td><span><a href="https://excalibur.exchange" target="_blank">💱</a><a href="https://excalibur.exchange" target="_blank">🌐</a></span></td>
+				<td>farmtom.com</td>
+				<td><span><a href="https://farmtom.com" target="_blank">💱</a><span></td>
 			</tr>
 			<tr class="" id="d_woofi">
 				<td>WooFI</td>
@@ -926,6 +926,19 @@ thead tr::before{
 				<td>0</td>
 				<td>frax.finance</td>
 				<td><span><a href="https://frax.finance" target="_blank">💱</a></span></td>
+			</tr>
+			<tr class="" id="d_nova">
+				<td>Nova DEX</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>fusion.novanetwork.io</td>
+				<td><span><a href="https://fusion.novanetwork.io" target="_blank">💱</a></span></td>
 			</tr>
 		</tbody>
 	</table>
@@ -1176,6 +1189,7 @@ di=
 	["Spartacus",	"0x8C7261F0d330CAaAc9526948cCC16b4b3B896003",	"0x535646cf57E4155Df723bb24625f356d98ae9D2F",	"1650530881"],
 	["Maki",		"0x58C408AEDB2C6868a5599E4ad2Eb4e260cBCd686",	"0x5003Aba8e9F72d40927f1305ee370E426d8A5321",	"1645630066"],
 	["Frax",		"0xf55c563148ca0c0f1626834ec1b8651844d76792",	"0xf55c563148ca0c0f1626834ec1b8651844d76792",	"1653248909"],
+	["Nova",		"0xb2a89c56538f56999332d7e046b82b6ad43aac81",	"0x9550b0c83ad5a58898cd4267987af67e7e52bf55",	"1652668433"],
 ]
 /*
 
@@ -3000,6 +3014,48 @@ neth   = new web3.eth.Contract(ab,NETH);
 		sortit(3);sortit(3);
 
 	});
+
+
+
+	//Frax TWAMM
+	frax_p0 = fetch("https://openapi.debank.com/v1/user/chain_balance?id=0xB186ad077cA69e860476B2C84ecD0DE3572A10F5&chain_id=ftm").then(res=>res.json())
+	frax_p1 = fetch("https://openapi.debank.com/v1/user/chain_balance?id=0xc736279b8371c736f027cCC3F77755D7931F8845&chain_id=ftm").then(res=>res.json())
+	frax_p2 = fetch("https://openapi.debank.com/v1/user/chain_balance?id=0xf55c563148ca0c0f1626834ec1b8651844d76792&chain_id=ftm").then(res=>res.json())
+	Promise.all([frax_p0,frax_p1,frax_p2])
+	.then(d=>{
+		fraxtl = 0;
+		for(i=0;i< d.length;i++) {
+			rd=d[i]
+			fraxtl+=rd.usd_value
+		console.log("fraxtl0",fraxtl,rd,d[i])
+		}
+		$("d_frax").getElementsByTagName("td")[3].innerHTML=Number(Number(fraxtl).toFixed(0)).toLocaleString()
+		gobj[0]+=Number(fraxtl)
+		ref_os();
+		sortit(3);sortit(3);
+		console.log("fraxtl",fraxtl)
+	});
+
+
+	//Nova
+	nova_p0 = fetch("https://openapi.debank.com/v1/user/chain_balance?id=0xB186ad077cA69e860476B2C84ecD0DE3572A10F5&chain_id=ftm").then(res=>res.json())
+	frax_p1 = fetch("https://openapi.debank.com/v1/user/chain_balance?id=0xc736279b8371c736f027cCC3F77755D7931F8845&chain_id=ftm").then(res=>res.json())
+	frax_p2 = fetch("https://openapi.debank.com/v1/user/chain_balance?id=0xf55c563148ca0c0f1626834ec1b8651844d76792&chain_id=ftm").then(res=>res.json())
+	Promise.all([frax_p0,frax_p1,frax_p2])
+	.then(d=>{
+		fraxtl = 0;
+		for(i=0;i< d.length;i++) {
+			rd=d[i]
+			fraxtl+=rd.usd_value
+		console.log("fraxtl0",fraxtl,rd,d[i])
+		}
+		$("d_frax").getElementsByTagName("td")[3].innerHTML=Number(Number(fraxtl).toFixed(0)).toLocaleString()
+		gobj[0]+=Number(fraxtl)
+		ref_os();
+		sortit(3);sortit(3);
+		console.log("fraxtl",fraxtl)
+	});
+
 
 
 }
