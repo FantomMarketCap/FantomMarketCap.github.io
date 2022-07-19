@@ -915,7 +915,7 @@ thead tr::before{
 				<td><span><a href="https://ftm.makiswap.com" target="_blank">💱</a></span></td>
 			</tr>
 			<tr class="" id="d_frax">
-				<td>Frax-TWAMM</td>
+				<td>Frax</td>
 				<td>0</td>
 				<td>0</td>
 				<td>0</td>
@@ -1439,7 +1439,7 @@ function pt(d)
 	sortit(3);sortit(3);
 	//;console.log("liqsort-llama");
 }
-function $v(_){return $(_).getElementsByTagName("td")[2]}
+function $v(_){try{return $(_).getElementsByTagName("td")[2]} catch(e){console.log(e,_)}}
 function ssum (n){
 	let s = 0;
 	for(i=0;i < n.length;i++){	if(isFinite(n[i])){s+=Number(n[i])}	}
@@ -1491,10 +1491,11 @@ function po (di)
 	if (di.slug ==  "pearzap")			{$v("d_pearzap").innerHTML=v;}
 	if (di.slug ==  "wigoswap")			{$v("d_wigo").innerHTML=v;}
 	if (di.slug ==  "tomb-finance")		{$v("d_tomb").innerHTML=v;}
-	if (di.slug ==  "solidly")	{$v("d_solidly").innerHTML=v;$v("d_solidly").nextElementSibling.innerHTML=v;gobj[0]+=Number(V);ref_os()}
+	if (di.slug ==  "solidly")			{$v("d_solidly").innerHTML=v}
 	if (di.slug ==  "excalibur")		{$v("d_excalibur").innerHTML=v;}
 	if (di.slug ==  "woofi")			{$v("d_woofi").innerHTML=v;}
-	if (di.slug ==  "tetu")				{$v("r_tetu").innerHTML=v;}
+	if (di.slug ==  "tetu")				{$v("d_tetu").innerHTML=v;}
+	if (di.slug ==  "frax")				{$v("d_frax").innerHTML=v;}
 }
 date_id = Date.now();
 date_id = date_id/1000 - (date_id/1000)%1;
@@ -2674,8 +2675,8 @@ try{
 		$("d_solidly").getElementsByTagName("td")[6].innerHTML=Number(Number(gdqd_solidly.solidlyFactories[0].totalVolumeUSD/1e9).toFixed(0)).toLocaleString()
 		$("d_solidly").getElementsByTagName("td")[7].innerHTML=Number(Number(gdqd_solidly.solidlyFactories[0].txCount).toFixed(0)).toLocaleString()
 		gobj[0]+=Number(gdqd_solidly.solidlyFactories[0].totalLiquidityUSD)
-		gobj[1]+=Number(gdqd_solidly.factoryDayDatas[0].dailyVolumeUSD)
-		gobj[2]+=Number(gdqd_solidly.solidlyFactories[0].totalVolumeUSD)
+		gobj[1]+=Number(gdqd_solidly.factoryDayDatas[0].dailyVolumeUSD)/1e9
+		gobj[2]+=Number(gdqd_solidly.solidlyFactories[0].totalVolumeUSD)/1e9
 		gobj[3]+=Number(gdqd_solidly.solidlyFactories[0].txCount)
 		ref_os();
 		sortit(3);sortit(3);
